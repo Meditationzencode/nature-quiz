@@ -60,8 +60,8 @@ nature-quiz/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
-cd YOUR-REPO-NAME
+git clone https://github.com/Meditationzencode/nature-quiz.git
+cd nature-quiz
 ```
 
 ### Create and activate a virtual environment
