@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Nature Quiz{% endblock %}
+
+{% block content %}
+<div class="home-screen">
+    <h1>Nature Quiz</h1>
+    <p class="subtitle">Test your knowledge of animals, plants, weather, and the natural world.</p>
+    <p class="small-text">50 questions total • 10 random questions each game</p>
+
+    <a class="main-button" href="{{ url_for('start_quiz') }}">Start Quiz</a>
+    <p class="created-by">This is where it all began, my first project upload. • created by <a href="https://github.com/Meditationzencode" target="_blank">Meditationzencode</a></p>
+</div>
+{% endblock %}
