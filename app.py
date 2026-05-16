@@ -107,6 +107,18 @@ def next_question():
     return redirect(url_for("quiz"))
 
 
+@app.route("/timeout", methods=["POST"])
+def timeout():
+    if not session.get("selected_questions"):
+        return redirect(url_for("home"))
+
+    current_question = session.get("current_question", 0)
+    session["current_question"] = current_question + 1
+    session["feedback"] = None
+
+    return redirect(url_for("quiz"))
+
+
 @app.route("/result")
 def result():
     selected_questions = session.get("selected_questions", [])
