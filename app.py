@@ -4,9 +4,9 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 load_dotenv()
 try:
-    from questions import questions
+    from questions import questions, birds, trees, insects, animals
 except Exception:
-    questions = []
+    questions = birds = trees = insects = animals = []
 import random
 
 app = Flask(__name__)
@@ -20,22 +20,25 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/start")
+@app.route("/start", methods=["GET", "POST"])
 def start_quiz():
-    if not questions:
-        return render_template("500.html"), 500
+    if request.method == "POST":
+        category = request.form.get("category", "All")
+        pool = {"Birds": birds, "Trees": trees, "Insects": insects, "Animals": animals}.get(category, questions)
 
-    selected_questions = random.sample(
-        questions,
-        min(QUESTIONS_PER_GAME, len(questions))
-    )
+        if not pool:
+            return render_template("500.html"), 500
 
-    session["selected_questions"] = selected_questions
-    session["current_question"] = 0
-    session["score"] = 0
-    session["feedback"] = None
+        selected_questions = random.sample(pool, min(QUESTIONS_PER_GAME, len(pool)))
 
-    return redirect(url_for("quiz"))
+        session["selected_questions"] = selected_questions
+        session["current_question"] = 0
+        session["score"] = 0
+        session["feedback"] = None
+
+        return redirect(url_for("quiz"))
+
+    return render_template("category.html")
 
 
 @app.route("/quiz")
