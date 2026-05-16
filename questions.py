@@ -1,5 +1,4 @@
-questions = [
-    # Birds
+birds = [
     {
         "question": "Which bird says \"quack\"?",
         "choices": ["Duck", "Eagle", "Owl", "Parrot"],
@@ -250,7 +249,9 @@ questions = [
         "choices": ["Ostrich", "Duck", "Pigeon", "Owl"],
         "answer": "Ostrich"
     },
-    # Trees
+]
+
+trees = [
     {
         "question": "Which tree grows apples?",
         "choices": ["Apple tree", "Pine tree", "Palm tree", "Oak tree"],
@@ -501,7 +502,9 @@ questions = [
         "choices": ["Oak tree", "Banana tree", "Lemon tree", "Palm tree"],
         "answer": "Oak tree"
     },
-    # Insects
+]
+
+insects = [
     {
         "question": "Which insect makes honey?",
         "choices": ["Bee", "Ant", "Fly", "Beetle"],
@@ -752,7 +755,9 @@ questions = [
         "choices": ["Bee", "Snail", "Fish", "Dog"],
         "answer": "Bee"
     },
-    # Animals
+]
+
+animals = [
     {
         "question": "Which animal says \"meow\"?",
         "choices": ["Cat", "Dog", "Cow", "Pig"],
@@ -1004,3 +1009,5 @@ questions = [
         "answer": "Tiger"
     },
 ]
+
+questions = birds + trees + insects + animals
