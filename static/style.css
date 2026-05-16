@@ -151,6 +151,28 @@ h1, h2 {
     text-align: center;
 }
 
+.error-code {
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #2f6f45;
+    margin: 0 0 8px;
+    line-height: 1;
+}
+
+.error-title {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0 0 12px;
+}
+
+.error-description {
+    text-align: center;
+    color: #4d5b4d;
+    margin-bottom: 28px;
+}
+
 @media (max-width: 640px) {
     .card {
         padding: 22px;
