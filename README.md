@@ -215,15 +215,12 @@ While building this project, I learned how to:
 
 ## Future Improvements
 
-- Add difficulty levels: easy, medium, and hard
-- Allow users to choose a specific category before starting
 - Add a high score table
 - Store questions in JSON or a database instead of a Python file
 - Add tests with Pytest
 - Add a simple admin page for adding and editing questions
 - Add more screenshots, including a mobile screenshot
 - Add a GIF showing the app in use
-- Deploy the project and add a live demo link
 
 ## Author
 
