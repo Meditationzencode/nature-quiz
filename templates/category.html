@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Choose a Category — Nature Quiz{% endblock %}
+
+{% block content %}
+<h1>Choose a Category</h1>
+<p class="small-text">Pick a category or play all 200 questions.</p>
+
+<form method="POST" action="{{ url_for('start_quiz') }}">
+    <div class="answers">
+        <button class="main-button" name="category" value="All">All Categories</button>
+        <button class="answer-button" name="category" value="Birds">Birds</button>
+        <button class="answer-button" name="category" value="Trees">Trees</button>
+        <button class="answer-button" name="category" value="Insects">Insects</button>
+        <button class="answer-button" name="category" value="Animals">Animals</button>
+    </div>
+</form>
+{% endblock %}
