@@ -1,9 +1,16 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
-from questions import questions
+
+load_dotenv()
+try:
+    from questions import questions
+except Exception:
+    questions = []
 import random
 
 app = Flask(__name__)
-app.secret_key = "change-this-to-a-secret-key"
+app.secret_key = os.environ.get("SECRET_KEY", "dev-only-fallback")
 
 QUESTIONS_PER_GAME = 10
 
@@ -15,6 +22,9 @@ def home():
 
 @app.route("/start")
 def start_quiz():
+    if not questions:
+        return render_template("500.html"), 500
+
     selected_questions = random.sample(
         questions,
         min(QUESTIONS_PER_GAME, len(questions))
@@ -63,6 +73,9 @@ def answer():
         return redirect(url_for("result"))
 
     chosen_answer = request.form.get("answer")
+    if not chosen_answer:
+        return redirect(url_for("quiz"))
+
     correct_answer = selected_questions[current_question]["answer"]
 
     is_correct = chosen_answer == correct_answer
@@ -81,6 +94,9 @@ def answer():
 
 @app.route("/next", methods=["POST"])
 def next_question():
+    if not session.get("selected_questions"):
+        return redirect(url_for("home"))
+
     current_question = session.get("current_question", 0)
     session["current_question"] = current_question + 1
     session["feedback"] = None
@@ -117,6 +133,16 @@ def result():
         percentage=percentage,
         message=message
     )
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("404.html"), 404
+
+
+@app.errorhandler(500)
+def server_error(e):
+    return render_template("500.html"), 500
 
 
 if __name__ == "__main__":
