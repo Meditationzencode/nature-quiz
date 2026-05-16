@@ -1,0 +1,2012 @@
+{
+  "categories": {
+    "birds": [
+      {
+        "question": "Which bird says “quack”?",
+        "answers": [
+          "Duck",
+          "Eagle",
+          "Owl",
+          "Parrot"
+        ],
+        "correct_answer": "Duck"
+      },
+      {
+        "question": "Which bird is known for being wise?",
+        "answers": [
+          "Penguin",
+          "Owl",
+          "Chicken",
+          "Swan"
+        ],
+        "correct_answer": "Owl"
+      },
+      {
+        "question": "Which bird cannot fly?",
+        "answers": [
+          "Sparrow",
+          "Eagle",
+          "Penguin",
+          "Crow"
+        ],
+        "correct_answer": "Penguin"
+      },
+      {
+        "question": "Which bird is often kept as a pet and can copy words?",
+        "answers": [
+          "Parrot",
+          "Duck",
+          "Goose",
+          "Turkey"
+        ],
+        "correct_answer": "Parrot"
+      },
+      {
+        "question": "Which bird lays eggs?",
+        "answers": [
+          "Cat",
+          "Bird",
+          "Dog",
+          "Cow"
+        ],
+        "correct_answer": "Bird"
+      },
+      {
+        "question": "Which bird is big and white and swims on lakes?",
+        "answers": [
+          "Swan",
+          "Sparrow",
+          "Pigeon",
+          "Hawk"
+        ],
+        "correct_answer": "Swan"
+      },
+      {
+        "question": "Which bird is often seen in cities?",
+        "answers": [
+          "Pigeon",
+          "Penguin",
+          "Ostrich",
+          "Flamingo"
+        ],
+        "correct_answer": "Pigeon"
+      },
+      {
+        "question": "Which bird has a long neck and pink feathers?",
+        "answers": [
+          "Flamingo",
+          "Robin",
+          "Owl",
+          "Crow"
+        ],
+        "correct_answer": "Flamingo"
+      },
+      {
+        "question": "Which bird is famous for waking people up on farms?",
+        "answers": [
+          "Rooster",
+          "Swan",
+          "Eagle",
+          "Dove"
+        ],
+        "correct_answer": "Rooster"
+      },
+      {
+        "question": "Which bird is a symbol of peace?",
+        "answers": [
+          "Dove",
+          "Hawk",
+          "Crow",
+          "Vulture"
+        ],
+        "correct_answer": "Dove"
+      },
+      {
+        "question": "Which bird is often eaten at Thanksgiving?",
+        "answers": [
+          "Turkey",
+          "Eagle",
+          "Robin",
+          "Duck"
+        ],
+        "correct_answer": "Turkey"
+      },
+      {
+        "question": "Which bird has very good eyesight?",
+        "answers": [
+          "Eagle",
+          "Chicken",
+          "Duck",
+          "Penguin"
+        ],
+        "correct_answer": "Eagle"
+      },
+      {
+        "question": "Which bird is small and red-breasted?",
+        "answers": [
+          "Robin",
+          "Swan",
+          "Ostrich",
+          "Goose"
+        ],
+        "correct_answer": "Robin"
+      },
+      {
+        "question": "Which bird is black and says “caw”?",
+        "answers": [
+          "Crow",
+          "Duck",
+          "Swan",
+          "Parrot"
+        ],
+        "correct_answer": "Crow"
+      },
+      {
+        "question": "Which bird lives near the sea and often eats fish?",
+        "answers": [
+          "Seagull",
+          "Chicken",
+          "Turkey",
+          "Peacock"
+        ],
+        "correct_answer": "Seagull"
+      },
+      {
+        "question": "Which bird is the largest living bird?",
+        "answers": [
+          "Ostrich",
+          "Robin",
+          "Pigeon",
+          "Duck"
+        ],
+        "correct_answer": "Ostrich"
+      },
+      {
+        "question": "Which bird has beautiful tail feathers?",
+        "answers": [
+          "Peacock",
+          "Crow",
+          "Sparrow",
+          "Penguin"
+        ],
+        "correct_answer": "Peacock"
+      },
+      {
+        "question": "Which bird is often found on farms and lays eggs for people to eat?",
+        "answers": [
+          "Chicken",
+          "Eagle",
+          "Swan",
+          "Owl"
+        ],
+        "correct_answer": "Chicken"
+      },
+      {
+        "question": "Which bird swims and has webbed feet?",
+        "answers": [
+          "Duck",
+          "Robin",
+          "Crow",
+          "Eagle"
+        ],
+        "correct_answer": "Duck"
+      },
+      {
+        "question": "Which bird is white and often honks?",
+        "answers": [
+          "Goose",
+          "Parrot",
+          "Owl",
+          "Hawk"
+        ],
+        "correct_answer": "Goose"
+      },
+      {
+        "question": "Which bird hunts at night?",
+        "answers": [
+          "Owl",
+          "Chicken",
+          "Swan",
+          "Duck"
+        ],
+        "correct_answer": "Owl"
+      },
+      {
+        "question": "Which bird is often used as a national symbol in the USA?",
+        "answers": [
+          "Bald eagle",
+          "Penguin",
+          "Flamingo",
+          "Pigeon"
+        ],
+        "correct_answer": "Bald eagle"
+      },
+      {
+        "question": "Which bird is tiny and flaps its wings very fast?",
+        "answers": [
+          "Hummingbird",
+          "Turkey",
+          "Ostrich",
+          "Swan"
+        ],
+        "correct_answer": "Hummingbird"
+      },
+      {
+        "question": "Which bird is usually yellow and sings?",
+        "answers": [
+          "Canary",
+          "Eagle",
+          "Crow",
+          "Goose"
+        ],
+        "correct_answer": "Canary"
+      },
+      {
+        "question": "Which bird has feathers?",
+        "answers": [
+          "Bird",
+          "Fish",
+          "Snake",
+          "Frog"
+        ],
+        "correct_answer": "Bird"
+      },
+      {
+        "question": "Which bird can swim but cannot fly?",
+        "answers": [
+          "Penguin",
+          "Eagle",
+          "Robin",
+          "Parrot"
+        ],
+        "correct_answer": "Penguin"
+      },
+      {
+        "question": "Which bird makes a nest?",
+        "answers": [
+          "Bird",
+          "Cat",
+          "Horse",
+          "Fish"
+        ],
+        "correct_answer": "Bird"
+      },
+      {
+        "question": "Which bird is often seen hopping on grass looking for worms?",
+        "answers": [
+          "Robin",
+          "Penguin",
+          "Swan",
+          "Turkey"
+        ],
+        "correct_answer": "Robin"
+      },
+      {
+        "question": "Which bird is known for saying “hoot”?",
+        "answers": [
+          "Owl",
+          "Duck",
+          "Goose",
+          "Chicken"
+        ],
+        "correct_answer": "Owl"
+      },
+      {
+        "question": "Which bird is usually found in cold places like Antarctica?",
+        "answers": [
+          "Penguin",
+          "Parrot",
+          "Peacock",
+          "Crow"
+        ],
+        "correct_answer": "Penguin"
+      },
+      {
+        "question": "Which bird is common on farms and says “cluck”?",
+        "answers": [
+          "Chicken",
+          "Eagle",
+          "Swan",
+          "Dove"
+        ],
+        "correct_answer": "Chicken"
+      },
+      {
+        "question": "Which bird is often green and talks?",
+        "answers": [
+          "Parrot",
+          "Crow",
+          "Robin",
+          "Goose"
+        ],
+        "correct_answer": "Parrot"
+      },
+      {
+        "question": "Which bird flies high in the sky and hunts animals?",
+        "answers": [
+          "Hawk",
+          "Duck",
+          "Chicken",
+          "Swan"
+        ],
+        "correct_answer": "Hawk"
+      },
+      {
+        "question": "Which bird is famous for delivering babies in stories?",
+        "answers": [
+          "Stork",
+          "Crow",
+          "Turkey",
+          "Owl"
+        ],
+        "correct_answer": "Stork"
+      },
+      {
+        "question": "Which bird is black and white and waddles?",
+        "answers": [
+          "Penguin",
+          "Robin",
+          "Parrot",
+          "Eagle"
+        ],
+        "correct_answer": "Penguin"
+      },
+      {
+        "question": "Which bird has wings?",
+        "answers": [
+          "Bird",
+          "Worm",
+          "Snail",
+          "Cow"
+        ],
+        "correct_answer": "Bird"
+      },
+      {
+        "question": "Which bird often lives in a cage as a pet?",
+        "answers": [
+          "Canary",
+          "Ostrich",
+          "Eagle",
+          "Goose"
+        ],
+        "correct_answer": "Canary"
+      },
+      {
+        "question": "Which bird is famous for long legs and standing in water?",
+        "answers": [
+          "Flamingo",
+          "Sparrow",
+          "Crow",
+          "Parrot"
+        ],
+        "correct_answer": "Flamingo"
+      },
+      {
+        "question": "Which bird says “gobble”?",
+        "answers": [
+          "Turkey",
+          "Swan",
+          "Owl",
+          "Robin"
+        ],
+        "correct_answer": "Turkey"
+      },
+      {
+        "question": "Which bird is small and brown and common in gardens?",
+        "answers": [
+          "Sparrow",
+          "Penguin",
+          "Ostrich",
+          "Swan"
+        ],
+        "correct_answer": "Sparrow"
+      },
+      {
+        "question": "Which bird is often white and swims gracefully?",
+        "answers": [
+          "Swan",
+          "Crow",
+          "Eagle",
+          "Chicken"
+        ],
+        "correct_answer": "Swan"
+      },
+      {
+        "question": "Which bird has a beak?",
+        "answers": [
+          "Bird",
+          "Dog",
+          "Cat",
+          "Horse"
+        ],
+        "correct_answer": "Bird"
+      },
+      {
+        "question": "Which bird is known for flying in a V shape with others?",
+        "answers": [
+          "Goose",
+          "Chicken",
+          "Penguin",
+          "Parrot"
+        ],
+        "correct_answer": "Goose"
+      },
+      {
+        "question": "Which bird is often seen at the beach?",
+        "answers": [
+          "Seagull",
+          "Owl",
+          "Turkey",
+          "Peacock"
+        ],
+        "correct_answer": "Seagull"
+      },
+      {
+        "question": "Which bird has talons?",
+        "answers": [
+          "Eagle",
+          "Duck",
+          "Chicken",
+          "Swan"
+        ],
+        "correct_answer": "Eagle"
+      },
+      {
+        "question": "Which bird is a baby chicken?",
+        "answers": [
+          "Chick",
+          "Kitten",
+          "Puppy",
+          "Calf"
+        ],
+        "correct_answer": "Chick"
+      },
+      {
+        "question": "Which bird usually builds nests in trees?",
+        "answers": [
+          "Robin",
+          "Fish",
+          "Frog",
+          "Snake"
+        ],
+        "correct_answer": "Robin"
+      },
+      {
+        "question": "Which bird has feathers instead of fur?",
+        "answers": [
+          "Bird",
+          "Cat",
+          "Dog",
+          "Bear"
+        ],
+        "correct_answer": "Bird"
+      },
+      {
+        "question": "Which bird often says “tweet”?",
+        "answers": [
+          "Small bird",
+          "Cow",
+          "Lion",
+          "Snake"
+        ],
+        "correct_answer": "Small bird"
+      },
+      {
+        "question": "Which bird is very tall and runs fast?",
+        "answers": [
+          "Ostrich",
+          "Duck",
+          "Pigeon",
+          "Owl"
+        ],
+        "correct_answer": "Ostrich"
+      }
+    ],
+    "trees": [
+      {
+        "question": "Which tree grows apples?",
+        "answers": [
+          "Apple tree",
+          "Pine tree",
+          "Palm tree",
+          "Oak tree"
+        ],
+        "correct_answer": "Apple tree"
+      },
+      {
+        "question": "Which tree grows coconuts?",
+        "answers": [
+          "Palm tree",
+          "Apple tree",
+          "Oak tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Palm tree"
+      },
+      {
+        "question": "Which tree has acorns?",
+        "answers": [
+          "Oak tree",
+          "Banana tree",
+          "Lemon tree",
+          "Cherry tree"
+        ],
+        "correct_answer": "Oak tree"
+      },
+      {
+        "question": "Which tree gives maple syrup?",
+        "answers": [
+          "Maple tree",
+          "Pine tree",
+          "Palm tree",
+          "Orange tree"
+        ],
+        "correct_answer": "Maple tree"
+      },
+      {
+        "question": "Which tree has needles instead of flat leaves?",
+        "answers": [
+          "Pine tree",
+          "Apple tree",
+          "Cherry tree",
+          "Lemon tree"
+        ],
+        "correct_answer": "Pine tree"
+      },
+      {
+        "question": "Which tree grows oranges?",
+        "answers": [
+          "Orange tree",
+          "Oak tree",
+          "Pine tree",
+          "Willow tree"
+        ],
+        "correct_answer": "Orange tree"
+      },
+      {
+        "question": "Which tree grows lemons?",
+        "answers": [
+          "Lemon tree",
+          "Maple tree",
+          "Oak tree",
+          "Palm tree"
+        ],
+        "correct_answer": "Lemon tree"
+      },
+      {
+        "question": "Which tree grows cherries?",
+        "answers": [
+          "Cherry tree",
+          "Pine tree",
+          "Oak tree",
+          "Palm tree"
+        ],
+        "correct_answer": "Cherry tree"
+      },
+      {
+        "question": "Which part of a tree is usually underground?",
+        "answers": [
+          "Roots",
+          "Leaves",
+          "Branches",
+          "Flowers"
+        ],
+        "correct_answer": "Roots"
+      },
+      {
+        "question": "Which part of a tree is brown and strong?",
+        "answers": [
+          "Trunk",
+          "Leaf",
+          "Flower",
+          "Fruit"
+        ],
+        "correct_answer": "Trunk"
+      },
+      {
+        "question": "Which part of a tree grows out from the trunk?",
+        "answers": [
+          "Branch",
+          "Root",
+          "Rock",
+          "Feather"
+        ],
+        "correct_answer": "Branch"
+      },
+      {
+        "question": "What do trees need to grow?",
+        "answers": [
+          "Sunlight",
+          "Candy",
+          "Shoes",
+          "Toys"
+        ],
+        "correct_answer": "Sunlight"
+      },
+      {
+        "question": "Which tree is often used as a Christmas tree?",
+        "answers": [
+          "Pine tree",
+          "Apple tree",
+          "Orange tree",
+          "Banana tree"
+        ],
+        "correct_answer": "Pine tree"
+      },
+      {
+        "question": "What color are many leaves in summer?",
+        "answers": [
+          "Green",
+          "Blue",
+          "Purple",
+          "Black"
+        ],
+        "correct_answer": "Green"
+      },
+      {
+        "question": "What can trees give us to breathe?",
+        "answers": [
+          "Oxygen",
+          "Milk",
+          "Juice",
+          "Bread"
+        ],
+        "correct_answer": "Oxygen"
+      },
+      {
+        "question": "Which tree grows bananas?",
+        "answers": [
+          "Banana tree",
+          "Oak tree",
+          "Maple tree",
+          "Pine tree"
+        ],
+        "correct_answer": "Banana tree"
+      },
+      {
+        "question": "Which tree has long drooping branches?",
+        "answers": [
+          "Willow tree",
+          "Palm tree",
+          "Apple tree",
+          "Lemon tree"
+        ],
+        "correct_answer": "Willow tree"
+      },
+      {
+        "question": "Which tree grows pears?",
+        "answers": [
+          "Pear tree",
+          "Pine tree",
+          "Oak tree",
+          "Palm tree"
+        ],
+        "correct_answer": "Pear tree"
+      },
+      {
+        "question": "Which tree grows peaches?",
+        "answers": [
+          "Peach tree",
+          "Maple tree",
+          "Oak tree",
+          "Willow tree"
+        ],
+        "correct_answer": "Peach tree"
+      },
+      {
+        "question": "What falls from trees in autumn?",
+        "answers": [
+          "Leaves",
+          "Shoes",
+          "Fish",
+          "Books"
+        ],
+        "correct_answer": "Leaves"
+      },
+      {
+        "question": "What covers the outside of a tree trunk?",
+        "answers": [
+          "Bark",
+          "Fur",
+          "Feathers",
+          "Scales"
+        ],
+        "correct_answer": "Bark"
+      },
+      {
+        "question": "Which tree grows limes?",
+        "answers": [
+          "Lime tree",
+          "Pine tree",
+          "Oak tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Lime tree"
+      },
+      {
+        "question": "Which tree grows plums?",
+        "answers": [
+          "Plum tree",
+          "Palm tree",
+          "Pine tree",
+          "Oak tree"
+        ],
+        "correct_answer": "Plum tree"
+      },
+      {
+        "question": "Which tree grows olives?",
+        "answers": [
+          "Olive tree",
+          "Apple tree",
+          "Banana tree",
+          "Pine tree"
+        ],
+        "correct_answer": "Olive tree"
+      },
+      {
+        "question": "Which tree can be very tall and found in forests?",
+        "answers": [
+          "Redwood tree",
+          "Daisy",
+          "Grass",
+          "Mushroom"
+        ],
+        "correct_answer": "Redwood tree"
+      },
+      {
+        "question": "What do trees grow from?",
+        "answers": [
+          "Seeds",
+          "Eggs",
+          "Bones",
+          "Shells"
+        ],
+        "correct_answer": "Seeds"
+      },
+      {
+        "question": "Which tree has cones?",
+        "answers": [
+          "Pine tree",
+          "Lemon tree",
+          "Apple tree",
+          "Cherry tree"
+        ],
+        "correct_answer": "Pine tree"
+      },
+      {
+        "question": "Which tree is known for white bark?",
+        "answers": [
+          "Birch tree",
+          "Palm tree",
+          "Banana tree",
+          "Orange tree"
+        ],
+        "correct_answer": "Birch tree"
+      },
+      {
+        "question": "Which tree grows dates?",
+        "answers": [
+          "Date palm",
+          "Oak tree",
+          "Apple tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Date palm"
+      },
+      {
+        "question": "Which tree grows walnuts?",
+        "answers": [
+          "Walnut tree",
+          "Cherry tree",
+          "Palm tree",
+          "Lemon tree"
+        ],
+        "correct_answer": "Walnut tree"
+      },
+      {
+        "question": "What do many trees have on their branches?",
+        "answers": [
+          "Leaves",
+          "Shoes",
+          "Cups",
+          "Hats"
+        ],
+        "correct_answer": "Leaves"
+      },
+      {
+        "question": "Which tree grows figs?",
+        "answers": [
+          "Fig tree",
+          "Pine tree",
+          "Oak tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Fig tree"
+      },
+      {
+        "question": "Which tree grows almonds?",
+        "answers": [
+          "Almond tree",
+          "Palm tree",
+          "Banana tree",
+          "Pine tree"
+        ],
+        "correct_answer": "Almond tree"
+      },
+      {
+        "question": "What part of the tree takes in water from the ground?",
+        "answers": [
+          "Roots",
+          "Leaves",
+          "Fruit",
+          "Bark"
+        ],
+        "correct_answer": "Roots"
+      },
+      {
+        "question": "Which tree grows mangoes?",
+        "answers": [
+          "Mango tree",
+          "Oak tree",
+          "Pine tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Mango tree"
+      },
+      {
+        "question": "Which tree grows avocados?",
+        "answers": [
+          "Avocado tree",
+          "Pine tree",
+          "Willow tree",
+          "Birch tree"
+        ],
+        "correct_answer": "Avocado tree"
+      },
+      {
+        "question": "What do bees sometimes visit on trees?",
+        "answers": [
+          "Flowers",
+          "Rocks",
+          "Shoes",
+          "Windows"
+        ],
+        "correct_answer": "Flowers"
+      },
+      {
+        "question": "Which tree has palm leaves and grows in warm places?",
+        "answers": [
+          "Palm tree",
+          "Pine tree",
+          "Oak tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Palm tree"
+      },
+      {
+        "question": "Which tree grows chestnuts?",
+        "answers": [
+          "Chestnut tree",
+          "Apple tree",
+          "Lemon tree",
+          "Banana tree"
+        ],
+        "correct_answer": "Chestnut tree"
+      },
+      {
+        "question": "Which tree grows hazelnuts?",
+        "answers": [
+          "Hazelnut tree",
+          "Palm tree",
+          "Oak tree",
+          "Pine tree"
+        ],
+        "correct_answer": "Hazelnut tree"
+      },
+      {
+        "question": "What do trees provide for animals?",
+        "answers": [
+          "Shelter",
+          "Televisions",
+          "Shoes",
+          "Cars"
+        ],
+        "correct_answer": "Shelter"
+      },
+      {
+        "question": "Which tree is often found in tropical places?",
+        "answers": [
+          "Palm tree",
+          "Birch tree",
+          "Pine tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Palm tree"
+      },
+      {
+        "question": "Which tree grows pinecones?",
+        "answers": [
+          "Pine tree",
+          "Apple tree",
+          "Lemon tree",
+          "Cherry tree"
+        ],
+        "correct_answer": "Pine tree"
+      },
+      {
+        "question": "What color can leaves turn in autumn?",
+        "answers": [
+          "Red",
+          "Blue",
+          "Pink with stripes",
+          "Silver"
+        ],
+        "correct_answer": "Red"
+      },
+      {
+        "question": "Which tree grows apricots?",
+        "answers": [
+          "Apricot tree",
+          "Oak tree",
+          "Pine tree",
+          "Willow tree"
+        ],
+        "correct_answer": "Apricot tree"
+      },
+      {
+        "question": "What do we call a place with many trees?",
+        "answers": [
+          "Forest",
+          "Ocean",
+          "Desert",
+          "Kitchen"
+        ],
+        "correct_answer": "Forest"
+      },
+      {
+        "question": "Which tree grows grapefruit?",
+        "answers": [
+          "Grapefruit tree",
+          "Oak tree",
+          "Pine tree",
+          "Maple tree"
+        ],
+        "correct_answer": "Grapefruit tree"
+      },
+      {
+        "question": "Which part of a tree can give shade?",
+        "answers": [
+          "Leaves",
+          "Roots",
+          "Seeds",
+          "Soil"
+        ],
+        "correct_answer": "Leaves"
+      },
+      {
+        "question": "What do trees need from the ground?",
+        "answers": [
+          "Water",
+          "Ice cream",
+          "Paper",
+          "Socks"
+        ],
+        "correct_answer": "Water"
+      },
+      {
+        "question": "Which tree grows acorns for squirrels to eat?",
+        "answers": [
+          "Oak tree",
+          "Banana tree",
+          "Lemon tree",
+          "Palm tree"
+        ],
+        "correct_answer": "Oak tree"
+      }
+    ],
+    "insects": [
+      {
+        "question": "Which insect makes honey?",
+        "answers": [
+          "Bee",
+          "Ant",
+          "Fly",
+          "Beetle"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect turns into a butterfly?",
+        "answers": [
+          "Caterpillar",
+          "Spider",
+          "Worm",
+          "Snail"
+        ],
+        "correct_answer": "Caterpillar"
+      },
+      {
+        "question": "Which insect has colorful wings?",
+        "answers": [
+          "Butterfly",
+          "Ant",
+          "Cockroach",
+          "Flea"
+        ],
+        "correct_answer": "Butterfly"
+      },
+      {
+        "question": "Which insect lives in a colony and is very small?",
+        "answers": [
+          "Ant",
+          "Frog",
+          "Dog",
+          "Fish"
+        ],
+        "correct_answer": "Ant"
+      },
+      {
+        "question": "Which insect jumps and chirps?",
+        "answers": [
+          "Cricket",
+          "Bee",
+          "Ant",
+          "Fly"
+        ],
+        "correct_answer": "Cricket"
+      },
+      {
+        "question": "Which insect glows at night?",
+        "answers": [
+          "Firefly",
+          "Beetle",
+          "Ant",
+          "Mosquito"
+        ],
+        "correct_answer": "Firefly"
+      },
+      {
+        "question": "Which insect can bite and drink blood?",
+        "answers": [
+          "Mosquito",
+          "Butterfly",
+          "Bee",
+          "Ladybug"
+        ],
+        "correct_answer": "Mosquito"
+      },
+      {
+        "question": "Which insect is red with black spots?",
+        "answers": [
+          "Ladybug",
+          "Bee",
+          "Ant",
+          "Fly"
+        ],
+        "correct_answer": "Ladybug"
+      },
+      {
+        "question": "Which insect has six legs?",
+        "answers": [
+          "Insect",
+          "Spider",
+          "Dog",
+          "Bird"
+        ],
+        "correct_answer": "Insect"
+      },
+      {
+        "question": "Which insect often lands on food?",
+        "answers": [
+          "Fly",
+          "Bee",
+          "Butterfly",
+          "Ant"
+        ],
+        "correct_answer": "Fly"
+      },
+      {
+        "question": "Which insect makes a buzzing sound?",
+        "answers": [
+          "Bee",
+          "Worm",
+          "Snail",
+          "Frog"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect can sting?",
+        "answers": [
+          "Wasp",
+          "Butterfly",
+          "Ladybug",
+          "Ant"
+        ],
+        "correct_answer": "Wasp"
+      },
+      {
+        "question": "Which insect eats wood and can damage houses?",
+        "answers": [
+          "Termite",
+          "Butterfly",
+          "Ladybug",
+          "Firefly"
+        ],
+        "correct_answer": "Termite"
+      },
+      {
+        "question": "Which insect is often black and yellow?",
+        "answers": [
+          "Bee",
+          "Ant",
+          "Flea",
+          "Fly"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect has wings and starts as a caterpillar?",
+        "answers": [
+          "Butterfly",
+          "Ant",
+          "Mosquito",
+          "Beetle"
+        ],
+        "correct_answer": "Butterfly"
+      },
+      {
+        "question": "Which insect can hop very far?",
+        "answers": [
+          "Grasshopper",
+          "Bee",
+          "Fly",
+          "Ant"
+        ],
+        "correct_answer": "Grasshopper"
+      },
+      {
+        "question": "Which insect is tiny and can live on pets?",
+        "answers": [
+          "Flea",
+          "Butterfly",
+          "Ladybug",
+          "Firefly"
+        ],
+        "correct_answer": "Flea"
+      },
+      {
+        "question": "Which insect makes silk?",
+        "answers": [
+          "Silkworm",
+          "Ant",
+          "Fly",
+          "Mosquito"
+        ],
+        "correct_answer": "Silkworm"
+      },
+      {
+        "question": "Which insect is often found near flowers?",
+        "answers": [
+          "Bee",
+          "Flea",
+          "Cockroach",
+          "Termite"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect has a hard shell and many types?",
+        "answers": [
+          "Beetle",
+          "Butterfly",
+          "Mosquito",
+          "Fly"
+        ],
+        "correct_answer": "Beetle"
+      },
+      {
+        "question": "Which insect carries food back to its nest?",
+        "answers": [
+          "Ant",
+          "Butterfly",
+          "Bee",
+          "Fly"
+        ],
+        "correct_answer": "Ant"
+      },
+      {
+        "question": "Which insect makes a cocoon?",
+        "answers": [
+          "Caterpillar",
+          "Ant",
+          "Fly",
+          "Mosquito"
+        ],
+        "correct_answer": "Caterpillar"
+      },
+      {
+        "question": "Which insect can be annoying at a picnic?",
+        "answers": [
+          "Fly",
+          "Butterfly",
+          "Ladybug",
+          "Firefly"
+        ],
+        "correct_answer": "Fly"
+      },
+      {
+        "question": "Which insect is known for working hard?",
+        "answers": [
+          "Ant",
+          "Butterfly",
+          "Flea",
+          "Mosquito"
+        ],
+        "correct_answer": "Ant"
+      },
+      {
+        "question": "Which insect is yellow and black and makes honey?",
+        "answers": [
+          "Bee",
+          "Beetle",
+          "Fly",
+          "Ant"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect can spread malaria?",
+        "answers": [
+          "Mosquito",
+          "Butterfly",
+          "Ladybug",
+          "Cricket"
+        ],
+        "correct_answer": "Mosquito"
+      },
+      {
+        "question": "Which insect makes a loud chirping noise at night?",
+        "answers": [
+          "Cricket",
+          "Bee",
+          "Ant",
+          "Flea"
+        ],
+        "correct_answer": "Cricket"
+      },
+      {
+        "question": "Which insect often lives in a hive?",
+        "answers": [
+          "Bee",
+          "Ant",
+          "Fly",
+          "Beetle"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect has delicate wings and flies around flowers?",
+        "answers": [
+          "Butterfly",
+          "Termite",
+          "Cockroach",
+          "Flea"
+        ],
+        "correct_answer": "Butterfly"
+      },
+      {
+        "question": "Which insect is small and usually black or red?",
+        "answers": [
+          "Ant",
+          "Bee",
+          "Butterfly",
+          "Firefly"
+        ],
+        "correct_answer": "Ant"
+      },
+      {
+        "question": "Which insect can be found in a rotten log?",
+        "answers": [
+          "Beetle",
+          "Dolphin",
+          "Cat",
+          "Bird"
+        ],
+        "correct_answer": "Beetle"
+      },
+      {
+        "question": "Which insect is sometimes called a lightning bug?",
+        "answers": [
+          "Firefly",
+          "Bee",
+          "Ant",
+          "Fly"
+        ],
+        "correct_answer": "Firefly"
+      },
+      {
+        "question": "Which insect often bites people in summer?",
+        "answers": [
+          "Mosquito",
+          "Butterfly",
+          "Ladybug",
+          "Grasshopper"
+        ],
+        "correct_answer": "Mosquito"
+      },
+      {
+        "question": "Which insect helps pollinate flowers?",
+        "answers": [
+          "Bee",
+          "Flea",
+          "Cockroach",
+          "Termite"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect is a baby butterfly?",
+        "answers": [
+          "Caterpillar",
+          "Kitten",
+          "Puppy",
+          "Tadpole"
+        ],
+        "correct_answer": "Caterpillar"
+      },
+      {
+        "question": "Which insect has wings and makes honey?",
+        "answers": [
+          "Bee",
+          "Ant",
+          "Flea",
+          "Worm"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect often lives underground in tunnels?",
+        "answers": [
+          "Ant",
+          "Butterfly",
+          "Fly",
+          "Mosquito"
+        ],
+        "correct_answer": "Ant"
+      },
+      {
+        "question": "Which insect can be green and jump in grass?",
+        "answers": [
+          "Grasshopper",
+          "Ladybug",
+          "Flea",
+          "Bee"
+        ],
+        "correct_answer": "Grasshopper"
+      },
+      {
+        "question": "Which insect can sting and is similar to a bee?",
+        "answers": [
+          "Wasp",
+          "Butterfly",
+          "Cricket",
+          "Ladybug"
+        ],
+        "correct_answer": "Wasp"
+      },
+      {
+        "question": "Which insect is known for eating paper or wood?",
+        "answers": [
+          "Termite",
+          "Butterfly",
+          "Ladybug",
+          "Firefly"
+        ],
+        "correct_answer": "Termite"
+      },
+      {
+        "question": "Which insect can be found around lights at night?",
+        "answers": [
+          "Moth",
+          "Ant",
+          "Bee",
+          "Flea"
+        ],
+        "correct_answer": "Moth"
+      },
+      {
+        "question": "Which insect is like a butterfly but often flies at night?",
+        "answers": [
+          "Moth",
+          "Bee",
+          "Ladybug",
+          "Ant"
+        ],
+        "correct_answer": "Moth"
+      },
+      {
+        "question": "Which insect can crawl on crumbs?",
+        "answers": [
+          "Ant",
+          "Butterfly",
+          "Bee",
+          "Firefly"
+        ],
+        "correct_answer": "Ant"
+      },
+      {
+        "question": "Which insect has black spots and is helpful in gardens?",
+        "answers": [
+          "Ladybug",
+          "Mosquito",
+          "Flea",
+          "Fly"
+        ],
+        "correct_answer": "Ladybug"
+      },
+      {
+        "question": "Which insect makes wax and honey?",
+        "answers": [
+          "Bee",
+          "Fly",
+          "Ant",
+          "Beetle"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect is often found in kitchens if food is left out?",
+        "answers": [
+          "Cockroach",
+          "Butterfly",
+          "Ladybug",
+          "Firefly"
+        ],
+        "correct_answer": "Cockroach"
+      },
+      {
+        "question": "Which insect has a queen in its colony?",
+        "answers": [
+          "Bee",
+          "Cat",
+          "Fish",
+          "Frog"
+        ],
+        "correct_answer": "Bee"
+      },
+      {
+        "question": "Which insect changes from a caterpillar into an adult?",
+        "answers": [
+          "Butterfly",
+          "Ant",
+          "Flea",
+          "Fly"
+        ],
+        "correct_answer": "Butterfly"
+      },
+      {
+        "question": "Which insect can be very small and bite ankles?",
+        "answers": [
+          "Flea",
+          "Butterfly",
+          "Ladybug",
+          "Cricket"
+        ],
+        "correct_answer": "Flea"
+      },
+      {
+        "question": "Which insect is famous for being busy?",
+        "answers": [
+          "Bee",
+          "Snail",
+          "Fish",
+          "Dog"
+        ],
+        "correct_answer": "Bee"
+      }
+    ],
+    "animals": [
+      {
+        "question": "Which animal says “meow”?",
+        "answers": [
+          "Cat",
+          "Dog",
+          "Cow",
+          "Pig"
+        ],
+        "correct_answer": "Cat"
+      },
+      {
+        "question": "Which animal says “woof”?",
+        "answers": [
+          "Dog",
+          "Cat",
+          "Horse",
+          "Sheep"
+        ],
+        "correct_answer": "Dog"
+      },
+      {
+        "question": "Which animal gives us milk?",
+        "answers": [
+          "Cow",
+          "Lion",
+          "Tiger",
+          "Snake"
+        ],
+        "correct_answer": "Cow"
+      },
+      {
+        "question": "Which animal is known as the king of the jungle?",
+        "answers": [
+          "Lion",
+          "Rabbit",
+          "Goat",
+          "Pig"
+        ],
+        "correct_answer": "Lion"
+      },
+      {
+        "question": "Which animal has black and white stripes?",
+        "answers": [
+          "Zebra",
+          "Cow",
+          "Dog",
+          "Cat"
+        ],
+        "correct_answer": "Zebra"
+      },
+      {
+        "question": "Which animal has a long trunk?",
+        "answers": [
+          "Elephant",
+          "Horse",
+          "Sheep",
+          "Pig"
+        ],
+        "correct_answer": "Elephant"
+      },
+      {
+        "question": "Which animal hops and has long ears?",
+        "answers": [
+          "Rabbit",
+          "Cow",
+          "Dog",
+          "Lion"
+        ],
+        "correct_answer": "Rabbit"
+      },
+      {
+        "question": "Which animal says “oink”?",
+        "answers": [
+          "Pig",
+          "Cat",
+          "Horse",
+          "Duck"
+        ],
+        "correct_answer": "Pig"
+      },
+      {
+        "question": "Which animal says “neigh”?",
+        "answers": [
+          "Horse",
+          "Dog",
+          "Cow",
+          "Goat"
+        ],
+        "correct_answer": "Horse"
+      },
+      {
+        "question": "Which animal says “baa”?",
+        "answers": [
+          "Sheep",
+          "Cat",
+          "Pig",
+          "Lion"
+        ],
+        "correct_answer": "Sheep"
+      },
+      {
+        "question": "Which animal has a shell and moves slowly?",
+        "answers": [
+          "Turtle",
+          "Dog",
+          "Horse",
+          "Tiger"
+        ],
+        "correct_answer": "Turtle"
+      },
+      {
+        "question": "Which animal is very tall and has a long neck?",
+        "answers": [
+          "Giraffe",
+          "Cat",
+          "Pig",
+          "Sheep"
+        ],
+        "correct_answer": "Giraffe"
+      },
+      {
+        "question": "Which animal is black and white and eats bamboo?",
+        "answers": [
+          "Panda",
+          "Lion",
+          "Tiger",
+          "Horse"
+        ],
+        "correct_answer": "Panda"
+      },
+      {
+        "question": "Which animal lives in water and has fins?",
+        "answers": [
+          "Fish",
+          "Dog",
+          "Cat",
+          "Cow"
+        ],
+        "correct_answer": "Fish"
+      },
+      {
+        "question": "Which animal is a common pet?",
+        "answers": [
+          "Dog",
+          "Lion",
+          "Tiger",
+          "Elephant"
+        ],
+        "correct_answer": "Dog"
+      },
+      {
+        "question": "Which animal has a mane?",
+        "answers": [
+          "Lion",
+          "Rabbit",
+          "Mouse",
+          "Frog"
+        ],
+        "correct_answer": "Lion"
+      },
+      {
+        "question": "Which animal says “moo”?",
+        "answers": [
+          "Cow",
+          "Dog",
+          "Cat",
+          "Pig"
+        ],
+        "correct_answer": "Cow"
+      },
+      {
+        "question": "Which animal can swing from trees?",
+        "answers": [
+          "Monkey",
+          "Cow",
+          "Sheep",
+          "Pig"
+        ],
+        "correct_answer": "Monkey"
+      },
+      {
+        "question": "Which animal is very slow and has a shell?",
+        "answers": [
+          "Tortoise",
+          "Horse",
+          "Dog",
+          "Tiger"
+        ],
+        "correct_answer": "Tortoise"
+      },
+      {
+        "question": "Which animal is called man’s best friend?",
+        "answers": [
+          "Dog",
+          "Snake",
+          "Lion",
+          "Fish"
+        ],
+        "correct_answer": "Dog"
+      },
+      {
+        "question": "Which animal has sharp claws and says “roar”?",
+        "answers": [
+          "Tiger",
+          "Rabbit",
+          "Cow",
+          "Sheep"
+        ],
+        "correct_answer": "Tiger"
+      },
+      {
+        "question": "Which animal is pink and lives on farms?",
+        "answers": [
+          "Pig",
+          "Lion",
+          "Zebra",
+          "Tiger"
+        ],
+        "correct_answer": "Pig"
+      },
+      {
+        "question": "Which animal has wool?",
+        "answers": [
+          "Sheep",
+          "Cat",
+          "Dog",
+          "Horse"
+        ],
+        "correct_answer": "Sheep"
+      },
+      {
+        "question": "Which animal is small and likes cheese in cartoons?",
+        "answers": [
+          "Mouse",
+          "Elephant",
+          "Lion",
+          "Cow"
+        ],
+        "correct_answer": "Mouse"
+      },
+      {
+        "question": "Which animal can be ridden by people?",
+        "answers": [
+          "Horse",
+          "Cat",
+          "Fish",
+          "Mouse"
+        ],
+        "correct_answer": "Horse"
+      },
+      {
+        "question": "Which animal has humps on its back?",
+        "answers": [
+          "Camel",
+          "Dog",
+          "Cow",
+          "Rabbit"
+        ],
+        "correct_answer": "Camel"
+      },
+      {
+        "question": "Which animal lives in the ocean and is very big?",
+        "answers": [
+          "Whale",
+          "Cat",
+          "Horse",
+          "Sheep"
+        ],
+        "correct_answer": "Whale"
+      },
+      {
+        "question": "Which animal barks?",
+        "answers": [
+          "Dog",
+          "Cow",
+          "Goat",
+          "Rabbit"
+        ],
+        "correct_answer": "Dog"
+      },
+      {
+        "question": "Which animal purrs?",
+        "answers": [
+          "Cat",
+          "Dog",
+          "Cow",
+          "Horse"
+        ],
+        "correct_answer": "Cat"
+      },
+      {
+        "question": "Which animal is green and says “ribbit”?",
+        "answers": [
+          "Frog",
+          "Dog",
+          "Pig",
+          "Lion"
+        ],
+        "correct_answer": "Frog"
+      },
+      {
+        "question": "Which animal has a pouch for its baby?",
+        "answers": [
+          "Kangaroo",
+          "Cat",
+          "Cow",
+          "Horse"
+        ],
+        "correct_answer": "Kangaroo"
+      },
+      {
+        "question": "Which animal is known for eating bananas?",
+        "answers": [
+          "Monkey",
+          "Cow",
+          "Sheep",
+          "Pig"
+        ],
+        "correct_answer": "Monkey"
+      },
+      {
+        "question": "Which animal is long and has no legs?",
+        "answers": [
+          "Snake",
+          "Dog",
+          "Cat",
+          "Horse"
+        ],
+        "correct_answer": "Snake"
+      },
+      {
+        "question": "Which animal lives in the Arctic and is white?",
+        "answers": [
+          "Polar bear",
+          "Lion",
+          "Tiger",
+          "Zebra"
+        ],
+        "correct_answer": "Polar bear"
+      },
+      {
+        "question": "Which animal has antlers?",
+        "answers": [
+          "Deer",
+          "Cat",
+          "Pig",
+          "Mouse"
+        ],
+        "correct_answer": "Deer"
+      },
+      {
+        "question": "Which animal has big ears and a trunk?",
+        "answers": [
+          "Elephant",
+          "Rabbit",
+          "Dog",
+          "Pig"
+        ],
+        "correct_answer": "Elephant"
+      },
+      {
+        "question": "Which animal is known for being very fast?",
+        "answers": [
+          "Cheetah",
+          "Turtle",
+          "Snail",
+          "Cow"
+        ],
+        "correct_answer": "Cheetah"
+      },
+      {
+        "question": "Which animal lives in a den and can be orange?",
+        "answers": [
+          "Fox",
+          "Cow",
+          "Pig",
+          "Sheep"
+        ],
+        "correct_answer": "Fox"
+      },
+      {
+        "question": "Which animal says “bleat” or “maa”?",
+        "answers": [
+          "Goat",
+          "Dog",
+          "Cat",
+          "Horse"
+        ],
+        "correct_answer": "Goat"
+      },
+      {
+        "question": "Which animal is often kept in an aquarium?",
+        "answers": [
+          "Fish",
+          "Cow",
+          "Horse",
+          "Sheep"
+        ],
+        "correct_answer": "Fish"
+      },
+      {
+        "question": "Which animal has scales and slithers?",
+        "answers": [
+          "Snake",
+          "Cat",
+          "Dog",
+          "Rabbit"
+        ],
+        "correct_answer": "Snake"
+      },
+      {
+        "question": "Which animal is black and white and may spray a bad smell?",
+        "answers": [
+          "Skunk",
+          "Cat",
+          "Horse",
+          "Cow"
+        ],
+        "correct_answer": "Skunk"
+      },
+      {
+        "question": "Which animal has a bushy tail and climbs trees?",
+        "answers": [
+          "Squirrel",
+          "Cow",
+          "Pig",
+          "Sheep"
+        ],
+        "correct_answer": "Squirrel"
+      },
+      {
+        "question": "Which animal is large and has horns and says “moo”?",
+        "answers": [
+          "Cow",
+          "Cat",
+          "Rabbit",
+          "Dog"
+        ],
+        "correct_answer": "Cow"
+      },
+      {
+        "question": "Which animal is a baby dog?",
+        "answers": [
+          "Puppy",
+          "Kitten",
+          "Calf",
+          "Foal"
+        ],
+        "correct_answer": "Puppy"
+      },
+      {
+        "question": "Which animal is a baby cat?",
+        "answers": [
+          "Kitten",
+          "Puppy",
+          "Chick",
+          "Lamb"
+        ],
+        "correct_answer": "Kitten"
+      },
+      {
+        "question": "Which animal is a baby sheep?",
+        "answers": [
+          "Lamb",
+          "Kitten",
+          "Puppy",
+          "Calf"
+        ],
+        "correct_answer": "Lamb"
+      },
+      {
+        "question": "Which animal is a baby cow?",
+        "answers": [
+          "Calf",
+          "Kitten",
+          "Lamb",
+          "Cub"
+        ],
+        "correct_answer": "Calf"
+      },
+      {
+        "question": "Which animal is a baby horse?",
+        "answers": [
+          "Foal",
+          "Puppy",
+          "Kitten",
+          "Chick"
+        ],
+        "correct_answer": "Foal"
+      },
+      {
+        "question": "Which animal lives in the jungle and has stripes?",
+        "answers": [
+          "Tiger",
+          "Cow",
+          "Sheep",
+          "Pig"
+        ],
+        "correct_answer": "Tiger"
+      }
+    ]
+  }
+}
