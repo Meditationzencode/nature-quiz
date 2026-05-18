@@ -39,6 +39,10 @@
                     timeoutForm.submit();
                 }
             }, 1000);
+
+            document.getElementById("answer-form").addEventListener("submit", () => {
+                clearInterval(timer);
+            });
         </script>
     {% else %}
         <div class="feedback-box {{ 'correct' if feedback.is_correct else 'incorrect' }}">
