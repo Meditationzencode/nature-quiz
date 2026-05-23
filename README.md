@@ -16,15 +16,27 @@ This was my first Flask project. The aim was to build a complete, polished begin
 
 ### Home Page
 
-![Home Page](static/images/homepage-screenshot.png)
+![Home Page](static/images/screenshot-home.png)
 
-### Quiz Page
+### Choose Difficulty
 
-![Quiz Page](static/images/quiz-screenshot.png)
+![Difficulty Page](static/images/screenshot-difficulty.png)
 
-### Results Page
+### Choose Category
 
-![Results Page](static/images/results-screenshot.png)
+![Category Page](static/images/screenshot-category.png)
+
+### Quiz Question
+
+![Quiz Page](static/images/screenshot-quiz.png)
+
+### Answer Feedback
+
+![Feedback](static/images/screenshot-feedback.png)
+
+### Mobile View
+
+![Mobile View](static/images/screenshot-mobile.png)
 
 ## Overview
 
@@ -36,6 +48,10 @@ The project was built to practise core Flask concepts, including routing, templa
 
 - Flask-based web application
 - 200 nature-themed multiple-choice questions
+- Three difficulty levels:
+  - Easy — 15 seconds per question
+  - Medium — 10 seconds per question
+  - Hard — 5 seconds per question
 - Four nature categories:
   - Birds
   - Trees
@@ -43,11 +59,11 @@ The project was built to practise core Flask concepts, including routing, templa
   - Animals
 - 10 random questions per game
 - Score tracking across a quiz session
-- Instant answer feedback
+- Instant answer feedback with correct answer shown
+- Time's up feedback when the timer runs out
 - Final score and percentage results
-- Countdown timer for each question
 - Play Again flow for replayability
-- Responsive layout for desktop and smaller screens
+- Responsive layout for desktop and mobile
 - Nature-themed visual design
 - Custom 404 and 500 error pages
 - Safe session validation and input handling
@@ -68,6 +84,7 @@ nature-quiz/
 ├─ questions.py
 ├─ requirements.txt
 ├─ README.md
+├─ Procfile
 ├─ .gitignore
 ├─ static/
 │  ├─ style.css
@@ -75,6 +92,8 @@ nature-quiz/
 └─ templates/
    ├─ layout.html
    ├─ index.html
+   ├─ difficulty.html
+   ├─ category.html
    ├─ quiz.html
    ├─ result.html
    ├─ 404.html
@@ -84,12 +103,14 @@ nature-quiz/
 ## How It Works
 
 1. The user starts the quiz from the home page.
-2. The application randomly selects 10 questions from the full question bank.
-3. One question is shown at a time.
-4. The user selects an answer before the timer runs out.
-5. The app provides answer feedback and updates the score.
-6. After the final question, the results page displays the total score and percentage.
-7. The user can play again to start a new random quiz.
+2. The user selects a difficulty level — Easy (15s), Medium (10s), or Hard (5s).
+3. The user selects a category — All, Birds, Trees, Insects, or Animals.
+4. The app randomly selects 10 questions from the chosen category.
+5. One question is shown at a time with a countdown timer.
+6. The user selects an answer before the timer runs out.
+7. The app shows feedback — correct, incorrect, or time's up — with the correct answer.
+8. After the final question, the results page displays the total score and percentage.
+9. The user can play again to start a new random quiz.
 
 ## Installation
 
@@ -217,7 +238,6 @@ While building this project, I learned how to:
 
 - Add a high score table
 - Add a simple admin page for adding and editing questions
-- Add more screenshots, including a mobile screenshot
 - Add a GIF showing the app in use
 
 ## Author
