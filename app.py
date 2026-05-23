@@ -1,5 +1,7 @@
 import os
 import random
+import sqlite3
+from pathlib import Path
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
 
@@ -26,6 +28,25 @@ DIFFICULTY_TIMERS = {
     "Hard": 5,
 }
 
+DB_PATH = Path(__file__).parent / "scores.db"
+
+def init_db():
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute("""
+            CREATE TABLE IF NOT EXISTS scores (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                score INTEGER NOT NULL,
+                total INTEGER NOT NULL,
+                percentage INTEGER NOT NULL,
+                difficulty TEXT,
+                category TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+
+init_db()
+
 
 @app.route("/")
 def home():
@@ -39,6 +60,7 @@ def start_quiz():
         if difficulty not in DIFFICULTY_TIMERS:
             return redirect(url_for("start_quiz"))
         session["time_limit"] = DIFFICULTY_TIMERS[difficulty]
+        session["difficulty"] = difficulty
         return redirect(url_for("choose_category"))
     return render_template("difficulty.html")
 
@@ -70,6 +92,7 @@ def choose_category():
         session["feedback"] = None
         session["streak"] = 0
         session["best_streak"] = 0
+        session["category"] = category
 
         return redirect(url_for("quiz"))
 
@@ -211,6 +234,39 @@ def result():
         message=message,
         best_streak=session.get("best_streak", 0)
     )
+
+
+@app.route("/save_score", methods=["POST"])
+def save_score():
+    name = request.form.get("name", "").strip()[:20]
+    if not name:
+        return redirect(url_for("result"))
+
+    selected_questions = session.get("selected_questions", [])
+    total = len(selected_questions)
+    if total == 0:
+        return redirect(url_for("home"))
+
+    score = session.get("score", 0)
+    percentage = round((score / total) * 100)
+
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.execute(
+            "INSERT INTO scores (name, score, total, percentage, difficulty, category) VALUES (?, ?, ?, ?, ?, ?)",
+            (name, score, total, percentage, session.get("difficulty"), session.get("category"))
+        )
+
+    return redirect(url_for("leaderboard"))
+
+
+@app.route("/leaderboard")
+def leaderboard():
+    with sqlite3.connect(DB_PATH) as conn:
+        conn.row_factory = sqlite3.Row
+        scores = conn.execute(
+            "SELECT * FROM scores ORDER BY percentage DESC, score DESC, created_at ASC LIMIT 10"
+        ).fetchall()
+    return render_template("leaderboard.html", scores=scores)
 
 
 @app.errorhandler(404)

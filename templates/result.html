@@ -13,8 +13,14 @@
         <p class="best-streak">Best streak: {{ best_streak }} in a row</p>
     {% endif %}
 
+    <form action="{{ url_for('save_score') }}" method="post" class="save-score-form">
+        <input type="text" name="name" placeholder="Your name" maxlength="20" class="name-input" required>
+        <button class="main-button" type="submit">Save Score</button>
+    </form>
+
     <div class="button-group">
-        <a class="main-button" href="{{ url_for('start_quiz') }}">Play Again</a>
+        <a class="secondary-button" href="{{ url_for('leaderboard') }}">Leaderboard</a>
+        <a class="secondary-button" href="{{ url_for('start_quiz') }}">Play Again</a>
         <a class="secondary-button" href="{{ url_for('home') }}">Back Home</a>
     </div>
 </div>

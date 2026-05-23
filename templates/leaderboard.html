@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}Leaderboard — Nature Quiz{% endblock %}
+
+{% block content %}
+<h1>Leaderboard</h1>
+<p class="small-text">Top 10 scores</p>
+
+{% if scores %}
+<table class="leaderboard-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Score</th>
+            <th>%</th>
+            <th>Difficulty</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in scores %}
+        <tr class="{{ 'top-score' if loop.index == 1 }}">
+            <td>{{ loop.index }}</td>
+            <td>{{ s.name }}</td>
+            <td>{{ s.score }} / {{ s.total }}</td>
+            <td>{{ s.percentage }}%</td>
+            <td>{{ s.difficulty }}</td>
+            <td>{{ s.category }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="small-text">No scores yet — be the first!</p>
+{% endif %}
+
+<div class="button-group">
+    <a class="main-button" href="{{ url_for('start_quiz') }}">Play Again</a>
+    <a class="secondary-button" href="{{ url_for('home') }}">Back Home</a>
+</div>
+{% endblock %}
