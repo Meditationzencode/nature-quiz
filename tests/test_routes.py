@@ -70,6 +70,26 @@ def test_timeout_shows_feedback_with_correct_answer(client):
     assert b"correct answer" in r.data
 
 
+def test_answer_feedback_shows_explanation(client):
+    with client.session_transaction() as sess:
+        sess["selected_questions"] = [{
+            "question": "Which insect makes honey?",
+            "choices": ["Bee", "Ant", "Fly", "Wasp"],
+            "answer": "Bee",
+            "explanation": "Bees make honey from flower nectar and store it in honeycombs."
+        }]
+        sess["current_question"] = 0
+        sess["score"] = 0
+        sess["feedback"] = None
+        sess["streak"] = 0
+        sess["best_streak"] = 0
+
+    r = client.post("/answer", data={"answer": "Bee"}, follow_redirects=True)
+
+    assert b"Nature fact:" in r.data
+    assert b"Bees make honey from flower nectar" in r.data
+
+
 def test_double_submit_is_ignored(client):
     start_quiz(client)
     client.post("/answer", data={"answer": "Duck"})

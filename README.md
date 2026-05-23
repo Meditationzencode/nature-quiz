@@ -72,6 +72,7 @@ The project was built to practise core Flask concepts, including routing, templa
 - 10 random questions per game
 - Score tracking across a quiz session
 - Instant answer feedback with correct answer shown
+- Short nature fact shown after each answer
 - Time's up feedback when the timer runs out
 - Final score and percentage results
 - Play Again flow for replayability
@@ -120,7 +121,7 @@ nature-quiz/
 4. The app randomly selects 10 questions from the chosen category.
 5. One question is shown at a time with a countdown timer.
 6. The user selects an answer before the timer runs out.
-7. The app shows feedback — correct, incorrect, or time's up — with the correct answer.
+7. The app shows feedback — correct, incorrect, or time's up — with the correct answer and a short nature fact.
 8. After the final question, the results page displays the total score and percentage.
 9. The user can play again to start a new random quiz.
 

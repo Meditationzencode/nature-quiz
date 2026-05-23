@@ -64,6 +64,10 @@
                 <p><strong>Incorrect!</strong></p>
                 <p>The correct answer was: <strong>{{ feedback.correct }}</strong></p>
             {% endif %}
+
+            {% if feedback.explanation %}
+                <p class="explanation"><strong>Nature fact:</strong> {{ feedback.explanation }}</p>
+            {% endif %}
         </div>
 
         <form action="{{ url_for('next_question') }}" method="post">

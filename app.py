@@ -4,6 +4,7 @@ import sqlite3
 from pathlib import Path
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
+from facts import get_explanation
 
 load_dotenv()
 try:
@@ -169,7 +170,8 @@ def answer():
     session["feedback"] = {
         "selected": chosen_answer,
         "correct": correct_answer,
-        "is_correct": is_correct
+        "is_correct": is_correct,
+        "explanation": get_explanation(question)
     }
 
     return redirect(url_for("quiz"))
@@ -211,7 +213,8 @@ def timeout():
         "selected": None,
         "correct": correct_answer,
         "is_correct": False,
-        "timed_out": True
+        "timed_out": True,
+        "explanation": get_explanation(selected_questions[current_question])
     }
 
     return redirect(url_for("quiz"))
