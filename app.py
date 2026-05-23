@@ -101,6 +101,7 @@ def choose_category():
         session["feedback"] = None
         session["streak"] = 0
         session["best_streak"] = 0
+        session["score_saved"] = False
         session["category"] = category
 
         return redirect(url_for("quiz"))
@@ -249,7 +250,8 @@ def result():
         points=points,
         total_points=total_points,
         message=message,
-        best_streak=session.get("best_streak", 0)
+        best_streak=session.get("best_streak", 0),
+        score_saved=session.get("score_saved", False)
     )
 
 
@@ -264,6 +266,9 @@ def save_score():
     if total == 0:
         return redirect(url_for("home"))
 
+    if session.get("score_saved"):
+        return redirect(url_for("leaderboard"))
+
     score = session.get("score", 0)
     percentage = round((score / total) * 100)
 
@@ -272,6 +277,8 @@ def save_score():
             "INSERT INTO scores (name, score, total, percentage, difficulty, category) VALUES (?, ?, ?, ?, ?, ?)",
             (name, score, total, percentage, session.get("difficulty"), session.get("category"))
         )
+
+    session["score_saved"] = True
 
     return redirect(url_for("leaderboard"))
 

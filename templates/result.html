@@ -14,10 +14,14 @@
         <p class="best-streak">Best streak: {{ best_streak }} in a row</p>
     {% endif %}
 
-    <form action="{{ url_for('save_score') }}" method="post" class="save-score-form">
-        <input type="text" name="name" placeholder="Your name" maxlength="20" class="name-input" required>
-        <button class="main-button" type="submit">Save Score</button>
-    </form>
+    {% if score_saved %}
+        <p class="small-text">Score saved to the leaderboard.</p>
+    {% else %}
+        <form action="{{ url_for('save_score') }}" method="post" class="save-score-form">
+            <input type="text" name="name" placeholder="Your name" maxlength="20" class="name-input" required>
+            <button class="main-button" type="submit">Save Score</button>
+        </form>
+    {% endif %}
 
     <div class="button-group">
         <a class="secondary-button" href="{{ url_for('leaderboard') }}">Leaderboard</a>

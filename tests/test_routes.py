@@ -1,3 +1,6 @@
+import sqlite3
+
+import app as quiz_app
 from conftest import start_quiz
 
 
@@ -78,3 +81,18 @@ def test_result_requires_session(client):
     r = client.get("/result")
     assert r.status_code == 302
     assert "/" in r.headers["Location"]
+
+
+def test_score_can_only_be_saved_once(client, tmp_path, monkeypatch):
+    test_db = tmp_path / "scores.db"
+    monkeypatch.setattr(quiz_app, "DB_PATH", test_db)
+    quiz_app.init_db()
+
+    start_quiz(client)
+    client.post("/save_score", data={"name": "Brad"})
+    client.post("/save_score", data={"name": "Brad"})
+
+    with sqlite3.connect(test_db) as conn:
+        saved_scores = conn.execute("SELECT COUNT(*) FROM scores").fetchone()[0]
+
+    assert saved_scores == 1
