@@ -97,7 +97,8 @@ def quiz():
         total_questions=len(selected_questions),
         feedback=feedback,
         time_limit=session.get("time_limit", 15),
-        streak=session.get("streak", 0)
+        streak=session.get("streak", 0),
+        score=session.get("score", 0)
     )
 
 

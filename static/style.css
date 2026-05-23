@@ -61,8 +61,14 @@ h1, h2 {
 
 .progress,
 .timer,
-.streak {
+.streak,
+.live-score {
     margin: 0;
+}
+
+.live-score {
+    font-weight: bold;
+    color: #2f4f35;
 }
 
 .streak {
