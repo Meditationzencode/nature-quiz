@@ -9,6 +9,9 @@
     <p class="score">{{ score }} / {{ total_questions }}</p>
     <p class="percentage">{{ percentage }}%</p>
     <p class="result-message">{{ message }}</p>
+    {% if best_streak >= 2 %}
+        <p class="best-streak">Best streak: {{ best_streak }} in a row</p>
+    {% endif %}
 
     <div class="button-group">
         <a class="main-button" href="{{ url_for('start_quiz') }}">Play Again</a>

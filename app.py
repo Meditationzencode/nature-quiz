@@ -68,6 +68,8 @@ def choose_category():
         session["current_question"] = 0
         session["score"] = 0
         session["feedback"] = None
+        session["streak"] = 0
+        session["best_streak"] = 0
 
         return redirect(url_for("quiz"))
 
@@ -94,7 +96,8 @@ def quiz():
         question_number=current_question + 1,
         total_questions=len(selected_questions),
         feedback=feedback,
-        time_limit=session.get("time_limit", 15)
+        time_limit=session.get("time_limit", 15),
+        streak=session.get("streak", 0)
     )
 
 
@@ -123,6 +126,11 @@ def answer():
 
     if is_correct:
         session["score"] = session.get("score", 0) + 1
+        streak = session.get("streak", 0) + 1
+        session["streak"] = streak
+        session["best_streak"] = max(streak, session.get("best_streak", 0))
+    else:
+        session["streak"] = 0
 
     session["feedback"] = {
         "selected": chosen_answer,
@@ -161,6 +169,7 @@ def timeout():
         return redirect(url_for("result"))
 
     correct_answer = selected_questions[current_question]["answer"]
+    session["streak"] = 0
     session["feedback"] = {
         "selected": None,
         "correct": correct_answer,
@@ -198,7 +207,8 @@ def result():
         score=score,
         total_questions=total_questions,
         percentage=percentage,
-        message=message
+        message=message,
+        best_streak=session.get("best_streak", 0)
     )
 
 
