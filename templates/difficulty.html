@@ -1,16 +1,19 @@
 {% extends "layout.html" %}
 
-{% block title %}Choose Difficulty — Nature Quiz{% endblock %}
+{% block title %}Choose Difficulty - Nature Quiz{% endblock %}
 
 {% block content %}
 <h1>Choose Difficulty</h1>
-<p class="small-text">How much time do you want per question?</p>
+<p class="small-text">Harder modes give more points for each correct answer.</p>
 
 <form method="POST" action="{{ url_for('start_quiz') }}">
     <div class="answers">
-        <button class="difficulty-easy" name="difficulty" value="Easy">Easy — 15 seconds</button>
-        <button class="difficulty-medium" name="difficulty" value="Medium">Medium — 10 seconds</button>
-        <button class="difficulty-hard" name="difficulty" value="Hard">Hard — 5 seconds</button>
+        {% for difficulty, seconds in difficulty_timers.items() %}
+            {% set points = difficulty_points[difficulty] %}
+            <button class="difficulty-{{ difficulty | lower }}" name="difficulty" value="{{ difficulty }}">
+                {{ difficulty }}: {{ seconds }} seconds, {{ points }} point{{ '' if points == 1 else 's' }} per correct answer
+            </button>
+        {% endfor %}
     </div>
 </form>
 {% endblock %}

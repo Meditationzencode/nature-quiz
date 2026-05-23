@@ -67,7 +67,11 @@ def start_quiz():
         session["time_limit"] = DIFFICULTY_TIMERS[difficulty]
         session["difficulty"] = difficulty
         return redirect(url_for("choose_category"))
-    return render_template("difficulty.html")
+    return render_template(
+        "difficulty.html",
+        difficulty_timers=DIFFICULTY_TIMERS,
+        difficulty_points=DIFFICULTY_POINTS
+    )
 
 
 @app.route("/category", methods=["GET", "POST"])
