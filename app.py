@@ -59,7 +59,10 @@ def choose_category():
         if not pool:
             return render_template("500.html"), 500
 
-        selected_questions = random.sample(pool, min(QUESTIONS_PER_GAME, len(pool)))
+        selected_questions = [
+            {**q, "choices": random.sample(q["choices"], len(q["choices"]))}
+            for q in random.sample(pool, min(QUESTIONS_PER_GAME, len(pool)))
+        ]
 
         session["selected_questions"] = selected_questions
         session["current_question"] = 0
