@@ -359,22 +359,15 @@ def leaderboard():
         CATEGORY_FILTERS
     )
 
-    conditions = []
-    params = []
-    if active_difficulty != "All":
-        conditions.append("difficulty = ?")
-        params.append(active_difficulty)
-    if active_category != "All":
-        conditions.append("category = ?")
-        params.append(active_category)
-
-    where_clause = f" WHERE {' AND '.join(conditions)}" if conditions else ""
-
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
         saved_scores = conn.execute(
-            f"SELECT * FROM scores{where_clause}",
-            params
+            """
+            SELECT * FROM scores
+            WHERE (? = 'All' OR difficulty = ?)
+              AND (? = 'All' OR category = ?)
+            """,
+            (active_difficulty, active_difficulty, active_category, active_category)
         ).fetchall()
 
     scores = [
