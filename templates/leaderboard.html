@@ -1,40 +1,72 @@
 {% extends "layout.html" %}
 
-{% block title %}Leaderboard — Nature Quiz{% endblock %}
+{% block title %}Leaderboard - Nature Quiz{% endblock %}
 
 {% block content %}
 <h1>Leaderboard</h1>
 <p class="small-text">Top 10 scores</p>
 
+<div class="leaderboard-filters">
+    <div class="filter-group">
+        <p class="filter-label">Difficulty</p>
+        <div class="filter-options">
+            {% for difficulty in difficulty_filters %}
+                <a
+                    class="filter-button {{ 'active' if difficulty == active_difficulty else '' }}"
+                    href="{{ url_for('leaderboard', difficulty=difficulty, category=active_category) }}"
+                >
+                    {{ difficulty }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <p class="filter-label">Category</p>
+        <div class="filter-options">
+            {% for category in category_filters %}
+                <a
+                    class="filter-button {{ 'active' if category == active_category else '' }}"
+                    href="{{ url_for('leaderboard', difficulty=active_difficulty, category=category) }}"
+                >
+                    {{ "All Categories" if category == "All" else category }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 {% if scores %}
-<table class="leaderboard-table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Score</th>
-            <th>Points</th>
-            <th>%</th>
-            <th>Difficulty</th>
-            <th>Category</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for s in scores %}
-        <tr class="{{ 'top-score' if loop.index == 1 }}">
-            <td>{{ loop.index }}</td>
-            <td>{{ s.name }}</td>
-            <td>{{ s.score }} / {{ s.total }}</td>
-            <td>{{ s.points }}</td>
-            <td>{{ s.percentage }}%</td>
-            <td>{{ s.difficulty }}</td>
-            <td>{{ s.category }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="leaderboard-table-wrap">
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Points</th>
+                <th>%</th>
+                <th>Difficulty</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in scores %}
+            <tr class="{{ 'top-score' if loop.index == 1 }}">
+                <td>{{ loop.index }}</td>
+                <td>{{ s.name }}</td>
+                <td>{{ s.score }} / {{ s.total }}</td>
+                <td>{{ s.points }}</td>
+                <td>{{ s.percentage }}%</td>
+                <td>{{ s.difficulty }}</td>
+                <td>{{ s.category }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% else %}
-<p class="small-text">No scores yet — be the first!</p>
+<p class="small-text">No scores match those filters yet.</p>
 {% endif %}
 
 <div class="button-group">

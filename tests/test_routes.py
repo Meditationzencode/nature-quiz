@@ -4,7 +4,7 @@ import app as quiz_app
 from conftest import start_quiz
 
 
-# ── Basic pages ──
+# Basic pages
 
 def test_home_loads(client):
     r = client.get("/")
@@ -27,7 +27,7 @@ def test_404_returns_custom_page(client):
     assert b"404" in r.data
 
 
-# ── Input validation ──
+# Input validation
 
 def test_invalid_difficulty_redirects_back(client):
     r = client.post("/start", data={"difficulty": "Extreme"})
@@ -54,7 +54,7 @@ def test_spoofed_answer_rejected(client):
     assert b"answer-form" in r.data
 
 
-# ── Quiz flow ──
+# Quiz flow
 
 def test_quiz_starts_on_question_one(client):
     start_quiz(client)
@@ -90,6 +90,29 @@ def test_answer_feedback_shows_explanation(client):
     assert b"Bees make honey from flower nectar" in r.data
 
 
+def test_review_page_shows_recorded_answers(client):
+    with client.session_transaction() as sess:
+        sess["selected_questions"] = [{
+            "question": "Which insect makes honey?",
+            "choices": ["Bee", "Ant", "Fly", "Wasp"],
+            "answer": "Bee",
+            "explanation": "Bees make honey from flower nectar and store it in honeycombs."
+        }]
+        sess["current_question"] = 0
+        sess["score"] = 0
+        sess["feedback"] = None
+        sess["streak"] = 0
+        sess["best_streak"] = 0
+
+    client.post("/answer", data={"answer": "Bee"})
+    r = client.get("/review")
+
+    assert r.status_code == 200
+    assert b"Review Answers" in r.data
+    assert b"Which insect makes honey?" in r.data
+    assert b"Bees make honey from flower nectar" in r.data
+
+
 def test_double_submit_is_ignored(client):
     start_quiz(client)
     client.post("/answer", data={"answer": "Duck"})
@@ -103,16 +126,99 @@ def test_result_requires_session(client):
     assert "/" in r.headers["Location"]
 
 
+def test_result_page_shows_quiz_summary(client):
+    with client.session_transaction() as sess:
+        sess["selected_questions"] = [{
+            "question": "Which insect makes honey?",
+            "choices": ["Bee", "Ant", "Fly", "Wasp"],
+            "answer": "Bee"
+        }]
+        sess["score"] = 1
+        sess["difficulty"] = "Hard"
+        sess["category"] = "Insects"
+        sess["best_streak"] = 1
+
+    r = client.get("/result")
+
+    assert b"Difficulty" in r.data
+    assert b"Hard" in r.data
+    assert b"Category" in r.data
+    assert b"Insects" in r.data
+
+
+def test_calculate_points_uses_difficulty_values():
+    assert quiz_app.calculate_points(5, "Easy") == 5
+    assert quiz_app.calculate_points(5, "Medium") == 10
+    assert quiz_app.calculate_points(5, "Hard") == 15
+    assert quiz_app.calculate_points(5, "Unknown") == 5
+
+
+def test_leaderboard_orders_by_points(client, tmp_path, monkeypatch):
+    test_db = tmp_path / "scores.db"
+    monkeypatch.setattr(quiz_app, "DB_PATH", test_db)
+    quiz_app.init_db()
+
+    with sqlite3.connect(test_db) as conn:
+        conn.executemany(
+            """
+            INSERT INTO scores
+                (name, score, total, percentage, points, difficulty, category, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                ("Easy Max", 10, 10, 100, 10, "Easy", "All", "2026-05-23 10:00:00"),
+                ("Hard Try", 6, 10, 60, 18, "Hard", "All", "2026-05-23 11:00:00"),
+            ]
+        )
+
+    r = client.get("/leaderboard")
+
+    assert r.status_code == 200
+    assert r.data.index(b"Hard Try") < r.data.index(b"Easy Max")
+
+
+def test_leaderboard_filters_by_difficulty_and_category(client, tmp_path, monkeypatch):
+    test_db = tmp_path / "scores.db"
+    monkeypatch.setattr(quiz_app, "DB_PATH", test_db)
+    quiz_app.init_db()
+
+    with sqlite3.connect(test_db) as conn:
+        conn.executemany(
+            """
+            INSERT INTO scores
+                (name, score, total, percentage, points, difficulty, category)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                ("Hard Bird Score", 7, 10, 70, 21, "Hard", "Birds"),
+                ("Easy Tree Score", 10, 10, 100, 10, "Easy", "Trees"),
+            ]
+        )
+
+    r = client.get("/leaderboard?difficulty=Hard&category=Birds")
+
+    assert r.status_code == 200
+    assert b"Hard Bird Score" in r.data
+    assert b"Easy Tree Score" not in r.data
+
+
 def test_score_can_only_be_saved_once(client, tmp_path, monkeypatch):
     test_db = tmp_path / "scores.db"
     monkeypatch.setattr(quiz_app, "DB_PATH", test_db)
     quiz_app.init_db()
 
     start_quiz(client)
+    with client.session_transaction() as sess:
+        sess["score"] = 5
+        sess["difficulty"] = "Medium"
+
     client.post("/save_score", data={"name": "Brad"})
     client.post("/save_score", data={"name": "Brad"})
 
     with sqlite3.connect(test_db) as conn:
-        saved_scores = conn.execute("SELECT COUNT(*) FROM scores").fetchone()[0]
+        saved_scores, points = conn.execute(
+            "SELECT COUNT(*), points FROM scores"
+        ).fetchone()
 
     assert saved_scores == 1
+    assert points == 10

@@ -9,6 +9,26 @@
     <p class="score">{{ score }} / {{ total_questions }}</p>
     <p class="percentage">{{ percentage }}%</p>
     <p class="points">{{ points }} / {{ total_points }} points</p>
+
+    <dl class="result-summary">
+        <div>
+            <dt>Difficulty</dt>
+            <dd>{{ difficulty or "Easy" }}</dd>
+        </div>
+        <div>
+            <dt>Category</dt>
+            <dd>{{ category or "All" }}</dd>
+        </div>
+        <div>
+            <dt>Correct</dt>
+            <dd>{{ score }} / {{ total_questions }}</dd>
+        </div>
+        <div>
+            <dt>Best streak</dt>
+            <dd>{{ best_streak }}</dd>
+        </div>
+    </dl>
+
     <p class="result-message">{{ message }}</p>
     {% if best_streak >= 2 %}
         <p class="best-streak">Best streak: {{ best_streak }} in a row</p>
@@ -24,6 +44,7 @@
     {% endif %}
 
     <div class="button-group">
+        <a class="secondary-button" href="{{ url_for('review') }}">Review Answers</a>
         <a class="secondary-button" href="{{ url_for('leaderboard') }}">Leaderboard</a>
         <a class="secondary-button" href="{{ url_for('start_quiz') }}">Play Again</a>
         <a class="secondary-button" href="{{ url_for('home') }}">Back Home</a>

@@ -33,8 +33,38 @@ DIFFICULTY_POINTS = {
     "Medium": 2,
     "Hard": 3,
 }
+DIFFICULTY_FILTERS = ["All", *DIFFICULTY_TIMERS.keys()]
+CATEGORY_FILTERS = list(CATEGORIES.keys())
 
 DB_PATH = Path(__file__).parent / "scores.db"
+
+
+def points_for_difficulty(difficulty):
+    return DIFFICULTY_POINTS.get(difficulty, DIFFICULTY_POINTS["Easy"])
+
+
+def calculate_points(score, difficulty):
+    return score * points_for_difficulty(difficulty)
+
+
+def valid_filter(value, allowed_values):
+    return value if value in allowed_values else "All"
+
+
+def build_answer_record(question, selected_answer, is_correct, timed_out=False):
+    return {
+        "question": question["question"],
+        "selected": selected_answer,
+        "correct": question["answer"],
+        "is_correct": is_correct,
+        "timed_out": timed_out,
+        "explanation": get_explanation(question)
+    }
+
+
+def record_answer(record):
+    session["answer_history"] = session.get("answer_history", []) + [record]
+
 
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
@@ -45,11 +75,30 @@ def init_db():
                 score INTEGER NOT NULL,
                 total INTEGER NOT NULL,
                 percentage INTEGER NOT NULL,
+                points INTEGER,
                 difficulty TEXT,
                 category TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+
+        columns = [
+            column[1]
+            for column in conn.execute("PRAGMA table_info(scores)").fetchall()
+        ]
+        if "points" not in columns:
+            conn.execute("ALTER TABLE scores ADD COLUMN points INTEGER")
+
+        scores_without_points = conn.execute(
+            "SELECT id, score, difficulty FROM scores WHERE points IS NULL"
+        ).fetchall()
+        conn.executemany(
+            "UPDATE scores SET points = ? WHERE id = ?",
+            [
+                (calculate_points(score, difficulty), score_id)
+                for score_id, score, difficulty in scores_without_points
+            ]
+        )
 
 init_db()
 
@@ -103,6 +152,7 @@ def choose_category():
         session["streak"] = 0
         session["best_streak"] = 0
         session["score_saved"] = False
+        session["answer_history"] = []
         session["category"] = category
 
         return redirect(url_for("quiz"))
@@ -167,12 +217,9 @@ def answer():
     else:
         session["streak"] = 0
 
-    session["feedback"] = {
-        "selected": chosen_answer,
-        "correct": correct_answer,
-        "is_correct": is_correct,
-        "explanation": get_explanation(question)
-    }
+    answer_record = build_answer_record(question, chosen_answer, is_correct)
+    session["feedback"] = answer_record
+    record_answer(answer_record)
 
     return redirect(url_for("quiz"))
 
@@ -207,15 +254,15 @@ def timeout():
     if current_question >= len(selected_questions):
         return redirect(url_for("result"))
 
-    correct_answer = selected_questions[current_question]["answer"]
     session["streak"] = 0
-    session["feedback"] = {
-        "selected": None,
-        "correct": correct_answer,
-        "is_correct": False,
-        "timed_out": True,
-        "explanation": get_explanation(selected_questions[current_question])
-    }
+    answer_record = build_answer_record(
+        selected_questions[current_question],
+        None,
+        False,
+        timed_out=True
+    )
+    session["feedback"] = answer_record
+    record_answer(answer_record)
 
     return redirect(url_for("quiz"))
 
@@ -230,9 +277,9 @@ def result():
         return redirect(url_for("home"))
 
     percentage = round((score / total_questions) * 100)
-    points_per_answer = DIFFICULTY_POINTS.get(session.get("difficulty"), 1)
-    points = score * points_per_answer
-    total_points = total_questions * points_per_answer
+    difficulty = session.get("difficulty")
+    points = calculate_points(score, difficulty)
+    total_points = calculate_points(total_questions, difficulty)
 
     if percentage == 100:
         message = "Perfect score! Nature expert!"
@@ -252,6 +299,8 @@ def result():
         percentage=percentage,
         points=points,
         total_points=total_points,
+        difficulty=difficulty,
+        category=session.get("category", "All"),
         message=message,
         best_streak=session.get("best_streak", 0),
         score_saved=session.get("score_saved", False)
@@ -274,11 +323,24 @@ def save_score():
 
     score = session.get("score", 0)
     percentage = round((score / total) * 100)
+    points = calculate_points(score, session.get("difficulty"))
 
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute(
-            "INSERT INTO scores (name, score, total, percentage, difficulty, category) VALUES (?, ?, ?, ?, ?, ?)",
-            (name, score, total, percentage, session.get("difficulty"), session.get("category"))
+            """
+            INSERT INTO scores
+                (name, score, total, percentage, points, difficulty, category)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                name,
+                score,
+                total,
+                percentage,
+                points,
+                session.get("difficulty"),
+                session.get("category")
+            )
         )
 
     session["score_saved"] = True
@@ -288,22 +350,70 @@ def save_score():
 
 @app.route("/leaderboard")
 def leaderboard():
+    active_difficulty = valid_filter(
+        request.args.get("difficulty", "All"),
+        DIFFICULTY_FILTERS
+    )
+    active_category = valid_filter(
+        request.args.get("category", "All"),
+        CATEGORY_FILTERS
+    )
+
+    conditions = []
+    params = []
+    if active_difficulty != "All":
+        conditions.append("difficulty = ?")
+        params.append(active_difficulty)
+    if active_category != "All":
+        conditions.append("category = ?")
+        params.append(active_category)
+
+    where_clause = f" WHERE {' AND '.join(conditions)}" if conditions else ""
+
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
-        scores = conn.execute(
-            """
-            SELECT *,
-                score * CASE difficulty
-                    WHEN 'Hard' THEN 3
-                    WHEN 'Medium' THEN 2
-                    ELSE 1
-                END AS points
-            FROM scores
-            ORDER BY points DESC, percentage DESC, created_at ASC
-            LIMIT 10
-            """
+        saved_scores = conn.execute(
+            f"SELECT * FROM scores{where_clause}",
+            params
         ).fetchall()
-    return render_template("leaderboard.html", scores=scores)
+
+    scores = [
+        {
+            **dict(saved_score),
+            "points": (
+                saved_score["points"]
+                if saved_score["points"] is not None
+                else calculate_points(saved_score["score"], saved_score["difficulty"])
+            )
+        }
+        for saved_score in saved_scores
+    ]
+    scores.sort(
+        key=lambda saved_score: (
+            -saved_score["points"],
+            -saved_score["percentage"],
+            saved_score["created_at"]
+        )
+    )
+    return render_template(
+        "leaderboard.html",
+        scores=scores[:10],
+        difficulty_filters=DIFFICULTY_FILTERS,
+        category_filters=CATEGORY_FILTERS,
+        active_difficulty=active_difficulty,
+        active_category=active_category
+    )
+
+
+@app.route("/review")
+def review():
+    answer_history = session.get("answer_history", [])
+    if not answer_history:
+        if session.get("selected_questions"):
+            return redirect(url_for("result"))
+        return redirect(url_for("home"))
+
+    return render_template("review.html", answers=answer_history)
 
 
 @app.errorhandler(404)

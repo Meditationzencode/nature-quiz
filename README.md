@@ -61,9 +61,9 @@ The project was built to practise core Flask concepts, including routing, templa
 - Flask-based web application
 - 200 nature-themed multiple-choice questions
 - Three difficulty levels:
-  - Easy — 15 seconds per question
-  - Medium — 10 seconds per question
-  - Hard — 5 seconds per question
+  - Easy - 15 seconds per question, 1 point per correct answer
+  - Medium - 10 seconds per question, 2 points per correct answer
+  - Hard - 5 seconds per question, 3 points per correct answer
 - Four nature categories:
   - Birds
   - Trees
@@ -74,7 +74,9 @@ The project was built to practise core Flask concepts, including routing, templa
 - Instant answer feedback with correct answer shown
 - Short nature fact shown after each answer
 - Time's up feedback when the timer runs out
-- Final score and percentage results
+- Final score, percentage, points, and quiz summary
+- Answer review page with each selected answer, correct answer, and nature fact
+- Leaderboard filters for difficulty and category
 - Play Again flow for replayability
 - Responsive layout for desktop and mobile
 - Nature-themed visual design
@@ -93,37 +95,42 @@ The project was built to practise core Flask concepts, including routing, templa
 
 ```text
 nature-quiz/
-├─ app.py
-├─ questions.py
-├─ requirements.txt
-├─ README.md
-├─ Procfile
-├─ .gitignore
-├─ static/
-│  ├─ style.css
-│  └─ images/
-└─ templates/
-   ├─ layout.html
-   ├─ index.html
-   ├─ difficulty.html
-   ├─ category.html
-   ├─ quiz.html
-   ├─ result.html
-   ├─ 404.html
-   └─ 500.html
+|-- app.py
+|-- facts.py
+|-- questions.py
+|-- requirements.txt
+|-- README.md
+|-- Procfile
+|-- .gitignore
+|-- static/
+|   |-- style.css
+|   `-- images/
+|-- templates/
+|   |-- layout.html
+|   |-- index.html
+|   |-- difficulty.html
+|   |-- category.html
+|   |-- quiz.html
+|   |-- result.html
+|   |-- review.html
+|   |-- leaderboard.html
+|   |-- 404.html
+|   `-- 500.html
+`-- tests/
 ```
 
 ## How It Works
 
 1. The user starts the quiz from the home page.
-2. The user selects a difficulty level — Easy (15s), Medium (10s), or Hard (5s).
-3. The user selects a category — All, Birds, Trees, Insects, or Animals.
+2. The user selects a difficulty level - Easy (15s), Medium (10s), or Hard (5s).
+3. The user selects a category - All, Birds, Trees, Insects, or Animals.
 4. The app randomly selects 10 questions from the chosen category.
 5. One question is shown at a time with a countdown timer.
 6. The user selects an answer before the timer runs out.
-7. The app shows feedback — correct, incorrect, or time's up — with the correct answer and a short nature fact.
-8. After the final question, the results page displays the total score and percentage.
-9. The user can play again to start a new random quiz.
+7. The app shows feedback - correct, incorrect, or time's up - with the correct answer and a short nature fact.
+8. After the final question, the results page displays the score, percentage, points, difficulty, category, and best streak.
+9. The user can review every answer or save the score to the leaderboard.
+10. The leaderboard can be filtered by difficulty and category.
 
 ## Installation
 
@@ -207,6 +214,9 @@ Tests cover:
 - Double-submit guard prevents answers being processed twice
 - Protected routes redirect correctly without a valid session
 - Custom 404 page is returned for unknown routes
+- Score saving is protected against duplicates
+- Leaderboard ordering and filters are covered
+- Question-bank data is validated
 
 ## Security Considerations
 

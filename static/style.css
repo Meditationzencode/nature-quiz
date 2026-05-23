@@ -216,6 +216,34 @@ h1, h2 {
     margin: 0 0 16px;
 }
 
+.result-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0 0 22px;
+}
+
+.result-summary div {
+    background: #eef4ef;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.result-summary dt,
+.answer-review dt {
+    color: #4d5b4d;
+    font-size: 0.78rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.result-summary dd,
+.answer-review dd {
+    margin: 0;
+    font-weight: bold;
+}
+
 .result-message {
     text-align: center;
     font-size: 1.1rem;
@@ -274,10 +302,53 @@ h1, h2 {
     border-color: #2f6f45;
 }
 
+.leaderboard-filters {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.filter-group {
+    display: grid;
+    gap: 8px;
+}
+
+.filter-label {
+    color: #2f4f35;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter-button {
+    background: #eef4ef;
+    border-radius: 999px;
+    color: #21412b;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.filter-button.active {
+    background: #2f6f45;
+    color: white;
+}
+
+.leaderboard-table-wrap {
+    margin-bottom: 28px;
+    overflow-x: auto;
+}
+
 .leaderboard-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 28px;
     font-size: 0.95rem;
 }
 
@@ -298,6 +369,43 @@ h1, h2 {
     color: #2f6f45;
 }
 
+.review-list {
+    list-style-position: inside;
+    margin: 0 0 24px;
+    padding: 0;
+}
+
+.review-item {
+    border-top: 1px solid #d9e8dc;
+    padding: 18px 0;
+}
+
+.review-item::marker {
+    color: #2f6f45;
+    font-weight: bold;
+}
+
+.review-item h2 {
+    font-size: 1.05rem;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    text-align: left;
+}
+
+.review-item.correct h2 {
+    color: #1f5e32;
+}
+
+.review-item.incorrect h2 {
+    color: #8a2f2f;
+}
+
+.answer-review {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+}
+
 @media (max-width: 640px) {
     .card {
         padding: 22px;
@@ -306,5 +414,13 @@ h1, h2 {
     .top-bar {
         flex-direction: column;
         align-items: center;
+    }
+
+    .result-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .leaderboard-table {
+        min-width: 620px;
     }
 }

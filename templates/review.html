@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}Review Answers - Nature Quiz{% endblock %}
+
+{% block content %}
+<div class="review-screen">
+    <h1>Review Answers</h1>
+    <p class="small-text">Look back over each question, answer, and nature fact.</p>
+
+    <ol class="review-list">
+        {% for answer in answers %}
+            <li class="review-item {{ 'correct' if answer.is_correct else 'incorrect' }}">
+                <h2>{{ answer.question }}</h2>
+                <dl class="answer-review">
+                    <div>
+                        <dt>Your answer</dt>
+                        <dd>
+                            {% if answer.timed_out %}
+                                Time ran out
+                            {% else %}
+                                {{ answer.selected }}
+                            {% endif %}
+                        </dd>
+                    </div>
+                    <div>
+                        <dt>Correct answer</dt>
+                        <dd>{{ answer.correct }}</dd>
+                    </div>
+                    <div>
+                        <dt>Result</dt>
+                        <dd>{{ "Correct" if answer.is_correct else "Incorrect" }}</dd>
+                    </div>
+                </dl>
+                {% if answer.explanation %}
+                    <p class="explanation"><strong>Nature fact:</strong> {{ answer.explanation }}</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+
+    <div class="button-group">
+        <a class="main-button" href="{{ url_for('result') }}">Back to Results</a>
+        <a class="secondary-button" href="{{ url_for('start_quiz') }}">Play Again</a>
+        <a class="secondary-button" href="{{ url_for('home') }}">Back Home</a>
+    </div>
+</div>
+{% endblock %}
