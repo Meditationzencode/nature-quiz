@@ -72,8 +72,15 @@ h1, h2 {
 }
 
 .streak {
+    text-align: center;
     color: #b8760a;
     font-weight: bold;
+    font-size: 0.9rem;
+    background: #fef3e2;
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin: 0 auto 16px;
+    width: fit-content;
 }
 
 .best-streak {
