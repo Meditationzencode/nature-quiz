@@ -4,6 +4,10 @@
 
 {% block content %}
 <div class="quiz-screen">
+    <div class="progress-bar-track">
+        <div class="progress-bar-fill" style="width: {{ (question_number / total_questions * 100) | round | int }}%"></div>
+    </div>
+
     <div class="top-bar">
         <p class="progress">Question {{ question_number }} of {{ total_questions }}</p>
         {% if streak >= 2 %}
