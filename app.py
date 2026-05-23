@@ -187,6 +187,9 @@ def timeout():
     if not selected_questions:
         return redirect(url_for("home"))
 
+    if session.get("feedback"):
+        return redirect(url_for("quiz"))
+
     current_question = session.get("current_question", 0)
 
     if current_question >= len(selected_questions):
