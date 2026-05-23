@@ -38,6 +38,14 @@ This was my first Flask project. The aim was to build a complete, polished begin
 
 ![Feedback](static/images/screenshot-feedback.png)
 
+### Results Page
+
+![Results](static/images/screenshot-results.png)
+
+### Leaderboard
+
+![Leaderboard](static/images/screenshot-leaderboard.png)
+
 ### Mobile View
 
 ![Mobile View](static/images/screenshot-mobile.png)
