@@ -30,6 +30,10 @@ This was my first Flask project. The aim was to build a complete, polished begin
 
 ![Quiz Page](static/images/screenshot-quiz.png)
 
+### Streak Counter
+
+![Streak](static/images/screenshot-streak.png)
+
 ### Answer Feedback
 
 ![Feedback](static/images/screenshot-feedback.png)
