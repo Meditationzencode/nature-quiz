@@ -27,6 +27,11 @@ DIFFICULTY_TIMERS = {
     "Medium": 10,
     "Hard": 5,
 }
+DIFFICULTY_POINTS = {
+    "Easy": 1,
+    "Medium": 2,
+    "Hard": 3,
+}
 
 DB_PATH = Path(__file__).parent / "scores.db"
 
@@ -217,6 +222,9 @@ def result():
         return redirect(url_for("home"))
 
     percentage = round((score / total_questions) * 100)
+    points_per_answer = DIFFICULTY_POINTS.get(session.get("difficulty"), 1)
+    points = score * points_per_answer
+    total_points = total_questions * points_per_answer
 
     if percentage == 100:
         message = "Perfect score! Nature expert!"
@@ -234,6 +242,8 @@ def result():
         score=score,
         total_questions=total_questions,
         percentage=percentage,
+        points=points,
+        total_points=total_points,
         message=message,
         best_streak=session.get("best_streak", 0)
     )
@@ -267,7 +277,17 @@ def leaderboard():
     with sqlite3.connect(DB_PATH) as conn:
         conn.row_factory = sqlite3.Row
         scores = conn.execute(
-            "SELECT * FROM scores ORDER BY percentage DESC, score DESC, created_at ASC LIMIT 10"
+            """
+            SELECT *,
+                score * CASE difficulty
+                    WHEN 'Hard' THEN 3
+                    WHEN 'Medium' THEN 2
+                    ELSE 1
+                END AS points
+            FROM scores
+            ORDER BY points DESC, percentage DESC, created_at ASC
+            LIMIT 10
+            """
         ).fetchall()
     return render_template("leaderboard.html", scores=scores)
 
