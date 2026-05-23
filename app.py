@@ -109,12 +109,22 @@ def next_question():
 
 @app.route("/timeout", methods=["POST"])
 def timeout():
-    if not session.get("selected_questions"):
+    selected_questions = session.get("selected_questions")
+    if not selected_questions:
         return redirect(url_for("home"))
 
     current_question = session.get("current_question", 0)
-    session["current_question"] = current_question + 1
-    session["feedback"] = None
+
+    if current_question >= len(selected_questions):
+        return redirect(url_for("result"))
+
+    correct_answer = selected_questions[current_question]["answer"]
+    session["feedback"] = {
+        "selected": None,
+        "correct": correct_answer,
+        "is_correct": False,
+        "timed_out": True
+    }
 
     return redirect(url_for("quiz"))
 

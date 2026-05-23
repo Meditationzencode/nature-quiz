@@ -48,6 +48,9 @@
         <div class="feedback-box {{ 'correct' if feedback.is_correct else 'incorrect' }}">
             {% if feedback.is_correct %}
                 <p><strong>Correct!</strong></p>
+            {% elif feedback.timed_out %}
+                <p><strong>Time's up!</strong></p>
+                <p>The correct answer was: <strong>{{ feedback.correct }}</strong></p>
             {% else %}
                 <p><strong>Incorrect!</strong></p>
                 <p>The correct answer was: <strong>{{ feedback.correct }}</strong></p>
