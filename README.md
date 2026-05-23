@@ -254,9 +254,9 @@ While building this project, I learned how to:
 
 ## Future Improvements
 
-- Add a high score table
 - Add a simple admin page for adding and editing questions
 - Add a GIF showing the app in use
+- Persistent leaderboard using a hosted database for production
 
 ## Author
 
