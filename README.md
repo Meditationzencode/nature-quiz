@@ -181,21 +181,23 @@ Scores are stored in a local SQLite file (`scores.db`). This works perfectly loc
 
 ## Testing
 
-Testing is a future improvement for this project.
+Tests are written with pytest and cover the key routes and behaviours.
 
-Useful tests to add would include:
-
-- Route tests for the home, quiz, and results pages
-- Quiz logic tests for score calculation
-- Session tests to check quiz progress
-- Form/input tests for answer submission
-- Error page tests
-
-Example command once tests are added:
+Run the test suite:
 
 ```bash
-pytest
+pytest tests/ -v
 ```
+
+Tests cover:
+
+- All main pages load correctly
+- Invalid difficulty and category inputs are rejected
+- Spoofed answers not in the question choices are rejected
+- Timeout shows feedback with the correct answer
+- Double-submit guard prevents answers being processed twice
+- Protected routes redirect correctly without a valid session
+- Custom 404 page is returned for unknown routes
 
 ## Security Considerations
 
