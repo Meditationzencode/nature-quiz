@@ -7,7 +7,7 @@
     <div class="top-bar">
         <p class="progress">Question {{ question_number }} of {{ total_questions }}</p>
         {% if not feedback %}
-            <p class="timer">Time left: <span id="time">15</span>s</p>
+            <p class="timer">Time left: <span id="time">{{ time_limit }}</span>s</p>
         {% endif %}
     </div>
 
@@ -26,18 +26,18 @@
         </form>
 
         <script>
-            let timeLeft = 15;
+            let timeLeft = {{ time_limit }};
             const timeDisplay = document.getElementById("time");
             const timeoutForm = document.getElementById("timeout-form");
 
             const timer = setInterval(() => {
                 timeLeft -= 1;
-                timeDisplay.textContent = timeLeft;
-
                 if (timeLeft <= 0) {
                     clearInterval(timer);
                     timeoutForm.submit();
+                    return;
                 }
+                timeDisplay.textContent = timeLeft;
             }, 1000);
 
             document.getElementById("answer-form").addEventListener("submit", () => {

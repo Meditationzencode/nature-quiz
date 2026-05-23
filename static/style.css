@@ -76,7 +76,10 @@ h1, h2 {
 
 .answer-button,
 .main-button,
-.secondary-button {
+.secondary-button,
+.difficulty-easy,
+.difficulty-medium,
+.difficulty-hard {
     display: inline-block;
     width: 100%;
     text-align: center;
@@ -94,9 +97,27 @@ h1, h2 {
     color: white;
 }
 
+.difficulty-easy {
+    background: #4f8a5b;
+    color: white;
+}
+
+.difficulty-medium {
+    background: #b8760a;
+    color: white;
+}
+
+.difficulty-hard {
+    background: #8a3030;
+    color: white;
+}
+
 .answer-button:hover,
 .main-button:hover,
-.secondary-button:hover {
+.secondary-button:hover,
+.difficulty-easy:hover,
+.difficulty-medium:hover,
+.difficulty-hard:hover {
     transform: translateY(-1px);
     opacity: 0.95;
 }

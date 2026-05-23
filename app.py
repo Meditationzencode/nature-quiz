@@ -1,4 +1,5 @@
 import os
+import random
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
 
@@ -7,12 +8,23 @@ try:
     from questions import questions, birds, trees, insects, animals
 except Exception:
     questions = birds = trees = insects = animals = []
-import random
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-only-fallback")
 
 QUESTIONS_PER_GAME = 10
+CATEGORIES = {
+    "All": questions,
+    "Birds": birds,
+    "Trees": trees,
+    "Insects": insects,
+    "Animals": animals,
+}
+DIFFICULTY_TIMERS = {
+    "Easy": 15,
+    "Medium": 10,
+    "Hard": 5,
+}
 
 
 @app.route("/")
@@ -23,8 +35,26 @@ def home():
 @app.route("/start", methods=["GET", "POST"])
 def start_quiz():
     if request.method == "POST":
+        difficulty = request.form.get("difficulty")
+        if difficulty not in DIFFICULTY_TIMERS:
+            return redirect(url_for("start_quiz"))
+        session["time_limit"] = DIFFICULTY_TIMERS[difficulty]
+        return redirect(url_for("choose_category"))
+    return render_template("difficulty.html")
+
+
+@app.route("/category", methods=["GET", "POST"])
+def choose_category():
+    if not session.get("time_limit"):
+        return redirect(url_for("start_quiz"))
+
+    if request.method == "POST":
         category = request.form.get("category", "All")
-        pool = {"Birds": birds, "Trees": trees, "Insects": insects, "Animals": animals}.get(category, questions)
+
+        if category not in CATEGORIES:
+            return redirect(url_for("choose_category"))
+
+        pool = CATEGORIES[category]
 
         if not pool:
             return render_template("500.html"), 500
@@ -60,7 +90,8 @@ def quiz():
         question=question,
         question_number=current_question + 1,
         total_questions=len(selected_questions),
-        feedback=feedback
+        feedback=feedback,
+        time_limit=session.get("time_limit", 15)
     )
 
 
@@ -75,12 +106,16 @@ def answer():
     if current_question >= len(selected_questions):
         return redirect(url_for("result"))
 
-    chosen_answer = request.form.get("answer")
-    if not chosen_answer:
+    if session.get("feedback"):
         return redirect(url_for("quiz"))
 
-    correct_answer = selected_questions[current_question]["answer"]
+    chosen_answer = request.form.get("answer")
+    question = selected_questions[current_question]
 
+    if not chosen_answer or chosen_answer not in question["choices"]:
+        return redirect(url_for("quiz"))
+
+    correct_answer = question["answer"]
     is_correct = chosen_answer == correct_answer
 
     if is_correct:
@@ -97,10 +132,14 @@ def answer():
 
 @app.route("/next", methods=["POST"])
 def next_question():
-    if not session.get("selected_questions"):
+    selected_questions = session.get("selected_questions")
+    if not selected_questions:
         return redirect(url_for("home"))
 
     current_question = session.get("current_question", 0)
+    if current_question >= len(selected_questions):
+        return redirect(url_for("result"))
+
     session["current_question"] = current_question + 1
     session["feedback"] = None
 

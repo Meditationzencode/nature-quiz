@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Choose Difficulty — Nature Quiz{% endblock %}
+
+{% block content %}
+<h1>Choose Difficulty</h1>
+<p class="small-text">How much time do you want per question?</p>
+
+<form method="POST" action="{{ url_for('start_quiz') }}">
+    <div class="answers">
+        <button class="difficulty-easy" name="difficulty" value="Easy">Easy — 15 seconds</button>
+        <button class="difficulty-medium" name="difficulty" value="Medium">Medium — 10 seconds</button>
+        <button class="difficulty-hard" name="difficulty" value="Hard">Hard — 5 seconds</button>
+    </div>
+</form>
+{% endblock %}
