@@ -42,9 +42,17 @@ This was my first Flask project. The aim was to build a complete, polished begin
 
 ![Results](static/images/screenshot-results.png)
 
+### Review Answers
+
+![Review Answers](static/images/screenshot-review.png)
+
 ### Leaderboard
 
 ![Leaderboard](static/images/screenshot-leaderboard.png)
+
+### Leaderboard Filtered
+
+![Leaderboard Filtered](static/images/screenshot-leaderboard-filtered.png)
 
 ### Mobile View
 
