@@ -175,6 +175,10 @@ SECRET_KEY=your-secret-key-here
 
 The `.env` file should not be committed to GitHub.
 
+## High Score Storage
+
+Scores are stored in a local SQLite file (`scores.db`). This works perfectly locally and persists across sessions as long as the server is running. On Render's free tier, the file system resets on redeploy and after inactivity spin-downs, so the leaderboard does not persist permanently in production. For a persistent leaderboard, swap `sqlite3` for a hosted database such as Supabase or Render PostgreSQL.
+
 ## Testing
 
 Testing is a future improvement for this project.
