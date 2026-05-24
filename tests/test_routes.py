@@ -1,7 +1,7 @@
 import sqlite3
 
 import app as quiz_app
-from conftest import start_quiz
+from helpers import start_quiz
 
 
 # Basic pages
@@ -114,10 +114,25 @@ def test_review_page_shows_recorded_answers(client):
 
 
 def test_double_submit_is_ignored(client):
-    start_quiz(client)
-    client.post("/answer", data={"answer": "Duck"})
-    r = client.post("/answer", data={"answer": "Duck"}, follow_redirects=True)
-    assert r.status_code == 200
+    with client.session_transaction() as sess:
+        sess["selected_questions"] = [{
+            "question": "Which insect makes honey?",
+            "choices": ["Bee", "Ant", "Fly", "Wasp"],
+            "answer": "Bee"
+        }]
+        sess["current_question"] = 0
+        sess["score"] = 0
+        sess["feedback"] = None
+        sess["streak"] = 0
+        sess["best_streak"] = 0
+
+    client.post("/answer", data={"answer": "Bee"})
+    client.post("/answer", data={"answer": "Ant"})
+
+    with client.session_transaction() as sess:
+        assert sess["score"] == 1
+        assert len(sess["answer_history"]) == 1
+        assert sess["feedback"]["selected"] == "Bee"
 
 
 def test_result_requires_session(client):

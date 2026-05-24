@@ -5,12 +5,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, session
 from facts import get_explanation
+from questions import questions, birds, trees, insects, animals
 
 load_dotenv()
-try:
-    from questions import questions, birds, trees, insects, animals
-except Exception:
-    questions = birds = trees = insects = animals = []
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-only-fallback")
@@ -88,17 +85,16 @@ def init_db():
         ]
         if "points" not in columns:
             conn.execute("ALTER TABLE scores ADD COLUMN points INTEGER")
-
-        scores_without_points = conn.execute(
-            "SELECT id, score, difficulty FROM scores WHERE points IS NULL"
-        ).fetchall()
-        conn.executemany(
-            "UPDATE scores SET points = ? WHERE id = ?",
-            [
-                (calculate_points(score, difficulty), score_id)
-                for score_id, score, difficulty in scores_without_points
-            ]
-        )
+            scores_without_points = conn.execute(
+                "SELECT id, score, difficulty FROM scores"
+            ).fetchall()
+            conn.executemany(
+                "UPDATE scores SET points = ? WHERE id = ?",
+                [
+                    (calculate_points(score, difficulty), score_id)
+                    for score_id, score, difficulty in scores_without_points
+                ]
+            )
 
 init_db()
 
@@ -366,31 +362,16 @@ def leaderboard():
             SELECT * FROM scores
             WHERE (? = 'All' OR difficulty = ?)
               AND (? = 'All' OR category = ?)
+            ORDER BY points DESC, percentage DESC, created_at ASC
+            LIMIT 10
             """,
             (active_difficulty, active_difficulty, active_category, active_category)
         ).fetchall()
 
-    scores = [
-        {
-            **dict(saved_score),
-            "points": (
-                saved_score["points"]
-                if saved_score["points"] is not None
-                else calculate_points(saved_score["score"], saved_score["difficulty"])
-            )
-        }
-        for saved_score in saved_scores
-    ]
-    scores.sort(
-        key=lambda saved_score: (
-            -saved_score["points"],
-            -saved_score["percentage"],
-            saved_score["created_at"]
-        )
-    )
+    scores = [dict(saved_score) for saved_score in saved_scores]
     return render_template(
         "leaderboard.html",
-        scores=scores[:10],
+        scores=scores,
         difficulty_filters=DIFFICULTY_FILTERS,
         category_filters=CATEGORY_FILTERS,
         active_difficulty=active_difficulty,
