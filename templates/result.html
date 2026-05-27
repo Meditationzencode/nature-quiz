@@ -35,7 +35,8 @@
         <p class="small-text">Score saved to the leaderboard.</p>
     {% else %}
         <form action="{{ url_for('save_score') }}" method="post" class="save-score-form">
-            <input type="text" name="name" placeholder="Your name" maxlength="20" class="name-input" required>
+            <label for="player-name" class="visually-hidden">Your name</label>
+            <input type="text" id="player-name" name="name" placeholder="Your name" maxlength="20" class="name-input" required>
             <button class="main-button" type="submit">Save Score</button>
         </form>
     {% endif %}

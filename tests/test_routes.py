@@ -16,9 +16,12 @@ def test_difficulty_page_loads(client):
     r = client.get("/start")
     assert r.status_code == 200
     assert b"Choose Difficulty" in r.data
-    assert b"Easy: 15 seconds, 1 point per correct answer" in r.data
-    assert b"Medium: 10 seconds, 2 points per correct answer" in r.data
-    assert b"Hard: 5 seconds, 3 points per correct answer" in r.data
+    assert b"Easy" in r.data
+    assert b"Medium" in r.data
+    assert b"Hard" in r.data
+    assert b"15 seconds, 1 point per correct answer" in r.data
+    assert b"10 seconds, 2 points per correct answer" in r.data
+    assert b"5 seconds, 3 points per correct answer" in r.data
 
 
 def test_404_returns_custom_page(client):

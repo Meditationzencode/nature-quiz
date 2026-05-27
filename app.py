@@ -80,6 +80,20 @@ def start_new_game(category):
     session["category"] = category
 
 
+def active_question():
+    """Return ((questions, index), None) for the in-progress game, or
+    (None, <redirect>) pointing where the request should bail out to."""
+    selected_questions = session.get("selected_questions")
+    if not selected_questions:
+        return None, redirect(url_for("home"))
+
+    current_question = session.get("current_question", 0)
+    if current_question >= len(selected_questions):
+        return None, redirect(url_for("result"))
+
+    return (selected_questions, current_question), None
+
+
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute("""
@@ -159,24 +173,17 @@ def choose_category():
 
 @app.route("/quiz")
 def quiz():
-    selected_questions = session.get("selected_questions")
-    current_question = session.get("current_question", 0)
-    feedback = session.get("feedback")
-
-    if not selected_questions:
-        return redirect(url_for("home"))
-
-    if current_question >= len(selected_questions):
-        return redirect(url_for("result"))
-
-    question = selected_questions[current_question]
+    game, bail = active_question()
+    if bail:
+        return bail
+    selected_questions, current_question = game
 
     return render_template(
         "quiz.html",
-        question=question,
+        question=selected_questions[current_question],
         question_number=current_question + 1,
         total_questions=len(selected_questions),
-        feedback=feedback,
+        feedback=session.get("feedback"),
         time_limit=session.get("time_limit", 15),
         streak=session.get("streak", 0),
         score=session.get("score", 0)
@@ -185,14 +192,10 @@ def quiz():
 
 @app.route("/answer", methods=["POST"])
 def answer():
-    selected_questions = session.get("selected_questions")
-    current_question = session.get("current_question", 0)
-
-    if not selected_questions:
-        return redirect(url_for("home"))
-
-    if current_question >= len(selected_questions):
-        return redirect(url_for("result"))
+    game, bail = active_question()
+    if bail:
+        return bail
+    selected_questions, current_question = game
 
     if session.get("feedback"):
         return redirect(url_for("quiz"))
@@ -223,13 +226,10 @@ def answer():
 
 @app.route("/next", methods=["POST"])
 def next_question():
-    selected_questions = session.get("selected_questions")
-    if not selected_questions:
-        return redirect(url_for("home"))
-
-    current_question = session.get("current_question", 0)
-    if current_question >= len(selected_questions):
-        return redirect(url_for("result"))
+    game, bail = active_question()
+    if bail:
+        return bail
+    _, current_question = game
 
     session["current_question"] = current_question + 1
     session["feedback"] = None
@@ -239,17 +239,13 @@ def next_question():
 
 @app.route("/timeout", methods=["POST"])
 def timeout():
-    selected_questions = session.get("selected_questions")
-    if not selected_questions:
-        return redirect(url_for("home"))
+    game, bail = active_question()
+    if bail:
+        return bail
+    selected_questions, current_question = game
 
     if session.get("feedback"):
         return redirect(url_for("quiz"))
-
-    current_question = session.get("current_question", 0)
-
-    if current_question >= len(selected_questions):
-        return redirect(url_for("result"))
 
     session["streak"] = 0
     answer_record = build_answer_record(
