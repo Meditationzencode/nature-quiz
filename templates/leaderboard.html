@@ -53,13 +53,13 @@
         <tbody>
             {% for s in scores %}
             <tr class="{{ 'top-score' if loop.index == 1 }}">
-                <td>{{ loop.index }}</td>
-                <td>{{ s.name }}</td>
-                <td>{{ s.score }} / {{ s.total }}</td>
-                <td>{{ s.points }}</td>
-                <td>{{ s.percentage }}%</td>
-                <td>{{ s.difficulty }}</td>
-                <td>{{ s.category }}</td>
+                <td data-label="Rank">{{ loop.index }}</td>
+                <td data-label="Name">{{ s.name }}</td>
+                <td data-label="Score">{{ s.score }} / {{ s.total }}</td>
+                <td data-label="Points">{{ s.points }}</td>
+                <td data-label="Percentage">{{ s.percentage }}%</td>
+                <td data-label="Difficulty">{{ s.difficulty }}</td>
+                <td data-label="Category">{{ s.category }}</td>
             </tr>
             {% endfor %}
         </tbody>

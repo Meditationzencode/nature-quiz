@@ -12,7 +12,7 @@
         <p class="progress">Q{{ question_number }} / {{ total_questions }}</p>
         <p class="live-score">Score: {{ score }}</p>
         {% if not feedback %}
-            <p class="timer"><span id="time">{{ time_limit }}</span>s</p>
+            <p class="timer" aria-label="Seconds remaining"><span id="time">{{ time_limit }}</span>s</p>
         {% endif %}
     </div>
 
@@ -20,7 +20,7 @@
         <p class="streak">{{ streak }} in a row!</p>
     {% endif %}
 
-    <h2 class="question-text">{{ question.question }}</h2>
+    <h1 class="question-text">{{ question.question }}</h1>
 
     {% if not feedback %}
         <form id="answer-form" action="{{ url_for('answer') }}" method="post" class="answers">

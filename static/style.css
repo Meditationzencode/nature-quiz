@@ -6,7 +6,8 @@
     --forest-dark: #21412b;
     --moss: #2f4f35;
     --leaf: #4f8a5b;
-    --amber: #b8760a;
+    --amber: #a3640a;       /* button bg: ~4.8:1 with white text (WCAG AA) */
+    --amber-text: #8a5a00;  /* amber on light surfaces: ~5.3:1 (WCAG AA) */
     --berry: #8a3030;
     --cream: rgba(255, 252, 245, 0.97);
     --mint: #d9e8dc;
@@ -118,7 +119,7 @@ h1 {
 
 .streak {
     text-align: center;
-    color: var(--amber);
+    color: var(--amber-text);
     font-weight: 800;
     font-size: 0.9rem;
     background: #fef3e2;
@@ -131,7 +132,7 @@ h1 {
 
 .best-streak {
     text-align: center;
-    color: var(--amber);
+    color: var(--amber-text);
     font-weight: 700;
     margin-bottom: 16px;
 }
@@ -276,6 +277,14 @@ button:focus-visible,
 input:focus-visible {
     outline: none;
     box-shadow: var(--focus-ring);
+}
+
+/* In-flight submit: dim and lock, suppress hover lift */
+button[disabled],
+button[aria-busy="true"] {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
 }
 
 .feedback-box {
@@ -567,8 +576,48 @@ input:focus-visible {
         grid-template-columns: 1fr;
     }
 
-    .leaderboard-table {
-        min-width: 620px;
+    /* Stack each leaderboard row as a labelled card instead of scrolling */
+    .leaderboard-table thead {
+        display: none;
+    }
+
+    .leaderboard-table,
+    .leaderboard-table tbody,
+    .leaderboard-table tr,
+    .leaderboard-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .leaderboard-table tr {
+        border: 1px solid var(--tint-border);
+        border-radius: 10px;
+        background: var(--mint-pale);
+        padding: 6px 14px;
+        margin-bottom: 10px;
+    }
+
+    .leaderboard-table td {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 6px 0;
+        border: none;
+    }
+
+    .leaderboard-table td::before {
+        content: attr(data-label);
+        font-weight: 800;
+        color: var(--moss);
+    }
+
+    .leaderboard-table tr.top-score {
+        background: #eaf5ee;
+        border-color: var(--forest);
+    }
+
+    .leaderboard-table tr.top-score td {
+        background: transparent;
     }
 }
 

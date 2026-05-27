@@ -63,6 +63,23 @@ def record_answer(record):
     session["answer_history"] = session.get("answer_history", []) + [record]
 
 
+def start_new_game(category):
+    """Reset all session state for a fresh game drawn from the given category."""
+    pool = CATEGORIES[category]
+    session["selected_questions"] = [
+        {**q, "choices": random.sample(q["choices"], len(q["choices"]))}
+        for q in random.sample(pool, min(QUESTIONS_PER_GAME, len(pool)))
+    ]
+    session["current_question"] = 0
+    session["score"] = 0
+    session["feedback"] = None
+    session["streak"] = 0
+    session["best_streak"] = 0
+    session["score_saved"] = False
+    session["answer_history"] = []
+    session["category"] = category
+
+
 def init_db():
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute("""
@@ -131,26 +148,10 @@ def choose_category():
         if category not in CATEGORIES:
             return redirect(url_for("choose_category"))
 
-        pool = CATEGORIES[category]
-
-        if not pool:
+        if not CATEGORIES[category]:
             return render_template("500.html"), 500
 
-        selected_questions = [
-            {**q, "choices": random.sample(q["choices"], len(q["choices"]))}
-            for q in random.sample(pool, min(QUESTIONS_PER_GAME, len(pool)))
-        ]
-
-        session["selected_questions"] = selected_questions
-        session["current_question"] = 0
-        session["score"] = 0
-        session["feedback"] = None
-        session["streak"] = 0
-        session["best_streak"] = 0
-        session["score_saved"] = False
-        session["answer_history"] = []
-        session["category"] = category
-
+        start_new_game(category)
         return redirect(url_for("quiz"))
 
     return render_template("category.html")
