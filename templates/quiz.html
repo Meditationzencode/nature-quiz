@@ -24,6 +24,7 @@
 
     {% if not feedback %}
         <form id="answer-form" action="{{ url_for('answer') }}" method="post" class="answers">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             {% for choice in question.choices %}
                 <button class="answer-button" type="submit" name="answer" value="{{ choice }}">
                     {{ choice }}
@@ -32,6 +33,7 @@
         </form>
 
         <form id="timeout-form" action="{{ url_for('timeout') }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         </form>
 
         <script>
@@ -71,6 +73,7 @@
         </div>
 
         <form action="{{ url_for('next_question') }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <button class="main-button" type="submit">
                 {% if question_number == total_questions %}
                     See Results

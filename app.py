@@ -1,16 +1,40 @@
+import logging
 import os
 import random
+import secrets
 import sqlite3
 from pathlib import Path
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, abort, render_template, request, redirect, url_for, session
 from facts import get_explanation
 from questions import questions, birds, trees, insects, animals
 
 load_dotenv()
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "dev-only-fallback")
+
+# --- Security: secret key + session-cookie hardening ---
+_secret_key = os.environ.get("SECRET_KEY")
+IS_PRODUCTION = os.environ.get("FLASK_ENV", "").lower() == "production"
+if not _secret_key:
+    if IS_PRODUCTION:
+        raise RuntimeError(
+            "SECRET_KEY must be set when FLASK_ENV=production. "
+            "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+        )
+    # Dev/test: random per-process key so signed cookies still work locally.
+    _secret_key = secrets.token_hex(32)
+app.secret_key = _secret_key
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_SECURE=IS_PRODUCTION,
+)
 
 QUESTIONS_PER_GAME = 10
 CATEGORIES = {
@@ -33,7 +57,12 @@ DIFFICULTY_POINTS = {
 DIFFICULTY_FILTERS = ["All", *DIFFICULTY_TIMERS.keys()]
 CATEGORY_FILTERS = list(CATEGORIES.keys())
 
-DB_PATH = Path(__file__).parent / "scores.db"
+DB_PATH = Path(os.environ.get("DATABASE_PATH") or (Path(__file__).parent / "scores.db"))
+
+
+def open_db():
+    """Open a sqlite3 connection with a 5s busy-timeout for safer concurrency."""
+    return sqlite3.connect(DB_PATH, timeout=5.0)
 
 
 def points_for_difficulty(difficulty):
@@ -95,7 +124,9 @@ def active_question():
 
 
 def init_db():
-    with sqlite3.connect(DB_PATH) as conn:
+    with open_db() as conn:
+        conn.execute("PRAGMA journal_mode = WAL")
+        conn.execute("PRAGMA foreign_keys = ON")
         conn.execute("""
             CREATE TABLE IF NOT EXISTS scores (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -126,8 +157,48 @@ def init_db():
                     for score_id, score, difficulty in scores_without_points
                 ]
             )
+    app.logger.info("Initialized scores DB at %s", DB_PATH)
 
-init_db()
+
+# Lazy first-request init: avoids a side effect on module import so tests and
+# tooling can redirect DB_PATH before the schema is touched.
+_db_initialized = False
+
+
+@app.before_request
+def _ensure_db_initialized():
+    global _db_initialized
+    if _db_initialized:
+        return
+    init_db()
+    _db_initialized = True
+
+
+# --- CSRF: per-session token issued on first request, validated on writes ---
+_UNSAFE_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
+
+
+@app.before_request
+def _ensure_csrf_token():
+    if "csrf_token" not in session:
+        session["csrf_token"] = secrets.token_urlsafe(32)
+
+
+@app.before_request
+def _check_csrf():
+    # The test client bypasses CSRF; tests set app.testing=True before posting.
+    if app.testing or request.method not in _UNSAFE_METHODS:
+        return
+    submitted = request.form.get("csrf_token") or request.headers.get("X-CSRF-Token", "")
+    expected = session.get("csrf_token", "")
+    if not expected or not secrets.compare_digest(submitted, expected):
+        app.logger.warning("CSRF check failed for %s %s", request.method, request.path)
+        abort(400)
+
+
+@app.context_processor
+def _inject_csrf_helper():
+    return {"csrf_token": lambda: session.get("csrf_token", "")}
 
 
 @app.route("/")
@@ -318,7 +389,7 @@ def save_score():
     percentage = round((score / total) * 100)
     points = calculate_points(score, session.get("difficulty"))
 
-    with sqlite3.connect(DB_PATH) as conn:
+    with open_db() as conn:
         conn.execute(
             """
             INSERT INTO scores
@@ -337,6 +408,11 @@ def save_score():
         )
 
     session["score_saved"] = True
+    app.logger.info(
+        "Score saved: name=%s score=%s/%s points=%s difficulty=%s category=%s",
+        name, score, total, points,
+        session.get("difficulty"), session.get("category"),
+    )
 
     return redirect(url_for("leaderboard"))
 
@@ -352,7 +428,7 @@ def leaderboard():
         CATEGORY_FILTERS
     )
 
-    with sqlite3.connect(DB_PATH) as conn:
+    with open_db() as conn:
         conn.row_factory = sqlite3.Row
         saved_scores = conn.execute(
             """
@@ -394,6 +470,7 @@ def not_found(e):
 
 @app.errorhandler(500)
 def server_error(e):
+    app.logger.exception("Unhandled error processing request")
     return render_template("500.html"), 500
 
 

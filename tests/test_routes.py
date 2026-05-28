@@ -220,6 +220,32 @@ def test_leaderboard_filters_by_difficulty_and_category(client, tmp_path, monkey
     assert b"Easy Tree Score" not in r.data
 
 
+# CSRF (default test client has testing=True which bypasses CSRF;
+# these flip it off to exercise the real middleware).
+
+def test_csrf_rejects_post_without_token():
+    quiz_app.app.testing = False
+    try:
+        client = quiz_app.app.test_client()
+        r = client.post("/start", data={"difficulty": "Easy"})
+        assert r.status_code == 400
+    finally:
+        quiz_app.app.testing = True
+
+
+def test_csrf_accepts_post_with_valid_token():
+    quiz_app.app.testing = False
+    try:
+        client = quiz_app.app.test_client()
+        client.get("/")  # issues a csrf_token into the session
+        with client.session_transaction() as sess:
+            token = sess["csrf_token"]
+        r = client.post("/start", data={"difficulty": "Easy", "csrf_token": token})
+        assert r.status_code == 302
+    finally:
+        quiz_app.app.testing = True
+
+
 def test_score_can_only_be_saved_once(client, tmp_path, monkeypatch):
     test_db = tmp_path / "scores.db"
     monkeypatch.setattr(quiz_app, "DB_PATH", test_db)
