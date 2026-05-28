@@ -349,17 +349,23 @@ button[aria-busy="true"] {
     margin: 8px 0;
 }
 
-.percentage {
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 0 0 12px;
+.score-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 18px;
+    font-size: 1.15rem;
+    color: var(--moss);
 }
 
-.points {
-    text-align: center;
-    font-weight: 800;
-    color: var(--moss);
-    margin: 0 0 16px;
+.score-meta-item {
+    font-weight: 700;
+}
+
+.score-meta-item + .score-meta-item {
+    padding-left: 16px;
+    border-left: 2px solid var(--mint);
 }
 
 .result-summary {
@@ -412,6 +418,21 @@ button[aria-busy="true"] {
 .created-by a {
     color: var(--forest);
     font-weight: 700;
+}
+
+/* Landing hero: more presence and breathing room */
+.home-screen h1 {
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+}
+
+.home-screen .small-text {
+    margin-bottom: 32px;
+}
+
+.home-screen .created-by {
+    margin-top: 28px;
+    font-size: 0.82rem;
 }
 
 .error-code {
@@ -583,12 +604,21 @@ button[aria-busy="true"] {
 }
 
 @media (max-width: 640px) {
+    body {
+        /* Fixed attachment janks and mis-crops on mobile browsers */
+        background-attachment: scroll;
+    }
+
     .card {
         padding: 24px;
     }
 
     h1 {
         font-size: 1.8rem;
+    }
+
+    .home-screen h1 {
+        font-size: 2.1rem;
     }
 
     .question-text {

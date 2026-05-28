@@ -7,8 +7,10 @@
     <h1>Your Results</h1>
 
     <p class="score">{{ score }} / {{ total_questions }}</p>
-    <p class="percentage">{{ percentage }}%</p>
-    <p class="points">{{ points }} / {{ total_points }} points</p>
+    <div class="score-meta">
+        <span class="score-meta-item">{{ percentage }}%</span>
+        <span class="score-meta-item">{{ points }} / {{ total_points }} points</span>
+    </div>
 
     <dl class="result-summary">
         <div>
