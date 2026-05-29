@@ -5,16 +5,29 @@ import secrets
 import sqlite3
 from pathlib import Path
 from dotenv import load_dotenv
-from flask import Flask, abort, render_template, request, redirect, url_for, session
+from flask import Flask, abort, g, has_request_context, jsonify, render_template, request, redirect, url_for, session
 from facts import get_explanation
 from questions import questions, birds, trees, insects, animals
 
 load_dotenv()
 
+
+class _RequestIDFilter(logging.Filter):
+    """Inject Flask's per-request id into log records (or "-" outside a request)."""
+
+    def filter(self, record):
+        record.request_id = (
+            getattr(g, "request_id", "-") if has_request_context() else "-"
+        )
+        return True
+
+
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    format="%(asctime)s [%(levelname)s] [req=%(request_id)s] %(name)s: %(message)s",
 )
+for _handler in logging.getLogger().handlers:
+    _handler.addFilter(_RequestIDFilter())
 
 app = Flask(__name__)
 
@@ -34,6 +47,9 @@ app.config.update(
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
     SESSION_COOKIE_SECURE=IS_PRODUCTION,
+    # Defence against oversized request bodies (none of this app's forms
+    # need more than a few hundred bytes).
+    MAX_CONTENT_LENGTH=16 * 1024,
 )
 
 QUESTIONS_PER_GAME = 10
@@ -160,6 +176,13 @@ def init_db():
     app.logger.info("Initialized scores DB at %s", DB_PATH)
 
 
+# Request id is assigned first so every subsequent before_request / log line
+# carries it. (Order of @before_request handlers is registration order.)
+@app.before_request
+def _assign_request_id():
+    g.request_id = secrets.token_hex(4)
+
+
 # Lazy first-request init: avoids a side effect on module import so tests and
 # tooling can redirect DB_PATH before the schema is touched.
 _db_initialized = False
@@ -199,6 +222,43 @@ def _check_csrf():
 @app.context_processor
 def _inject_csrf_helper():
     return {"csrf_token": lambda: session.get("csrf_token", "")}
+
+
+# --- Request correlation: id echoed back on the response (assignment happens
+# at the top of the before_request chain so logs carry it as well). ---
+@app.after_request
+def _echo_request_id(response):
+    rid = getattr(g, "request_id", None)
+    if rid:
+        response.headers["X-Request-ID"] = rid
+    return response
+
+
+# --- Defence-in-depth response headers ---
+@app.after_request
+def _security_headers(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "same-origin"
+    response.headers["X-Frame-Options"] = "DENY"
+    if IS_PRODUCTION:
+        # 1 day to start; bump to 6mo / 1yr once you're confident the domain
+        # stays HTTPS-only.
+        response.headers["Strict-Transport-Security"] = (
+            "max-age=86400; includeSubDomains"
+        )
+    return response
+
+
+# --- Health check: cheap, exercises the DB, used by Render's probes ---
+@app.route("/healthz")
+def healthz():
+    try:
+        with open_db() as conn:
+            conn.execute("SELECT 1").fetchone()
+    except Exception:
+        app.logger.exception("Health check failed")
+        return jsonify(status="unhealthy"), 503
+    return jsonify(status="ok"), 200
 
 
 @app.route("/")
