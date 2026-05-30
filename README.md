@@ -49,6 +49,9 @@ The project was built to develop practical Python and Flask skills: routing, Jin
 - Score saved to a SQLite leaderboard filterable by difficulty and category
 - Duplicate score-save prevention via session flag
 - All user input validated server-side before processing
+- CSRF tokens on every form, plus hardened session cookies (HttpOnly, SameSite=Lax, Secure in production)
+- Security response headers (HSTS in production, X-Content-Type-Options, X-Frame-Options, Referrer-Policy)
+- `/healthz` liveness endpoint with a DB ping, plus a per-request correlation ID surfaced in logs and as `X-Request-ID`
 - Custom 404 and 500 error pages
 - Responsive layout for desktop and mobile
 
@@ -58,10 +61,10 @@ The project was built to develop practical Python and Flask skills: routing, Jin
 |---|---|
 | Backend | Python, Flask |
 | Templates | Jinja2 |
-| Database | SQLite (sqlite3) |
+| Database | SQLite (sqlite3, WAL mode) |
 | Frontend | HTML, CSS, JavaScript |
-| Testing | pytest (34 tests) |
-| Deployment | Render (Waitress WSGI) |
+| Testing | pytest (36 tests) |
+| Deployment | Render (gunicorn WSGI) |
 
 ## Project Structure
 
@@ -138,11 +141,19 @@ Then open `http://127.0.0.1:5000`
 
 ## Environment Variables
 
-Create a `.env` file in the project root:
+For local development, create a `.env` file in the project root:
 
 ```env
 SECRET_KEY=your-secret-key-here
 ```
+
+For production deployment, set these on your hosting platform:
+
+| Variable | Required | Purpose |
+|---|---|---|
+| `SECRET_KEY` | Yes | Session-cookie signing key. Generate with `python -c "import secrets; print(secrets.token_hex(32))"` |
+| `FLASK_ENV` | Yes (prod) | Set to `production` to enable strict secret enforcement, `Secure` cookies, and HSTS |
+| `DATABASE_PATH` | No | Override the SQLite file location (defaults to `scores.db` in the project root) |
 
 Never commit `.env` to version control.
 
@@ -152,7 +163,7 @@ Never commit `.env` to version control.
 pytest tests/ -v
 ```
 
-34 tests covering:
+36 tests covering:
 
 - All pages load with correct status codes
 - Invalid difficulty, category, and spoofed answer inputs are rejected
@@ -160,6 +171,7 @@ pytest tests/ -v
 - Double-submit guard prevents duplicate answers and duplicate score saves
 - Protected routes redirect correctly when session is missing
 - Leaderboard sorts by points and filters correctly by difficulty and category
+- CSRF middleware rejects POSTs without a valid token and accepts them with one
 - All 200 questions in every category have valid structure, four unique choices, and answers that match their choices
 
 ## High Score Storage
@@ -175,8 +187,9 @@ Scores are stored in a local SQLite file (`scores.db`). On Render's free tier th
 - **Jinja2 templating** — shared layout, conditional rendering, and template inheritance
 - **JavaScript timer** — client-side countdown that auto-submits a form and cancels on answer
 - **Responsive CSS** — mobile-first layout using grid and flexbox
-- **pytest test suite** — 34 tests across routes, data validation, and business logic
-- **Security basics** — no hardcoded secrets, parameterised SQL, input whitelisting, debug mode off in production
+- **pytest test suite** — 36 tests across routes, data validation, CSRF, and business logic
+- **Production security posture** — required `SECRET_KEY` (raises on missing), hand-rolled CSRF, hardened session cookies, security response headers (HSTS, nosniff, X-Frame-Options, Referrer-Policy), parameterised SQL, server-side input whitelisting
+- **Production readiness** — `/healthz` endpoint with DB ping, request-ID correlation in logs and headers, structured logging, gunicorn worker tuning, pinned Python and dependencies, SQLite WAL mode for safer concurrency
 
 ## What I Learned
 
