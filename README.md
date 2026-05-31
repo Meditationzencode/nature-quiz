@@ -34,7 +34,7 @@ A full-stack quiz web app built with **Python** and **Flask**. Players answer 10
 
 Nature Quiz is a server-side web application built with Flask. Each game randomly selects 10 questions from a 200-question bank across four categories — birds, trees, insects, and animals. Difficulty controls both the countdown timer and points earned per correct answer, so harder games score higher on the leaderboard.
 
-The project was built to develop practical Python and Flask skills: routing, Jinja2 templates, session-based state management, SQLite persistence, input validation, and a 34-test pytest suite.
+The project was built to develop practical Python and Flask skills: routing, Jinja2 templates, session-based state management, SQLite persistence, input validation, and a 36-test pytest suite.
 
 ## Features
 
