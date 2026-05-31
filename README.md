@@ -6,6 +6,7 @@
 A full-stack quiz web app built with **Python** and **Flask**. Players answer 10 randomly selected questions from a bank of 200 nature questions, competing across three difficulty levels with a live countdown timer and a filterable leaderboard.
 
 **Live demo:** [nature-quiz.onrender.com](https://nature-quiz.onrender.com)
+**GitHub repo:** [github.com/Meditationzencode/nature-quiz](https://github.com/Meditationzencode/nature-quiz)
 
 ## Screenshots
 
