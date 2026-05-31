@@ -220,6 +220,38 @@ def test_leaderboard_filters_by_difficulty_and_category(client, tmp_path, monkey
     assert b"Easy Tree Score" not in r.data
 
 
+# Health check + response headers
+
+def test_healthz_returns_ok(client):
+    r = client.get("/healthz")
+    assert r.status_code == 200
+    assert r.get_json() == {"status": "ok"}
+
+
+def test_security_headers_set_on_every_response(client):
+    r = client.get("/")
+    assert r.headers["X-Content-Type-Options"] == "nosniff"
+    assert r.headers["Referrer-Policy"] == "same-origin"
+    assert r.headers["X-Frame-Options"] == "DENY"
+
+
+def test_request_id_is_echoed_back(client):
+    r = client.get("/")
+    rid = r.headers.get("X-Request-ID")
+    assert rid and len(rid) == 8  # 4 bytes hex
+
+
+def test_hsts_only_set_when_production(client, monkeypatch):
+    # Off by default outside production
+    r = client.get("/")
+    assert "Strict-Transport-Security" not in r.headers
+
+    # On when IS_PRODUCTION is set
+    monkeypatch.setattr(quiz_app, "IS_PRODUCTION", True)
+    r = client.get("/")
+    assert "Strict-Transport-Security" in r.headers
+
+
 # CSRF (default test client has testing=True which bypasses CSRF;
 # these flip it off to exercise the real middleware).
 

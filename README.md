@@ -2,6 +2,7 @@
 
 [![Tests](https://github.com/Meditationzencode/nature-quiz/actions/workflows/test.yml/badge.svg)](https://github.com/Meditationzencode/nature-quiz/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Status: Complete](https://img.shields.io/badge/Status-Complete-brightgreen.svg)](#future-improvements)
 
 A full-stack quiz web app built with **Python** and **Flask**. Players answer 10 randomly selected questions from a bank of 200 nature questions, competing across three difficulty levels with a live countdown timer and a filterable leaderboard.
 
@@ -37,7 +38,7 @@ Nature Quiz is a server-side web application built with Flask. Each game randoml
 
 Questions are stored as Python lists in `questions.py` rather than a JSON file or database. They are static, read-only content that ships with the app, so external storage would add I/O and parsing complexity for no functional benefit. The leaderboard, which actually mutates as people play, is the part that lives in SQLite.
 
-The project was built to develop practical Python and Flask skills: routing, Jinja2 templates, session-based state management, SQLite persistence, input validation, and a 36-test pytest suite.
+The project was built to develop practical Python and Flask skills: routing, Jinja2 templates, session-based state management, SQLite persistence, input validation, and a 40-test pytest suite.
 
 ## Features
 
@@ -69,7 +70,7 @@ The project was built to develop practical Python and Flask skills: routing, Jin
 | Templates | Jinja2 |
 | Database | SQLite (sqlite3, WAL mode) |
 | Frontend | HTML, CSS, JavaScript |
-| Testing | pytest (36 tests) |
+| Testing | pytest (40 tests) |
 | Deployment | Render (gunicorn WSGI) |
 
 ## Project Structure
@@ -134,7 +135,9 @@ source .venv/bin/activate
 ```
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements-dev.txt   # local dev (includes pytest)
+# Production only:
+# pip install -r requirements.txt
 ```
 
 ## Run Locally
@@ -169,7 +172,7 @@ Never commit `.env` to version control.
 pytest tests/ -v
 ```
 
-36 tests covering:
+40 tests covering:
 
 - All pages load with correct status codes
 - Invalid difficulty, category, and spoofed answer inputs are rejected
@@ -178,6 +181,7 @@ pytest tests/ -v
 - Protected routes redirect correctly when session is missing
 - Leaderboard sorts by points and filters correctly by difficulty and category
 - CSRF middleware rejects POSTs without a valid token and accepts them with one
+- `/healthz`, security response headers, request-ID echo, and HSTS gating all behave as configured
 - All 200 questions in every category have valid structure, four unique choices, and answers that match their choices
 
 ## High Score Storage
@@ -193,7 +197,7 @@ Scores are stored in a local SQLite file (`scores.db`). On Render's free tier th
 - **Jinja2 templating** — shared layout, conditional rendering, and template inheritance
 - **JavaScript timer** — client-side countdown that auto-submits a form and cancels on answer
 - **Responsive CSS** — mobile-first layout using grid and flexbox
-- **pytest test suite** — 36 tests across routes, data validation, CSRF, and business logic
+- **pytest test suite** — 40 tests across routes, data validation, CSRF, security headers, and business logic
 - **Production security posture** — required `SECRET_KEY` (raises on missing), hand-rolled CSRF, hardened session cookies, security response headers (HSTS, nosniff, X-Frame-Options, Referrer-Policy), parameterised SQL, server-side input whitelisting
 - **Production readiness** — `/healthz` endpoint with DB ping, request-ID correlation in logs and headers, structured logging, gunicorn worker tuning, pinned Python and dependencies, SQLite WAL mode for safer concurrency
 
