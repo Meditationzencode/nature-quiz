@@ -15,30 +15,30 @@ A full-stack quiz web app built with **Python** and **Flask**. Players answer 10
 
 ## Demo
 
-![Nature Quiz demo](static/images/demo.gif)
+![Animated walkthrough of Nature Quiz: choosing a difficulty, answering questions with feedback, and viewing results](static/images/demo.gif)
 
 ## Screenshots
 
 ### Home Page
-![Home Page](static/images/screenshot-home.png)
+![Nature Quiz home page showing the Project Highlights list and the Start Quiz button](static/images/screenshot-home.png)
 
 ### Quiz Question
-![Quiz Page](static/images/screenshot-quiz.png)
+![A quiz question with four multiple-choice answer buttons, a countdown timer, and the running score](static/images/screenshot-quiz.png)
 
 ### Answer Feedback
-![Feedback](static/images/screenshot-feedback.png)
+![Answer feedback showing a "Correct!" result with a nature-fact explanation](static/images/screenshot-feedback.png)
 
 ### Results Page
-![Results](static/images/screenshot-results.png)
+![Results page showing score, percentage, points, best streak, difficulty, and category](static/images/screenshot-results.png)
 
 ### Review Answers
-![Review Answers](static/images/screenshot-review.png)
+![Review Answers page listing each question with the correct answer marked](static/images/screenshot-review.png)
 
 ### Leaderboard
-![Leaderboard](static/images/screenshot-leaderboard.png)
+![Leaderboard table of top scores with difficulty and category filters](static/images/screenshot-leaderboard.png)
 
 ### Mobile View
-![Mobile View](static/images/screenshot-mobile.png)
+![Nature Quiz home page rendered on a narrow mobile screen](static/images/screenshot-mobile.png)
 
 ## Overview
 
