@@ -32,9 +32,9 @@ def wait_for_server(page):
     raise RuntimeError("Server did not start")
 
 
-def shot(page, name, wait_ms=400):
+def shot(page, name, wait_ms=400, full_page=False):
     page.wait_for_timeout(wait_ms)
-    page.screenshot(path=str(IMAGES / name), full_page=False)
+    page.screenshot(path=str(IMAGES / name), full_page=full_page)
     print(f"  saved {name}")
 
 
@@ -80,9 +80,9 @@ def main():
             page = browser.new_page(viewport={"width": 900, "height": 700})
             wait_for_server(page)
 
-            # Home
+            # Home — full page so the footer (source-code link) is visible
             page.goto(BASE)
-            shot(page, "screenshot-home.png")
+            shot(page, "screenshot-home.png", full_page=True)
 
             # Difficulty (now shows points per answer)
             page.goto(BASE + "/start")
