@@ -20,7 +20,7 @@ A full-stack quiz web app built with **Python** and **Flask**. Players answer 10
 - 40-test pytest suite covering routes, validation, CSRF, headers, and quiz logic
 - Deployed on Render with gunicorn
 
-> An early Python/Flask project that marks the starting point of my development journey. Later portfolio projects show how I've improved in structure, design, and functionality.
+> This is my first deployed Python/Flask project. I keep it in my portfolio as a baseline so reviewers can see how my later projects improve in structure, design, and functionality.
 
 ## Demo
 
