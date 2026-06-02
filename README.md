@@ -13,6 +13,10 @@ A full-stack quiz web app built with **Python** and **Flask**. Players answer 10
 
 > An early Python/Flask project that marks the starting point of my development journey. Later portfolio projects show how I've improved in structure, design, and functionality.
 
+## Demo
+
+![Nature Quiz demo](static/images/demo.gif)
+
 ## Screenshots
 
 ### Home Page
