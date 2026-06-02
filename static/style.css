@@ -435,6 +435,48 @@ button[aria-busy="true"] {
     font-size: 0.82rem;
 }
 
+/* Project Highlights: at-a-glance skills for visitors who won't read the code */
+.highlights {
+    margin-top: 36px;
+    text-align: left;
+    background: var(--tint);
+    border: 1px solid var(--tint-border);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+}
+
+.highlights-title {
+    font-family: var(--font-display);
+    color: var(--forest-dark);
+    font-size: 1.25rem;
+    text-align: center;
+    margin: 0 0 16px;
+}
+
+.highlights-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.highlights-list li {
+    position: relative;
+    padding-left: 28px;
+    color: var(--ink);
+    line-height: 1.4;
+}
+
+.highlights-list li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--leaf);
+    font-weight: 800;
+}
+
 .error-code {
     font-family: var(--font-display);
     font-size: 5rem;

@@ -9,6 +9,8 @@ A full-stack quiz web app built with **Python** and **Flask**. Players answer 10
 **Live demo:** [nature-quiz.onrender.com](https://nature-quiz.onrender.com)
 **GitHub repo:** [github.com/Meditationzencode/nature-quiz](https://github.com/Meditationzencode/nature-quiz)
 
+> ⏳ The live demo may take 30–60 seconds to load on first visit because it is hosted on Render's free tier, which spins the service down when idle.
+
 > An early Python/Flask project that marks the starting point of my development journey. Later portfolio projects show how I've improved in structure, design, and functionality.
 
 ## Screenshots
