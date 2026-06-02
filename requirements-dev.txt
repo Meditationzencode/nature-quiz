@@ -1,2 +1,5 @@
 -r requirements.txt
 pytest==9.0.3
+# Used only by take_screenshots.py (README screenshots/GIF tooling):
+waitress==3.0.2   # local WSGI server (gunicorn is Linux-only)
+playwright==1.60.0  # headless browser for capturing screenshots
