@@ -110,9 +110,13 @@ nature-quiz/
 ├── questions.py        # 200 question bank (birds, trees, insects, animals)
 ├── take_screenshots.py # Playwright screenshot automation
 ├── requirements.txt
+├── requirements-dev.txt
 ├── Procfile
+├── runtime.txt
 ├── static/
 │   ├── style.css
+│   ├── main.js
+│   ├── favicon.svg
 │   └── images/
 ├── templates/
 │   ├── layout.html
@@ -125,10 +129,14 @@ nature-quiz/
 │   ├── leaderboard.html
 │   ├── 404.html
 │   └── 500.html
-└── tests/
-    ├── conftest.py
-    ├── test_routes.py
-    └── test_questions.py
+├── tests/
+│   ├── conftest.py
+│   ├── helpers.py
+│   ├── test_routes.py
+│   └── test_questions.py
+└── .github/
+    └── workflows/
+        └── test.yml
 ```
 
 ## How It Works
@@ -212,6 +220,8 @@ pytest tests/ -v
 - `/healthz`, security response headers, request-ID echo, and HSTS gating all behave as configured
 - All 200 questions in every category have valid structure, four unique choices, and answers that match their choices
 
+A GitHub Actions workflow (`.github/workflows/test.yml`) runs the full pytest suite on every push and pull request to `main`.
+
 ## Known Limitations
 
 These are deliberate trade-offs for a portfolio project, documented up front:
@@ -225,7 +235,7 @@ These are deliberate trade-offs for a portfolio project, documented up front:
 - **Flask routing and request handling** — GET/POST routes with session guards and redirect flows
 - **Server-side input validation** — all user input checked against whitelists before processing
 - **Session-based state management** — quiz progress, streak, and score tracked entirely server-side
-- **SQLite database** — schema creation, migrations, parameterised queries, and on-the-fly scoring
+- **SQLite database** — schema creation, parameterised queries, on-the-fly scoring, and a lightweight compatibility update for older score rows
 - **Jinja2 templating** — shared layout, conditional rendering, and template inheritance
 - **JavaScript timer** — client-side countdown that auto-submits a form and cancels on answer
 - **Responsive CSS** — mobile-first layout using grid and flexbox
