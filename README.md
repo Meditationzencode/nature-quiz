@@ -65,7 +65,7 @@ The project was built to develop practical Python and Flask skills: routing, Jin
 ## Flow
 
 ```text
-Difficulty → Category → Quiz Session → Result → Save Score → Leaderboard
+Difficulty → Category → Quiz Session → Feedback → Results → Leaderboard
 ```
 
 ## Features
@@ -241,7 +241,7 @@ These are deliberate trade-offs for a portfolio project, documented up front:
 - How to think about security at each input boundary — form fields, query strings, and session values
 - How to iterate: starting with something that worked, then improving correctness, then cleaning up
 
-> This is my first deployed Python/Flask project. I keep it in my portfolio as a baseline so reviewers can see how my later projects improve in structure, design, and functionality.
+> I keep this project in my portfolio as a baseline Flask application that demonstrates routing, sessions, validation, testing, deployment, and production-readiness practices.
 
 ## Future Improvements
 
