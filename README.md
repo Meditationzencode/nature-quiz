@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status: Complete](https://img.shields.io/badge/Status-Complete-brightgreen.svg)](#future-improvements)
 
-A full-stack quiz web app built with **Python** and **Flask**. Players answer 10 randomly selected questions from a bank of 200 nature questions, competing across three difficulty levels with a live countdown timer and a filterable leaderboard.
+A deployed **Flask** web app with server-rendered pages, SQLite persistence, client-side timer logic, a pytest suite, and production-focused security features. Players answer 10 randomly selected questions from a bank of 200 nature questions, competing across three difficulty levels with a live countdown timer and a filterable leaderboard.
 
 **Live demo:** [nature-quiz.onrender.com](https://nature-quiz.onrender.com)
 **GitHub repo:** [github.com/Meditationzencode/nature-quiz](https://github.com/Meditationzencode/nature-quiz)
@@ -19,8 +19,6 @@ A full-stack quiz web app built with **Python** and **Flask**. Players answer 10
 - SQLite leaderboard with difficulty/category filters
 - 40-test pytest suite covering routes, validation, CSRF, headers, and quiz logic
 - Deployed on Render with gunicorn
-
-> This is my first deployed Python/Flask project. I keep it in my portfolio as a baseline so reviewers can see how my later projects improve in structure, design, and functionality.
 
 ## Demo
 
@@ -56,6 +54,19 @@ Nature Quiz is a server-side web application built with Flask. Each game randoml
 Questions are stored as Python lists in `questions.py` rather than a JSON file or database. They are static, read-only content that ships with the app, so external storage would add I/O and parsing complexity for no functional benefit. The leaderboard, which actually mutates as people play, is the part that lives in SQLite.
 
 The project was built to develop practical Python and Flask skills: routing, Jinja2 templates, session-based state management, SQLite persistence, input validation, and a 40-test pytest suite.
+
+## Engineering Highlights
+
+- Built a session-based quiz flow with guarded routes so users can't skip steps or jump straight to results.
+- Defended every form with server-side input whitelisting and hand-rolled CSRF protection.
+- Added a 40-test pytest suite covering routes, quiz logic, validation, security headers, and edge cases.
+- Deployed with gunicorn on Render and documented production limitations honestly rather than hiding them.
+
+## Flow
+
+```text
+Difficulty → Category → Quiz Session → Result → Save Score → Leaderboard
+```
 
 ## Features
 
@@ -201,9 +212,13 @@ pytest tests/ -v
 - `/healthz`, security response headers, request-ID echo, and HSTS gating all behave as configured
 - All 200 questions in every category have valid structure, four unique choices, and answers that match their choices
 
-## High Score Storage
+## Known Limitations
 
-Scores are stored in a local SQLite file (`scores.db`). On Render's free tier the file system resets on redeploy and after inactivity spin-downs, so the leaderboard does not persist permanently in production. For a persistent leaderboard, swap `sqlite3` for a hosted database such as Supabase or Render PostgreSQL.
+These are deliberate trade-offs for a portfolio project, documented up front:
+
+- **Leaderboard is not durable in production.** Scores live in a local SQLite file (`scores.db`). On Render's free tier the file system resets on redeploy and after inactivity spin-downs, so the leaderboard does not persist permanently. For a durable leaderboard, swap `sqlite3` for a hosted database such as Supabase or Render PostgreSQL.
+- **Cold starts.** The free tier spins the server down when idle, so the first request after inactivity can take 30–60 seconds.
+- **No user accounts.** Scores are tied to a session, not a player identity, so history can't be tracked across devices or sessions.
 
 ## Skills Demonstrated
 
@@ -225,6 +240,8 @@ Scores are stored in a local SQLite file (`scores.db`). On Render's free tier th
 - How to write tests that use a real in-memory database rather than mocks
 - How to think about security at each input boundary — form fields, query strings, and session values
 - How to iterate: starting with something that worked, then improving correctness, then cleaning up
+
+> This is my first deployed Python/Flask project. I keep it in my portfolio as a baseline so reviewers can see how my later projects improve in structure, design, and functionality.
 
 ## Future Improvements
 
