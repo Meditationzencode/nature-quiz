@@ -1,4 +1,4 @@
-birds = [
+birds_easy = [
     {
         "question": "Which bird says \"quack\"?",
         "choices": ["Duck", "Eagle", "Owl", "Parrot"],
@@ -251,7 +251,7 @@ birds = [
     },
 ]
 
-trees = [
+trees_easy = [
     {
         "question": "Which tree grows apples?",
         "choices": ["Apple tree", "Pine tree", "Palm tree", "Oak tree"],
@@ -504,7 +504,7 @@ trees = [
     },
 ]
 
-insects = [
+insects_easy = [
     {
         "question": "Which insect makes honey?",
         "choices": ["Bee", "Ant", "Fly", "Beetle"],
@@ -757,7 +757,7 @@ insects = [
     },
 ]
 
-animals = [
+animals_easy = [
     {
         "question": "Which animal says \"meow\"?",
         "choices": ["Cat", "Dog", "Cow", "Pig"],
@@ -1009,5 +1009,67 @@ animals = [
         "answer": "Tiger"
     },
 ]
+
+# ---------------------------------------------------------------------------
+# Write the Medium and Hard questions in the eight lists below.
+#
+# Use the same three keys as the Easy questions above - question, choices,
+# answer. Don't add a "difficulty" key by hand: it gets stamped on from
+# whichever list the question sits in, so the tag can never drift out of sync
+# with where the question actually lives.
+#
+# Target is 25 per list. Nothing breaks before you get there - a pool too thin
+# to fill a 10-question game is topped up from a neighbouring difficulty, so
+# the app keeps working while these fill up. Run `python check_questions.py`
+# to see how far along each list is.
+# ---------------------------------------------------------------------------
+
+birds_medium = [
+    # {
+    #     "question": "Which bird migrates furthest each year?",
+    #     "choices": ["Arctic tern", "Robin", "Mallard", "Blackbird"],
+    #     "answer": "Arctic tern"
+    # },
+]
+
+birds_hard = [
+]
+
+trees_medium = [
+]
+
+trees_hard = [
+]
+
+insects_medium = [
+]
+
+insects_hard = [
+]
+
+animals_medium = [
+]
+
+animals_hard = [
+]
+
+
+def _tagged(pool, difficulty):
+    """Stamp a difficulty onto every question so it travels with the data."""
+    return [{**question, "difficulty": difficulty} for question in pool]
+
+
+def _category(easy, medium, hard):
+    return (
+        _tagged(easy, "Easy")
+        + _tagged(medium, "Medium")
+        + _tagged(hard, "Hard")
+    )
+
+
+birds = _category(birds_easy, birds_medium, birds_hard)
+trees = _category(trees_easy, trees_medium, trees_hard)
+insects = _category(insects_easy, insects_medium, insects_hard)
+animals = _category(animals_easy, animals_medium, animals_hard)
 
 questions = birds + trees + insects + animals

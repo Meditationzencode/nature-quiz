@@ -70,6 +70,13 @@ DIFFICULTY_POINTS = {
     "Medium": 2,
     "Hard": 3,
 }
+# Where to borrow from when a difficulty's own pool can't fill a game, nearest
+# difficulty first. Lets Medium and Hard ship before their banks are full.
+DIFFICULTY_FALLBACKS = {
+    "Easy": ("Medium", "Hard"),
+    "Medium": ("Easy", "Hard"),
+    "Hard": ("Medium", "Easy"),
+}
 DIFFICULTY_FILTERS = ["All", *DIFFICULTY_TIMERS.keys()]
 CATEGORY_FILTERS = list(CATEGORIES.keys())
 
@@ -108,9 +115,22 @@ def record_answer(record):
     session["answer_history"] = session.get("answer_history", []) + [record]
 
 
-def start_new_game(category):
-    """Reset all session state for a fresh game drawn from the given category."""
-    pool = CATEGORIES[category]
+def pool_for(category, difficulty):
+    """Questions for a category at a difficulty, topped up from neighbouring
+    difficulties when that pool alone can't fill a whole game."""
+    available = CATEGORIES[category]
+    pool = [q for q in available if q.get("difficulty") == difficulty]
+    for fallback in DIFFICULTY_FALLBACKS.get(difficulty, ()):
+        if len(pool) >= QUESTIONS_PER_GAME:
+            break
+        pool += [q for q in available if q.get("difficulty") == fallback]
+    return pool
+
+
+def start_new_game(category, difficulty):
+    """Reset all session state for a fresh game drawn from the given category
+    at the given difficulty."""
+    pool = pool_for(category, difficulty)
     session["selected_questions"] = [
         {**q, "choices": random.sample(q["choices"], len(q["choices"]))}
         for q in random.sample(pool, min(QUESTIONS_PER_GAME, len(pool)))
@@ -293,10 +313,11 @@ def choose_category():
         if category not in CATEGORIES:
             return redirect(url_for("choose_category"))
 
-        if not CATEGORIES[category]:
+        difficulty = session.get("difficulty", "Easy")
+        if not pool_for(category, difficulty):
             return render_template("500.html"), 500
 
-        start_new_game(category)
+        start_new_game(category, difficulty)
         return redirect(url_for("quiz"))
 
     return render_template("category.html")

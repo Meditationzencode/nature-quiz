@@ -17,7 +17,7 @@ A deployed **Flask** web app with server-rendered pages, SQLite persistence, cli
 - 200-question quiz bank across birds, trees, insects, and animals
 - Randomized 10-question games with difficulty-based timers and scoring
 - SQLite leaderboard with difficulty/category filters
-- 40-test pytest suite covering routes, validation, CSRF, headers, and quiz logic
+- 60-test pytest suite covering routes, validation, CSRF, headers, and quiz logic
 - Deployed on Render with gunicorn
 
 ## Demo
@@ -53,13 +53,13 @@ Nature Quiz is a server-side web application built with Flask. Each game randoml
 
 Questions are stored as Python lists in `questions.py` rather than a JSON file or database. They are static, read-only content that ships with the app, so external storage would add I/O and parsing complexity for no functional benefit. The leaderboard, which actually mutates as people play, is the part that lives in SQLite.
 
-The project was built to develop practical Python and Flask skills: routing, Jinja2 templates, session-based state management, SQLite persistence, input validation, and a 40-test pytest suite.
+The project was built to develop practical Python and Flask skills: routing, Jinja2 templates, session-based state management, SQLite persistence, input validation, and a 60-test pytest suite.
 
 ## Engineering Highlights
 
 - Built a session-based quiz flow with guarded routes so users can't skip steps or jump straight to results.
 - Defended every form with server-side input whitelisting and hand-rolled CSRF protection.
-- Added a 40-test pytest suite covering routes, quiz logic, validation, security headers, and edge cases.
+- Added a 60-test pytest suite covering routes, quiz logic, validation, security headers, and edge cases.
 - Deployed with gunicorn on Render and documented production limitations honestly rather than hiding them.
 
 ## Flow
@@ -98,7 +98,7 @@ Difficulty → Category → Quiz Session → Feedback → Results → Leaderboar
 | Templates | Jinja2 |
 | Database | SQLite (sqlite3, WAL mode) |
 | Frontend | HTML, CSS, JavaScript |
-| Testing | pytest (40 tests) |
+| Testing | pytest (60 tests) |
 | Deployment | Render (gunicorn WSGI) |
 
 ## Project Structure
@@ -107,7 +107,8 @@ Difficulty → Category → Quiz Session → Feedback → Results → Leaderboar
 nature-quiz/
 ├── app.py              # Routes, session logic, DB access
 ├── facts.py            # Nature fact lookup for answer feedback
-├── questions.py        # 200 question bank (birds, trees, insects, animals)
+├── questions.py        # Question bank, split by category and difficulty
+├── check_questions.py  # Progress/validation report for the question bank
 ├── take_screenshots.py # Playwright screenshot automation
 ├── requirements.txt
 ├── requirements-dev.txt
@@ -208,7 +209,7 @@ Never commit `.env` to version control.
 pytest tests/ -v
 ```
 
-40 tests covering:
+60 tests covering:
 
 - All pages load with correct status codes
 - Invalid difficulty, category, and spoofed answer inputs are rejected
@@ -218,7 +219,8 @@ pytest tests/ -v
 - Leaderboard sorts by points and filters correctly by difficulty and category
 - CSRF middleware rejects POSTs without a valid token and accepts them with one
 - `/healthz`, security response headers, request-ID echo, and HSTS gating all behave as configured
-- All 200 questions in every category have valid structure, four unique choices, and answers that match their choices
+- Every question in every category has valid structure, four unique choices, and an answer that matches its choices
+- Every question carries a valid difficulty, and every category/difficulty pairing can field a full 10-question game
 
 A GitHub Actions workflow (`.github/workflows/test.yml`) runs the full pytest suite on every push and pull request to `main`.
 
@@ -239,7 +241,7 @@ These are deliberate trade-offs for a portfolio project, documented up front:
 - **Jinja2 templating** — shared layout, conditional rendering, and template inheritance
 - **JavaScript timer** — client-side countdown that auto-submits a form and cancels on answer
 - **Responsive CSS** — mobile-first layout using grid and flexbox
-- **pytest test suite** — 40 tests across routes, data validation, CSRF, security headers, and business logic
+- **pytest test suite** — 60 tests across routes, data validation, CSRF, security headers, and business logic
 - **Production security posture** — required `SECRET_KEY` (raises on missing), hand-rolled CSRF, hardened session cookies, security response headers (HSTS, nosniff, X-Frame-Options, Referrer-Policy), parameterised SQL, server-side input whitelisting
 - **Production readiness** — `/healthz` endpoint with DB ping, request-ID correlation in logs and headers, structured logging, gunicorn worker tuning, pinned Python and dependencies, SQLite WAL mode for safer concurrency
 
