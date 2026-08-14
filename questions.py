@@ -1025,32 +1025,1027 @@ animals_easy = [
 # ---------------------------------------------------------------------------
 
 birds_medium = [
-    # {
-    #     "question": "Which bird migrates furthest each year?",
-    #     "choices": ["Arctic tern", "Robin", "Mallard", "Blackbird"],
-    #     "answer": "Arctic tern"
-    # },
+    {
+        "question": "Which bird is the fastest animal on Earth during its hunting dive?",
+        "choices": ["Golden Eagle", "Peregrine Falcon", "Gyrfalcon", "Northern Goshawk"],
+        "answer": "Peregrine Falcon"
+    },
+    {
+        "question": "Which bird feeds with its head held upside-down, filtering water through comb-like plates in its bill?",
+        "choices": ["Roseate Spoonbill", "Black-winged Stilt", "Greater Flamingo", "Scarlet Ibis"],
+        "answer": "Greater Flamingo"
+    },
+    {
+        "question": "Which southern African bird builds giant communal nests that can shelter over a hundred pairs for decades?",
+        "choices": ["Sociable Weaver", "Village Weaver", "Baya Weaver", "Red-billed Quelea"],
+        "answer": "Sociable Weaver"
+    },
+    {
+        "question": "Which bird has fringed flight feathers that let it hunt in near silence at night?",
+        "choices": ["Common Nighthawk", "European Nightjar", "Tawny Frogmouth", "Barn Owl"],
+        "answer": "Barn Owl"
+    },
+    {
+        "question": "The flightless kiwi of New Zealand belongs to which group of birds?",
+        "choices": ["Ratites", "Rails", "Penguins", "Megapodes"],
+        "answer": "Ratites"
+    },
+    {
+        "question": "The Toco Toucan, the largest of the toucans, is native to which continent?",
+        "choices": ["Africa", "Southeast Asia", "South America", "Australia"],
+        "answer": "South America"
+    },
+    {
+        "question": "Which is the smallest bird in the world?",
+        "choices": ["Rufous Hummingbird", "Bee Hummingbird", "Goldcrest", "Weebill"],
+        "answer": "Bee Hummingbird"
+    },
+    {
+        "question": "Which Australian bird can mimic sounds like chainsaws and camera shutters?",
+        "choices": ["Common Myna", "European Starling", "Northern Mockingbird", "Superb Lyrebird"],
+        "answer": "Superb Lyrebird"
+    },
+    {
+        "question": "Which seabird sports a colorful bill in the breeding season and \"flies\" underwater to catch fish?",
+        "choices": ["Razorbill", "Common Guillemot", "Atlantic Puffin", "Black Guillemot"],
+        "answer": "Atlantic Puffin"
+    },
+    {
+        "question": "Which living bird has the largest wingspan?",
+        "choices": ["Wandering Albatross", "Andean Condor", "Marabou Stork", "Dalmatian Pelican"],
+        "answer": "Wandering Albatross"
+    },
+    {
+        "question": "Which African bird guides honey badgers and people to wild bee nests?",
+        "choices": ["Yellow-billed Oxpecker", "Greater Honeyguide", "Red-billed Hornbill", "Fork-tailed Drongo"],
+        "answer": "Greater Honeyguide"
+    },
+    {
+        "question": "About how far can an owl rotate its head?",
+        "choices": ["90°", "180°", "360°", "270°"],
+        "answer": "270°"
+    },
+    {
+        "question": "Which large soaring bird of the Andes is a national symbol of several South American countries?",
+        "choices": ["Andean Condor", "California Condor", "King Vulture", "Lammergeier"],
+        "answer": "Andean Condor"
+    },
+    {
+        "question": "Penguins live almost exclusively in which hemisphere?",
+        "choices": ["Northern Hemisphere", "Southern Hemisphere", "Both equally", "Only Antarctica"],
+        "answer": "Southern Hemisphere"
+    },
+    {
+        "question": "Which Australian bird incubates its eggs using heat from a mound of decomposing vegetation?",
+        "choices": ["Emu", "Kagu", "Malleefowl", "Tawny Frogmouth"],
+        "answer": "Malleefowl"
+    },
+    {
+        "question": "Which bird makes the longest annual migration, travelling between the Arctic and Antarctic?",
+        "choices": ["Bar-tailed Godwit", "Sooty Shearwater", "Short-tailed Shearwater", "Arctic Tern"],
+        "answer": "Arctic Tern"
+    },
+    {
+        "question": "Which African bird is often cited as one of the heaviest birds still capable of flight?",
+        "choices": ["Saddle-billed Stork", "Kori Bustard", "Shoebill", "Secretary Bird"],
+        "answer": "Kori Bustard"
+    },
+    {
+        "question": "Which wading bird has a flattened, spatula-shaped bill tip used to sift small prey from shallow water?",
+        "choices": ["Roseate Spoonbill", "Glossy Ibis", "Greater Flamingo", "Pied Avocet"],
+        "answer": "Roseate Spoonbill"
+    },
+    {
+        "question": "Which of these is NOT a ratite?",
+        "choices": ["Emu", "Rhea", "Penguin", "Cassowary"],
+        "answer": "Penguin"
+    },
+    {
+        "question": "Which Galápagos seabird shows off bright blue feet in its courtship dance?",
+        "choices": ["Blue-footed Booby", "Nazca Booby", "Red-footed Booby", "Magnificent Frigatebird"],
+        "answer": "Blue-footed Booby"
+    },
+    {
+        "question": "Which living bird lays the largest egg?",
+        "choices": ["Emu", "Southern Cassowary", "Greater Rhea", "Common Ostrich"],
+        "answer": "Common Ostrich"
+    },
+    {
+        "question": "Which bird is the national bird of India, famous for its iridescent tail display?",
+        "choices": ["Green Peafowl", "Indian Peafowl", "Great Argus", "Red Junglefowl"],
+        "answer": "Indian Peafowl"
+    },
+    {
+        "question": "Woodpeckers help protect their brains while drumming partly thanks to which feature?",
+        "choices": ["Extra-thick eyelids", "Hollow leg bones", "A long hyoid bone that wraps around the skull", "A keeled sternum"],
+        "answer": "A long hyoid bone that wraps around the skull"
+    },
+    {
+        "question": "Which bird caches thousands of seeds and relies on remarkable spatial memory to relocate them?",
+        "choices": ["Blue Jay", "Eurasian Jay", "Acorn Woodpecker", "Clark's Nutcracker"],
+        "answer": "Clark's Nutcracker"
+    },
+    {
+        "question": "Which bird holds the record for the highest confirmed flight, after colliding with an aircraft?",
+        "choices": ["Rüppell's Griffon Vulture", "Bar-headed Goose", "Whooper Swan", "Alpine Chough"],
+        "answer": "Rüppell's Griffon Vulture"
+    },
 ]
 
 birds_hard = [
+    {
+        "question": "Which hummingbird is the only bird whose bill is longer than its body (excluding the tail)?",
+        "choices": ["Fiery-throated Hummingbird", "Green Hermit", "Sword-billed Hummingbird", "Long-tailed Sylph"],
+        "answer": "Sword-billed Hummingbird"
+    },
+    {
+        "question": "What is digestively unusual about the South American hoatzin?",
+        "choices": ["It ferments leaves in an enlarged crop (foregut fermentation)", "It lacks a stomach entirely", "It has no gizzard", "It relies on light-producing gut bacteria"],
+        "answer": "It ferments leaves in an enlarged crop (foregut fermentation)"
+    },
+    {
+        "question": "Recent molecular studies place the Shoebill closest to which group?",
+        "choices": ["Storks", "Cranes", "Flamingos", "Pelicans"],
+        "answer": "Pelicans"
+    },
+    {
+        "question": "Which shorebird holds the record for the longest nonstop migratory flight, tracked from Alaska to New Zealand?",
+        "choices": ["Red Knot", "Bar-tailed Godwit", "Hudsonian Godwit", "Great Knot"],
+        "answer": "Bar-tailed Godwit"
+    },
+    {
+        "question": "How do South American oilbirds navigate their pitch-dark nesting caves?",
+        "choices": ["Infrared vision", "Magnetoreception", "Echolocation using audible clicks", "Electroreception"],
+        "answer": "Echolocation using audible clicks"
+    },
+    {
+        "question": "Which living reptiles are the closest relatives of birds?",
+        "choices": ["Crocodilians", "Lizards", "Turtles", "Snakes"],
+        "answer": "Crocodilians"
+    },
+    {
+        "question": "Which flightless, nocturnal New Zealand bird is the world's heaviest parrot?",
+        "choices": ["Kea", "Kākāpō", "Hyacinth Macaw", "Palm Cockatoo"],
+        "answer": "Kākāpō"
+    },
+    {
+        "question": "Which bird has the largest eye of any land animal, larger even than its own brain?",
+        "choices": ["Great Grey Owl", "Wandering Albatross", "Sri Lanka Frogmouth", "Common Ostrich"],
+        "answer": "Common Ostrich"
+    },
+    {
+        "question": "Which long-legged African raptor kills snakes by stamping on them?",
+        "choices": ["Secretary Bird", "Bateleur", "Martial Eagle", "Brown Snake Eagle"],
+        "answer": "Secretary Bird"
+    },
+    {
+        "question": "The Turkey Vulture is unusual among vultures for finding carrion primarily by which sense?",
+        "choices": ["Hearing", "Ultraviolet vision", "Smell", "Echolocation"],
+        "answer": "Smell"
+    },
+    {
+        "question": "The nearly flightless, grey-plumed kagu is endemic to which island?",
+        "choices": ["Madagascar", "New Guinea", "Sulawesi", "New Caledonia"],
+        "answer": "New Caledonia"
+    },
+    {
+        "question": "Which penguin incubates a single egg on its feet through the Antarctic winter, building no nest?",
+        "choices": ["King Penguin", "Emperor Penguin", "Adélie Penguin", "Gentoo Penguin"],
+        "answer": "Emperor Penguin"
+    },
+    {
+        "question": "Which Amazonian bird was documented as producing the loudest known bird call?",
+        "choices": ["White Bellbird", "Screaming Piha", "Three-wattled Bellbird", "Kākāpō"],
+        "answer": "White Bellbird"
+    },
+    {
+        "question": "Roughly what share of all bird species are passerines (perching birds)?",
+        "choices": ["About one-quarter", "About one-third", "More than half", "About 90%"],
+        "answer": "More than half"
+    },
+    {
+        "question": "Bowerbirds, which build decorated courtship structures, are native to which region?",
+        "choices": ["South America", "Australia and New Guinea", "Central Africa", "Mainland Southeast Asia"],
+        "answer": "Australia and New Guinea"
+    },
+    {
+        "question": "The blue of a Blue Jay's feathers is produced by what?",
+        "choices": ["Blue melanin pigment", "Carotenoid pigments", "Porphyrin pigments", "Structural coloration that scatters light"],
+        "answer": "Structural coloration that scatters light"
+    },
+    {
+        "question": "Which bird has the longest tail feathers relative to its body size?",
+        "choices": ["Resplendent Quetzal", "Long-tailed Widowbird", "Ribbon-tailed Astrapia", "Reeves's Pheasant"],
+        "answer": "Ribbon-tailed Astrapia"
+    },
+    {
+        "question": "DNA studies show flamingos' closest living relatives are which surprising group?",
+        "choices": ["Grebes", "Storks", "Herons", "Ibises"],
+        "answer": "Grebes"
+    },
+    {
+        "question": "Which bird is the classic Old World brood parasite, laying eggs in other birds' nests?",
+        "choices": ["Brown-headed Cowbird", "Greater Honeyguide", "Pin-tailed Whydah", "Common Cuckoo"],
+        "answer": "Common Cuckoo"
+    },
+    {
+        "question": "Which is among the smallest birds of prey in the world?",
+        "choices": ["American Kestrel", "Black-thighed Falconet", "Pygmy Falcon", "Elf Owl"],
+        "answer": "Black-thighed Falconet"
+    },
+    {
+        "question": "European Kestrels are thought to locate voles partly by detecting what, visible under UV light?",
+        "choices": ["Vole urine trails", "Infrared body heat", "Magnetic field lines", "Ultrasonic calls"],
+        "answer": "Vole urine trails"
+    },
+    {
+        "question": "Hummingbirds and swifts are grouped together in which order?",
+        "choices": ["Passeriformes", "Caprimulgiformes", "Apodiformes", "Trochiliformes"],
+        "answer": "Apodiformes"
+    },
+    {
+        "question": "Which bird was the first scientifically documented to carry batrachotoxins in its skin and feathers?",
+        "choices": ["Blue-capped Ifrit", "Common Quail", "Spur-winged Goose", "Hooded Pitohui"],
+        "answer": "Hooded Pitohui"
+    },
+    {
+        "question": "Which Galápagos finch uses cactus spines and twigs as tools to extract insects?",
+        "choices": ["Large Ground Finch", "Woodpecker Finch", "Vampire Ground Finch", "Common Cactus Finch"],
+        "answer": "Woodpecker Finch"
+    },
+    {
+        "question": "Which African finch is the world's most numerous wild bird and a notorious crop pest?",
+        "choices": ["Red-billed Quelea", "House Sparrow", "European Starling", "Rock Dove"],
+        "answer": "Red-billed Quelea"
+    },
 ]
 
 trees_medium = [
+    {
+        "question": "Which tree species is the tallest in the world?",
+        "choices": ["Coast Redwood", "Coast Douglas-fir", "Mountain Ash (Eucalyptus regnans)", "Sitka Spruce"],
+        "answer": "Coast Redwood"
+    },
+    {
+        "question": "Which tree is the most massive by trunk volume?",
+        "choices": ["Coast Redwood", "Montezuma Cypress", "Giant Sequoia", "Kauri"],
+        "answer": "Giant Sequoia"
+    },
+    {
+        "question": "Which tree produces acorns?",
+        "choices": ["Beech", "Oak", "Sweet Chestnut", "Hazel"],
+        "answer": "Oak"
+    },
+    {
+        "question": "Why do deciduous trees drop their leaves in autumn?",
+        "choices": ["To attract more pollinators", "To produce more oxygen", "To grow taller faster", "To reduce water loss during winter"],
+        "answer": "To reduce water loss during winter"
+    },
+    {
+        "question": "Sap from which tree is boiled down to make maple syrup?",
+        "choices": ["Sugar Maple", "Silver Birch", "Black Walnut", "American Sycamore"],
+        "answer": "Sugar Maple"
+    },
+    {
+        "question": "Which tree includes the oldest known non-clonal individuals, nearly 5,000 years old?",
+        "choices": ["Giant Sequoia", "Great Basin Bristlecone Pine", "Coast Redwood", "European Yew"],
+        "answer": "Great Basin Bristlecone Pine"
+    },
+    {
+        "question": "Which African tree has a swollen trunk and is nicknamed the \"upside-down tree\"?",
+        "choices": ["Acacia", "Marula", "Sausage Tree", "Baobab"],
+        "answer": "Baobab"
+    },
+    {
+        "question": "What are the seed-bearing structures of conifers called?",
+        "choices": ["Fruits", "Catkins", "Cones", "Pods"],
+        "answer": "Cones"
+    },
+    {
+        "question": "Which tree is known for white bark that peels away in papery layers?",
+        "choices": ["Quaking Aspen", "Paper Birch", "American Beech", "London Plane"],
+        "answer": "Paper Birch"
+    },
+    {
+        "question": "Trees that keep their leaves year-round are described as what?",
+        "choices": ["Evergreen", "Deciduous", "Annual", "Herbaceous"],
+        "answer": "Evergreen"
+    },
+    {
+        "question": "Which fast-growing woody plant is technically a giant grass, not a true tree?",
+        "choices": ["Coconut Palm", "Tree Fern", "Bamboo", "Rubber Tree"],
+        "answer": "Bamboo"
+    },
+    {
+        "question": "The rings inside a tree trunk mainly reveal what?",
+        "choices": ["The number of branches", "The tree's water content", "The tree's height", "The tree's age"],
+        "answer": "The tree's age"
+    },
+    {
+        "question": "Which Amazonian tree produces Brazil nuts?",
+        "choices": ["Brazil Nut Tree", "Rubber Tree", "Kapok", "Cacao"],
+        "answer": "Brazil Nut Tree"
+    },
+    {
+        "question": "Olive trees are especially associated with which climate?",
+        "choices": ["Tropical rainforest", "Mediterranean", "Arctic tundra", "Temperate rainforest"],
+        "answer": "Mediterranean"
+    },
+    {
+        "question": "Which tree's spring blossom (sakura) is famously celebrated in Japan?",
+        "choices": ["Plum", "Magnolia", "Cherry", "Dogwood"],
+        "answer": "Cherry"
+    },
+    {
+        "question": "Natural rubber (latex) is tapped mainly from which tree?",
+        "choices": ["Sapodilla", "Gutta-percha tree", "Balsa", "Rubber Tree (Hevea)"],
+        "answer": "Rubber Tree (Hevea)"
+    },
+    {
+        "question": "Which tree produces the dates found in desert oases?",
+        "choices": ["Coconut Palm", "Date Palm", "Fig", "Doum Palm"],
+        "answer": "Date Palm"
+    },
+    {
+        "question": "Photosynthesis mainly takes place in leaf cells containing which structures?",
+        "choices": ["Chloroplasts", "Mitochondria", "Xylem vessels", "Ribosomes"],
+        "answer": "Chloroplasts"
+    },
+    {
+        "question": "Which conifer is deciduous, dropping all its needles each autumn?",
+        "choices": ["Scots Pine", "Norway Spruce", "Douglas Fir", "Larch"],
+        "answer": "Larch"
+    },
+    {
+        "question": "Mangrove trees are specially adapted to grow where?",
+        "choices": ["Alpine slopes", "Desert dunes", "Saltwater coastal (intertidal) zones", "Freshwater bogs"],
+        "answer": "Saltwater coastal (intertidal) zones"
+    },
+    {
+        "question": "Which tree forms the enormous clonal colony \"Pando,\" a single organism of thousands of stems?",
+        "choices": ["Quaking Aspen", "Coast Redwood", "Sugar Maple", "Weeping Willow"],
+        "answer": "Quaking Aspen"
+    },
+    {
+        "question": "The spice cinnamon comes from the bark of which tree?",
+        "choices": ["Clove Tree", "Cinnamon Tree", "Nutmeg Tree", "Bay Laurel"],
+        "answer": "Cinnamon Tree"
+    },
+    {
+        "question": "Water travels up from a tree's roots to its leaves through which tissue?",
+        "choices": ["Phloem", "Cambium", "Xylem", "Bark"],
+        "answer": "Xylem"
+    },
+    {
+        "question": "Under which tree is the Buddha said to have attained enlightenment?",
+        "choices": ["Banyan", "Neem", "Sal", "Sacred Fig (Bodhi tree)"],
+        "answer": "Sacred Fig (Bodhi tree)"
+    },
+    {
+        "question": "Which tree produces the largest seed in the plant kingdom, the \"double coconut\"?",
+        "choices": ["Coco de Mer", "Coconut Palm", "Jackfruit", "Durian"],
+        "answer": "Coco de Mer"
+    },
 ]
 
 trees_hard = [
+    {
+        "question": "Ginkgo biloba is the only living member of which plant division?",
+        "choices": ["Cycadophyta", "Ginkgophyta", "Coniferophyta", "Gnetophyta"],
+        "answer": "Ginkgophyta"
+    },
+    {
+        "question": "The tallest known living tree, \"Hyperion,\" belongs to which species?",
+        "choices": ["Mountain Ash", "Coast Douglas-fir", "Sitka Spruce", "Coast Redwood"],
+        "answer": "Coast Redwood"
+    },
+    {
+        "question": "Which tree genus fixes nitrogen through a symbiosis with Frankia bacteria in its roots?",
+        "choices": ["Alder", "Oak", "Maple", "Birch"],
+        "answer": "Alder"
+    },
+    {
+        "question": "Which conifer, known only from fossils until living trees were found in Australia in 1994, is critically endangered?",
+        "choices": ["Dawn Redwood", "Monkey Puzzle", "Wollemi Pine", "Kauri"],
+        "answer": "Wollemi Pine"
+    },
+    {
+        "question": "The dawn redwood (Metasequoia), rediscovered in China, is unusual among redwoods for being what?",
+        "choices": ["An evergreen with blue needles", "Deciduous, shedding its needles", "A flowering broadleaf", "A low shrub"],
+        "answer": "Deciduous, shedding its needles"
+    },
+    {
+        "question": "The famous \"General Sherman,\" the largest single-stem tree by volume, is which species?",
+        "choices": ["Giant Sequoia", "Coast Redwood", "Kauri", "Montezuma Cypress"],
+        "answer": "Giant Sequoia"
+    },
+    {
+        "question": "Sugars made in the leaves are transported through a tree via which tissue?",
+        "choices": ["Xylem", "Cambium", "Cork", "Phloem"],
+        "answer": "Phloem"
+    },
+    {
+        "question": "The antimalarial drug quinine was historically obtained from the bark of which tree?",
+        "choices": ["Neem", "Willow", "Cinchona", "Eucalyptus"],
+        "answer": "Cinchona"
+    },
+    {
+        "question": "Salicin, the natural forerunner of aspirin, was first extracted from the bark of which tree?",
+        "choices": ["Willow", "Cinchona", "Birch", "Oak"],
+        "answer": "Willow"
+    },
+    {
+        "question": "Eucalyptus trees are native predominantly to which continent?",
+        "choices": ["South America", "Australia", "Southeast Asia", "Southern Africa"],
+        "answer": "Australia"
+    },
+    {
+        "question": "Which fire adaptation involves seeds that are only released after the heat of a fire?",
+        "choices": ["Coppicing", "Suckering", "Layering", "Serotiny"],
+        "answer": "Serotiny"
+    },
+    {
+        "question": "The giant rainforest tree Ceiba pentandra, with huge buttress roots, is commonly called what?",
+        "choices": ["Balsa", "Mahogany", "Kapok", "Ironwood"],
+        "answer": "Kapok"
+    },
+    {
+        "question": "Balsa, one of the lightest commercial timbers, comes from a tree native to which region?",
+        "choices": ["Tropical Central and South America", "Southeast Asia", "West Africa", "Northern Australia"],
+        "answer": "Tropical Central and South America"
+    },
+    {
+        "question": "Palms belong to which group of flowering plants?",
+        "choices": ["Eudicots", "Monocots", "Gymnosperms", "Ferns"],
+        "answer": "Monocots"
+    },
+    {
+        "question": "Which large tropical tree folds its leaflets at dusk, earning the name \"rain tree\"?",
+        "choices": ["Flame Tree", "Jacaranda", "Royal Poinciana", "Rain Tree (Samanea saman)"],
+        "answer": "Rain Tree (Samanea saman)"
+    },
+    {
+        "question": "Frankincense resin is harvested from which tree genus of arid Africa and Arabia?",
+        "choices": ["Commiphora", "Acacia", "Boswellia", "Dracaena"],
+        "answer": "Boswellia"
+    },
+    {
+        "question": "Which deciduous conifer forms the northernmost forests on Earth, across Siberia?",
+        "choices": ["Dahurian Larch", "Norway Spruce", "Downy Birch", "Scots Pine"],
+        "answer": "Dahurian Larch"
+    },
+    {
+        "question": "Which of these is a gymnosperm?",
+        "choices": ["Apple", "Cycad", "Oak", "Willow"],
+        "answer": "Cycad"
+    },
+    {
+        "question": "A tree trunk grows wider through cell division in which layer?",
+        "choices": ["Heartwood", "Pith", "Vascular cambium", "Phloem"],
+        "answer": "Vascular cambium"
+    },
+    {
+        "question": "The Joshua tree of the Mojave Desert is actually a type of what?",
+        "choices": ["Cactus", "Agave", "Aloe", "Yucca"],
+        "answer": "Yucca"
+    },
+    {
+        "question": "Which tree bears its cacao pods directly on the trunk, a habit called cauliflory?",
+        "choices": ["Cacao", "Coffee", "Vanilla", "Kola"],
+        "answer": "Cacao"
+    },
+    {
+        "question": "Genuine mahogany timber comes chiefly from which genus, native to the Americas?",
+        "choices": ["Khaya", "Swietenia", "Tectona (teak)", "Dalbergia (rosewood)"],
+        "answer": "Swietenia"
+    },
+    {
+        "question": "Which factor most contributes to the extreme longevity of bristlecone pines?",
+        "choices": ["Rapid growth in rich soil", "Frequent reproduction", "Dense, resinous wood and very slow growth in harsh sites", "Nitrogen-fixing root symbiosis"],
+        "answer": "Dense, resinous wood and very slow growth in harsh sites"
+    },
+    {
+        "question": "The baobab species of the famous \"Avenue of the Baobabs,\" Adansonia grandidieri, is endemic to which country?",
+        "choices": ["Tanzania", "Namibia", "Australia", "Madagascar"],
+        "answer": "Madagascar"
+    },
+    {
+        "question": "Which tree is frequently cited as the world's fastest-growing hardwood?",
+        "choices": ["Empress Tree (Paulownia)", "Balsa", "Eucalyptus", "Silver Wattle"],
+        "answer": "Empress Tree (Paulownia)"
+    },
 ]
 
 insects_medium = [
+    {
+        "question": "Which insect is often cited as the strongest for its size, able to pull over 1,000 times its own body weight?",
+        "choices": ["Leafcutter Ant", "Rhinoceros Beetle", "Dung Beetle", "Flea"],
+        "answer": "Dung Beetle"
+    },
+    {
+        "question": "Which insects perform a \"waggle dance\" to tell nestmates where to find food?",
+        "choices": ["Honey Bee", "Bumblebee", "Wasp", "Ant"],
+        "answer": "Honey Bee"
+    },
+    {
+        "question": "How many legs does every adult insect have?",
+        "choices": ["Four", "Six", "Eight", "Ten"],
+        "answer": "Six"
+    },
+    {
+        "question": "The larva of a butterfly or moth is called what?",
+        "choices": ["Grub", "Maggot", "Nymph", "Caterpillar"],
+        "answer": "Caterpillar"
+    },
+    {
+        "question": "Which butterfly is famous for migrating thousands of kilometres between North America and Mexico?",
+        "choices": ["Monarch Butterfly", "Painted Lady", "Red Admiral", "Cabbage White"],
+        "answer": "Monarch Butterfly"
+    },
+    {
+        "question": "An insect's body is divided into which three main sections?",
+        "choices": ["Head, thorax, tail", "Head, body, legs", "Head, thorax, abdomen", "Cephalothorax and abdomen"],
+        "answer": "Head, thorax, abdomen"
+    },
+    {
+        "question": "Fireflies produce their glow through which chemical process?",
+        "choices": ["Phosphorescence", "Fluorescence", "Iridescence", "Bioluminescence"],
+        "answer": "Bioluminescence"
+    },
+    {
+        "question": "The pupa of a butterfly is also known as what?",
+        "choices": ["Cocoon", "Chrysalis", "Nymph", "Instar"],
+        "answer": "Chrysalis"
+    },
+    {
+        "question": "Which insects are agile aerial predators, ranked among the fastest-flying insects and able to catch prey in mid-air?",
+        "choices": ["Dragonfly", "Horsefly", "Hawk Moth", "Honeybee"],
+        "answer": "Dragonfly"
+    },
+    {
+        "question": "Insects breathe air through a branching network of tubes called what?",
+        "choices": ["Lungs", "Gills", "Tracheae", "Book lungs"],
+        "answer": "Tracheae"
+    },
+    {
+        "question": "Which South American ants cut leaves to grow an underground fungus for food?",
+        "choices": ["Army Ants", "Weaver Ants", "Fire Ants", "Leafcutter Ants"],
+        "answer": "Leafcutter Ants"
+    },
+    {
+        "question": "Ladybugs (ladybirds) are actually a type of what?",
+        "choices": ["True bug", "Beetle", "Fly", "Wasp"],
+        "answer": "Beetle"
+    },
+    {
+        "question": "Which insect is famous for the loud, shrill call males use to attract mates?",
+        "choices": ["Cicada", "Cricket", "Grasshopper", "Katydid"],
+        "answer": "Cicada"
+    },
+    {
+        "question": "Butterflies taste their food using which body part?",
+        "choices": ["Antennae", "Proboscis", "Feet", "Wings"],
+        "answer": "Feet"
+    },
+    {
+        "question": "Which insect's caterpillar spins a silk cocoon and has been farmed for thousands of years to make silk?",
+        "choices": ["Spider", "Tent Caterpillar", "Bagworm", "Silkworm"],
+        "answer": "Silkworm"
+    },
+    {
+        "question": "Which insects have front wings hardened into protective covers called elytra?",
+        "choices": ["Flies", "Beetles", "Dragonflies", "Bees"],
+        "answer": "Beetles"
+    },
+    {
+        "question": "Which flightless insect from New Zealand ranks among the heaviest insects in the world?",
+        "choices": ["Giant Wētā", "Goliath Beetle", "Atlas Moth", "Hercules Beetle"],
+        "answer": "Giant Wētā"
+    },
+    {
+        "question": "Flies are unusual among winged insects in having how many functional wings?",
+        "choices": ["Four", "Six", "Two", "None"],
+        "answer": "Two"
+    },
+    {
+        "question": "Which insects use surface tension to walk on top of the water?",
+        "choices": ["Whirligig Beetles", "Backswimmers", "Diving Beetles", "Water Striders"],
+        "answer": "Water Striders"
+    },
+    {
+        "question": "Female praying mantises are sometimes known for doing what to males?",
+        "choices": ["Carrying males on their backs", "Eating the male", "Feeding males first", "Sharing prey"],
+        "answer": "Eating the male"
+    },
+    {
+        "question": "Which butterfly, from Papua New Guinea, has the largest wingspan of any butterfly?",
+        "choices": ["Queen Alexandra's Birdwing", "Atlas Moth", "Goliath Birdwing", "Hercules Moth"],
+        "answer": "Queen Alexandra's Birdwing"
+    },
+    {
+        "question": "Grasshoppers make sound by rubbing body parts together, a process called what?",
+        "choices": ["Echolocation", "Percussion", "Stridulation", "Tremulation"],
+        "answer": "Stridulation"
+    },
+    {
+        "question": "Worker honeybees turn nectar into which hive product?",
+        "choices": ["Royal jelly", "Beeswax", "Propolis", "Honey"],
+        "answer": "Honey"
+    },
+    {
+        "question": "Which insects have a robust body, two pairs of large membranous wings, and hold their wings flat and open when at rest?",
+        "choices": ["Damselflies", "Dragonflies", "Mayflies", "Lacewings"],
+        "answer": "Dragonflies"
+    },
+    {
+        "question": "Which North American insect spends up to 17 years developing underground before emerging as an adult?",
+        "choices": ["Periodical Cicada", "Queen Termite", "Jewel Beetle", "Wood-boring Beetle"],
+        "answer": "Periodical Cicada"
+    },
 ]
 
 insects_hard = [
+    {
+        "question": "Silverfish and firebrats belong to which primitive, wingless insect order?",
+        "choices": ["Zygentoma", "Odonata", "Ephemeroptera", "Collembola"],
+        "answer": "Zygentoma"
+    },
+    {
+        "question": "An insect's open circulatory system moves hemolymph using what?",
+        "choices": ["A four-chambered heart", "A closed capillary network", "A dorsal tubular heart (dorsal vessel)", "A gill-driven pump"],
+        "answer": "A dorsal tubular heart (dorsal vessel)"
+    },
+    {
+        "question": "Which insect has the fastest recorded wingbeat, over 1,000 beats per second?",
+        "choices": ["Honeybee", "Forcipomyia midge", "Housefly", "Mosquito"],
+        "answer": "Forcipomyia midge"
+    },
+    {
+        "question": "Which beetles have been shown to roll dung in straight lines by orienting to the Milky Way?",
+        "choices": ["Bombardier Beetles", "Click Beetles", "Fireflies", "Dung Beetles"],
+        "answer": "Dung Beetles"
+    },
+    {
+        "question": "The bombardier beetle's hot defensive spray is produced by mixing which chemicals?",
+        "choices": ["Hydroquinones and hydrogen peroxide", "Formic acid and water", "Methane and oxygen", "Cyanide and sugar"],
+        "answer": "Hydroquinones and hydrogen peroxide"
+    },
+    {
+        "question": "True bugs such as aphids, cicadas, and shield bugs belong to which order?",
+        "choices": ["Coleoptera", "Hemiptera", "Orthoptera", "Homoptera"],
+        "answer": "Hemiptera"
+    },
+    {
+        "question": "Which insect forms the vast swarms that have historically darkened skies over Africa?",
+        "choices": ["Mormon Cricket", "Rocky Mountain Locust", "Desert Locust", "African Armyworm Moth"],
+        "answer": "Desert Locust"
+    },
+    {
+        "question": "The individual units that make up an insect's compound eye are called what?",
+        "choices": ["Rhabdoms", "Photoreceptor rods", "Corneal facets", "Ommatidia"],
+        "answer": "Ommatidia"
+    },
+    {
+        "question": "Which ants build living bridges and bivouacs from their own bodies during nomadic raids?",
+        "choices": ["Army Ants", "Weaver Ants", "Harvester Ants", "Carpenter Ants"],
+        "answer": "Army Ants"
+    },
+    {
+        "question": "The first winged insects, including giant dragonfly-like forms, appeared in which geological period?",
+        "choices": ["Cambrian", "Carboniferous", "Jurassic", "Cretaceous"],
+        "answer": "Carboniferous"
+    },
+    {
+        "question": "Giant dragonfly ancestors like Meganeura are thought to have grown huge because of higher atmospheric levels of what?",
+        "choices": ["Carbon dioxide", "Nitrogen", "Oxygen", "Methane"],
+        "answer": "Oxygen"
+    },
+    {
+        "question": "Fleas, which are wingless and flattened side-to-side, belong to which insect order?",
+        "choices": ["Phthiraptera", "Diptera", "Hemiptera", "Siphonaptera"],
+        "answer": "Siphonaptera"
+    },
+    {
+        "question": "The behaviour of butterflies gathering on wet mud to extract minerals is called what?",
+        "choices": ["Mud-puddling", "Lekking", "Basking", "Roosting"],
+        "answer": "Mud-puddling"
+    },
+    {
+        "question": "Which insects include the longest in the world by body length?",
+        "choices": ["Goliath Beetle", "Giant stick insect (Phryganistria)", "Atlas Moth", "Titan Beetle"],
+        "answer": "Giant stick insect (Phryganistria)"
+    },
+    {
+        "question": "Aphids can reproduce without mating, producing clones; this is called what?",
+        "choices": ["Hermaphroditism", "Metamorphosis", "Parthenogenesis", "Diapause"],
+        "answer": "Parthenogenesis"
+    },
+    {
+        "question": "Which wasps lay eggs in living hosts such as caterpillars, whose larvae then consume them alive?",
+        "choices": ["Paper wasps", "Gall wasps", "Velvet ants", "Parasitoid wasps"],
+        "answer": "Parasitoid wasps"
+    },
+    {
+        "question": "Which African beetle is among the heaviest insects, its larvae reaching around 100 grams?",
+        "choices": ["Goliath Beetle", "Hercules Beetle", "Titan Beetle", "Elephant Beetle"],
+        "answer": "Goliath Beetle"
+    },
+    {
+        "question": "Termites, once given their own order, are now classified as highly specialized what?",
+        "choices": ["Ants", "Cockroaches", "Wasps", "Beetles"],
+        "answer": "Cockroaches"
+    },
+    {
+        "question": "Monarch caterpillars become toxic by storing chemicals from which food plant?",
+        "choices": ["Nettle", "Fennel", "Milkweed", "Oak"],
+        "answer": "Milkweed"
+    },
+    {
+        "question": "Which insect's sting sits at the very top of the Schmidt sting pain index?",
+        "choices": ["Tarantula Hawk", "Warrior Wasp", "Velvet Ant", "Bullet Ant"],
+        "answer": "Bullet Ant"
+    },
+    {
+        "question": "Which ants use spring-loaded jaws that snap shut at record speeds to catch prey or fling themselves away?",
+        "choices": ["Trap-jaw Ant", "Antlion", "Assassin Bug", "Mantisfly"],
+        "answer": "Trap-jaw Ant"
+    },
+    {
+        "question": "Lacewings, antlions, and owlflies belong to which order with delicate net-veined wings?",
+        "choices": ["Odonata", "Neuroptera", "Mecoptera", "Trichoptera"],
+        "answer": "Neuroptera"
+    },
+    {
+        "question": "Which fly larva can survive almost complete drying out and revive when rehydrated (cryptobiosis)?",
+        "choices": ["Antarctic midge", "Brine fly", "Sleeping chironomid (Polypedilum vanderplanki)", "Fruit fly"],
+        "answer": "Sleeping chironomid (Polypedilum vanderplanki)"
+    },
+    {
+        "question": "Which insects have \"halteres,\" modified hindwings used as gyroscopic balance organs?",
+        "choices": ["Beetles", "Moths", "Bees", "Flies"],
+        "answer": "Flies"
+    },
+    {
+        "question": "A honeybee's waggle dance signals the direction of food relative to what?",
+        "choices": ["The sun's position", "Earth's magnetic north", "The moon", "Nearby landmarks only"],
+        "answer": "The sun's position"
+    },
 ]
 
 animals_medium = [
+    {
+        "question": "Which is the largest animal ever known to have lived?",
+        "choices": ["Blue Whale", "African Elephant", "Argentinosaurus", "Sperm Whale"],
+        "answer": "Blue Whale"
+    },
+    {
+        "question": "Which is the tallest living animal?",
+        "choices": ["African Elephant", "Ostrich", "Giraffe", "Moose"],
+        "answer": "Giraffe"
+    },
+    {
+        "question": "Which mammal is famous for building dams across streams?",
+        "choices": ["Otter", "Beaver", "Muskrat", "Capybara"],
+        "answer": "Beaver"
+    },
+    {
+        "question": "Which is the fastest land animal over a short sprint?",
+        "choices": ["Pronghorn", "Lion", "Springbok", "Cheetah"],
+        "answer": "Cheetah"
+    },
+    {
+        "question": "How many hearts does an octopus have?",
+        "choices": ["Three", "One", "Two", "Four"],
+        "answer": "Three"
+    },
+    {
+        "question": "Which is the largest living reptile?",
+        "choices": ["Komodo Dragon", "Saltwater Crocodile", "Nile Crocodile", "Green Anaconda"],
+        "answer": "Saltwater Crocodile"
+    },
+    {
+        "question": "Whales, dolphins, and porpoises are what kind of animal?",
+        "choices": ["Fish", "Amphibians", "Mammals", "Reptiles"],
+        "answer": "Mammals"
+    },
+    {
+        "question": "Which animals may hold paws while resting so they don't drift apart, and use stones to crack open shellfish?",
+        "choices": ["Seals", "Beavers", "Manatees", "Sea Otters"],
+        "answer": "Sea Otters"
+    },
+    {
+        "question": "Which is the largest living land animal?",
+        "choices": ["African Bush Elephant", "Asian Elephant", "White Rhinoceros", "Hippopotamus"],
+        "answer": "African Bush Elephant"
+    },
+    {
+        "question": "Which mammal has the longest pregnancy, around 22 months?",
+        "choices": ["Blue Whale", "Elephant", "Giraffe", "Rhinoceros"],
+        "answer": "Elephant"
+    },
+    {
+        "question": "Which is the largest marsupial?",
+        "choices": ["Koala", "Wombat", "Red Kangaroo", "Wallaby"],
+        "answer": "Red Kangaroo"
+    },
+    {
+        "question": "Which great ape did Jane Goodall observe \"fishing\" for termites with sticks?",
+        "choices": ["Gorilla", "Orangutan", "Bonobo", "Chimpanzee"],
+        "answer": "Chimpanzee"
+    },
+    {
+        "question": "Which mammal holds the record for the deepest dive, reaching nearly 3,000 metres?",
+        "choices": ["Cuvier's Beaked Whale", "Sperm Whale", "Elephant Seal", "Weddell Seal"],
+        "answer": "Cuvier's Beaked Whale"
+    },
+    {
+        "question": "A group of lions is known as what?",
+        "choices": ["Pack", "Pride", "Herd", "Troop"],
+        "answer": "Pride"
+    },
+    {
+        "question": "Which is the only mammal capable of true, powered flight?",
+        "choices": ["Flying Squirrel", "Sugar Glider", "Bat", "Colugo"],
+        "answer": "Bat"
+    },
+    {
+        "question": "Which reptile changes colour, has a long projectile tongue, and eyes that swivel independently?",
+        "choices": ["Octopus", "Cuttlefish", "Green Anole", "Chameleon"],
+        "answer": "Chameleon"
+    },
+    {
+        "question": "Which snake has the most toxic venom of any snake, drop for drop?",
+        "choices": ["Inland Taipan", "King Cobra", "Black Mamba", "Russell's Viper"],
+        "answer": "Inland Taipan"
+    },
+    {
+        "question": "Which of these animals is an amphibian?",
+        "choices": ["Gecko", "Caecilian", "Skink", "Tortoise"],
+        "answer": "Caecilian"
+    },
+    {
+        "question": "Which South American fish, actually a knifefish, can generate shocks of up to about 600 volts?",
+        "choices": ["Electric Catfish", "Torpedo Ray", "Electric Eel", "Stargazer"],
+        "answer": "Electric Eel"
+    },
+    {
+        "question": "Which marine mammals use echolocation to navigate and hunt?",
+        "choices": ["Baleen whales", "Manatees", "Seals", "Dolphins"],
+        "answer": "Dolphins"
+    },
+    {
+        "question": "Which is generally considered the smallest mammal by body mass?",
+        "choices": ["Etruscan Shrew", "Bumblebee Bat", "African Pygmy Mouse", "Eurasian Pygmy Shrew"],
+        "answer": "Etruscan Shrew"
+    },
+    {
+        "question": "Which egg-laying mammal has a duck-like bill and webbed feet?",
+        "choices": ["Echidna", "Platypus", "Otter", "Water Shrew"],
+        "answer": "Platypus"
+    },
+    {
+        "question": "Which big cat is the only one that habitually lives and hunts in social groups?",
+        "choices": ["Tiger", "Leopard", "Lion", "Jaguar"],
+        "answer": "Lion"
+    },
+    {
+        "question": "What does a camel's hump mainly store?",
+        "choices": ["Water", "Muscle", "Bone", "Fat"],
+        "answer": "Fat"
+    },
+    {
+        "question": "Which animal has the largest eyes of any animal, up to about 27 centimetres across?",
+        "choices": ["Colossal Squid", "Blue Whale", "Giant Squid", "Ostrich"],
+        "answer": "Colossal Squid"
+    },
 ]
 
 animals_hard = [
+    {
+        "question": "The platypus and echidna belong to which egg-laying group of mammals?",
+        "choices": ["Monotremes", "Marsupials", "Placentals", "Xenarthrans"],
+        "answer": "Monotremes"
+    },
+    {
+        "question": "Which living animal has the strongest bite force ever directly measured?",
+        "choices": ["Great White Shark", "Hippopotamus", "Saltwater Crocodile", "Jaguar"],
+        "answer": "Saltwater Crocodile"
+    },
+    {
+        "question": "A shark's skeleton is made of what?",
+        "choices": ["Bone", "Cartilage", "Keratin", "Calcified tendon"],
+        "answer": "Cartilage"
+    },
+    {
+        "question": "Which amphibian stays aquatic and keeps its gills as an adult (neoteny) and is famous for regenerating limbs?",
+        "choices": ["African Clawed Frog", "Fire Salamander", "Olm", "Axolotl"],
+        "answer": "Axolotl"
+    },
+    {
+        "question": "Which mammal defends itself with venomous spurs on its hind legs?",
+        "choices": ["Male Platypus", "Solenodon", "Slow Loris", "European Mole"],
+        "answer": "Male Platypus"
+    },
+    {
+        "question": "Seahorses are classified as what kind of animal?",
+        "choices": ["Crustacean", "Fish", "Mollusk", "Amphibian"],
+        "answer": "Fish"
+    },
+    {
+        "question": "In which animal do the males become pregnant and give birth?",
+        "choices": ["Clownfish", "Anglerfish", "Seahorse", "Cuttlefish"],
+        "answer": "Seahorse"
+    },
+    {
+        "question": "Which vertebrate has the longest known lifespan, estimated at up to about 400 years?",
+        "choices": ["Bowhead Whale", "Galápagos Tortoise", "Koi", "Greenland Shark"],
+        "answer": "Greenland Shark"
+    },
+    {
+        "question": "Which African mammal communicates over long distances using infrasound below human hearing?",
+        "choices": ["Elephant", "Giraffe", "Rhinoceros", "Hippopotamus"],
+        "answer": "Elephant"
+    },
+    {
+        "question": "Which is the longest snake in the world?",
+        "choices": ["Green Anaconda", "Reticulated Python", "King Cobra", "Burmese Python"],
+        "answer": "Reticulated Python"
+    },
+    {
+        "question": "Which animal has blue, copper-based blood that is used to test the safety of medicines?",
+        "choices": ["Octopus", "Lobster", "Horseshoe Crab", "Squid"],
+        "answer": "Horseshoe Crab"
+    },
+    {
+        "question": "Despite its name, the killer whale (orca) is the largest member of which family?",
+        "choices": ["Porpoises", "Baleen whales", "Beaked whales", "Dolphins"],
+        "answer": "Dolphins"
+    },
+    {
+        "question": "Which fish is most often cited as the fastest in the ocean?",
+        "choices": ["Sailfish", "Bluefin Tuna", "Mako Shark", "Swordfish"],
+        "answer": "Sailfish"
+    },
+    {
+        "question": "Which whale is famous for singing long, complex songs that change over time?",
+        "choices": ["Blue Whale", "Humpback Whale", "Bottlenose Dolphin", "Beluga"],
+        "answer": "Humpback Whale"
+    },
+    {
+        "question": "Which animal digests prey by pushing its stomach out through its mouth?",
+        "choices": ["Sea Cucumber", "Sea Urchin", "Sea Star", "Jellyfish"],
+        "answer": "Sea Star"
+    },
+    {
+        "question": "Which is the smallest known vertebrate, a tiny frog from New Guinea?",
+        "choices": ["Bumblebee Bat", "Dwarf Goby", "Brookesia nana", "Paedophryne amauensis"],
+        "answer": "Paedophryne amauensis"
+    },
+    {
+        "question": "Bats belong to which order of mammals?",
+        "choices": ["Chiroptera", "Rodentia", "Insectivora", "Dermoptera"],
+        "answer": "Chiroptera"
+    },
+    {
+        "question": "A narwhal's long \"tusk\" is actually an elongated what?",
+        "choices": ["Keratin horn", "Tooth (canine)", "Nasal bone", "Modified antler"],
+        "answer": "Tooth (canine)"
+    },
+    {
+        "question": "Which mammal moves so slowly that algae grows in its fur?",
+        "choices": ["Koala", "Loris", "Three-toed Sloth", "Manatee"],
+        "answer": "Three-toed Sloth"
+    },
+    {
+        "question": "Which fish lives unharmed among the stinging tentacles of sea anemones?",
+        "choices": ["Damselfish", "Goby", "Wrasse", "Clownfish"],
+        "answer": "Clownfish"
+    },
+    {
+        "question": "Which of these animals is a cephalopod?",
+        "choices": ["Octopus", "Clam", "Snail", "Barnacle"],
+        "answer": "Octopus"
+    },
+    {
+        "question": "Which is the heaviest bony fish in the world?",
+        "choices": ["Whale Shark", "Ocean Sunfish (Mola mola)", "Great White Shark", "Giant Grouper"],
+        "answer": "Ocean Sunfish (Mola mola)"
+    },
+    {
+        "question": "Which North American frog can survive being frozen solid and then thaw out alive?",
+        "choices": ["Common Frog", "Spring Peeper", "Wood Frog", "American Bullfrog"],
+        "answer": "Wood Frog"
+    },
+    {
+        "question": "Which small toothed whale develops individual \"signature whistles\" that work rather like names?",
+        "choices": ["Harbor Seals", "Sea Lions", "Beluga", "Bottlenose Dolphin"],
+        "answer": "Bottlenose Dolphin"
+    },
+    {
+        "question": "Which is the largest fish in the world?",
+        "choices": ["Whale Shark", "Basking Shark", "Great White Shark", "Ocean Sunfish"],
+        "answer": "Whale Shark"
+    },
 ]
 
 
