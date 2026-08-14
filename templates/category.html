@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>Choose a Category</h1>
-<p class="small-text">Pick a category or draw from all 200 questions.</p>
+<p class="small-text">Pick a category, or draw from all four.</p>
 
 <form method="POST" action="{{ url_for('choose_category') }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

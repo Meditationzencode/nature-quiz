@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Status: Complete](https://img.shields.io/badge/Status-Complete-brightgreen.svg)](#future-improvements)
 
-A deployed **Flask** web app with server-rendered pages, SQLite persistence, client-side timer logic, a pytest suite, and production-focused security features. Players answer 10 randomly selected questions from a bank of 200 nature questions, competing across three difficulty levels with a live countdown timer and a filterable leaderboard.
+A deployed **Flask** web app with server-rendered pages, SQLite persistence, client-side timer logic, a pytest suite, and production-focused security features. Players answer 10 randomly selected questions from a bank of 400 nature questions, competing across three difficulty levels with a live countdown timer and a filterable leaderboard.
 
 **Live demo:** [nature-quiz.onrender.com](https://nature-quiz.onrender.com)
 **GitHub repo:** [github.com/Meditationzencode/nature-quiz](https://github.com/Meditationzencode/nature-quiz)
@@ -14,8 +14,8 @@ A deployed **Flask** web app with server-rendered pages, SQLite persistence, cli
 ## Quick Summary
 
 - Built with Python, Flask, Jinja2, SQLite, HTML, CSS, and JavaScript
-- 200-question quiz bank across birds, trees, insects, and animals
-- Randomized 10-question games with difficulty-based timers and scoring
+- 400-question quiz bank across birds, trees, insects, and animals, split by difficulty
+- Randomized 10-question games with difficulty-based question pools and scoring
 - SQLite leaderboard with difficulty/category filters
 - 60-test pytest suite covering routes, validation, CSRF, headers, and quiz logic
 - Deployed on Render with gunicorn
@@ -49,7 +49,7 @@ A deployed **Flask** web app with server-rendered pages, SQLite persistence, cli
 
 ## Overview
 
-Nature Quiz is a server-side web application built with Flask. Each game randomly selects 10 questions from a 200-question bank across four categories — birds, trees, insects, and animals. Difficulty controls both the countdown timer and points earned per correct answer, so harder games score higher on the leaderboard.
+Nature Quiz is a server-side web application built with Flask. Each game randomly selects 10 questions from a 400-question bank across four categories — birds, trees, insects, and animals. Difficulty controls which questions you are asked and the points earned per correct answer, so harder games score higher on the leaderboard.
 
 Questions are stored as Python lists in `questions.py` rather than a JSON file or database. They are static, read-only content that ships with the app, so external storage would add I/O and parsing complexity for no functional benefit. The leaderboard, which actually mutates as people play, is the part that lives in SQLite.
 
@@ -70,11 +70,12 @@ Difficulty → Category → Quiz Session → Feedback → Results → Leaderboar
 
 ## Features
 
-- 200 nature-themed multiple-choice questions across four categories
-- Three difficulty levels with weighted scoring:
-  - Easy — 15 seconds per question, 1 point per correct answer
-  - Medium — 10 seconds per question, 2 points per correct answer
-  - Hard — 5 seconds per question, 3 points per correct answer
+- 400 nature-themed multiple-choice questions across four categories, split 200 Easy / 100 Medium / 100 Hard
+- Three difficulty levels, each drawing from its own question pool, with weighted scoring:
+  - Easy — 1 point per correct answer
+  - Medium — 2 points per correct answer
+  - Hard — 3 points per correct answer
+- 60 seconds per question at every level, so difficulty is about the questions rather than reading speed
 - Live countdown timer with automatic time-out handling
 - Answer shuffled on every game so the correct choice is never always first
 - Streak counter tracking consecutive correct answers

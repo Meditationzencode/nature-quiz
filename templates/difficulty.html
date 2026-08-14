@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>Choose Difficulty</h1>
-<p class="small-text">Harder modes give more points for each correct answer.</p>
+<p class="small-text">Harder modes ask tougher questions and give more points for each correct answer.</p>
 
 <form method="POST" action="{{ url_for('start_quiz') }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

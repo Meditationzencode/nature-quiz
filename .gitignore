@@ -3,3 +3,6 @@
 __pycache__/
 *.pyc
 scores.db*
+
+# One-time source for the Medium/Hard import; questions.py is authoritative.
+nature-quiz-200.md

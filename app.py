@@ -60,10 +60,12 @@ CATEGORIES = {
     "Insects": insects,
     "Animals": animals,
 }
+# Same generous clock at every level: difficulty is about how hard the
+# questions are, not how fast you can read four long answer options.
 DIFFICULTY_TIMERS = {
-    "Easy": 15,
-    "Medium": 10,
-    "Hard": 5,
+    "Easy": 60,
+    "Medium": 60,
+    "Hard": 60,
 }
 DIFFICULTY_POINTS = {
     "Easy": 1,
