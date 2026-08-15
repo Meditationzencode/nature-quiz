@@ -124,12 +124,13 @@ ANSWER_EXPLANATIONS = {
 
 
 def get_explanation(question):
+    """Return the nature fact for a question, or "" when there isn't one.
+
+    Empty is deliberate: the templates hide the fact line entirely rather than
+    padding it with filler that restates the answer without teaching anything.
+    """
     custom_explanation = question.get("explanation")
     if custom_explanation:
         return custom_explanation
 
-    answer = question.get("answer", "")
-    return ANSWER_EXPLANATIONS.get(
-        answer,
-        f"The clue in this question points to {answer}. Try linking that detail with the answer for next time."
-    )
+    return ANSWER_EXPLANATIONS.get(question.get("answer", ""), "")
