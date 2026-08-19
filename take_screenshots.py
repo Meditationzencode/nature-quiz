@@ -11,6 +11,13 @@ from questions import questions
 IMAGES = Path("static/images")
 BASE = "http://127.0.0.1:5000"
 
+# The quiz page ticks a countdown once a second, and each redraw nudges the
+# layout by a fraction of a pixel. Freezing setInterval parks the timer at its
+# starting value, which keeps the layout still and makes every screenshot show
+# the same "60s" instead of an arbitrary point in the countdown. The countdown
+# is the only interval on the page; main.js uses setTimeout.
+FREEZE_TIMER = "window.setInterval = () => 0;"
+
 answer_lookup = {q["question"]: q["answer"] for q in questions}
 
 
@@ -32,6 +39,25 @@ def wait_for_server(page):
     raise RuntimeError("Server did not start")
 
 
+def answer_selector(answer):
+    """Build a button selector for an answer, which may contain quotes."""
+    escaped = answer.replace("\\", "\\\\").replace('"', '\\"')
+    return f'button[value="{escaped}"]'
+
+
+def click(page, selector):
+    """Click, with the cursor parked off the controls first.
+
+    .answer-button lifts itself 2px on :hover. If the cursor happens to be
+    left sitting on a button's edge after the previous click, that lift moves
+    the button out from under the cursor, which un-hovers it, which drops it
+    back — an oscillation Playwright waits out until it times out. Parking the
+    mouse in the corner first means nothing is hovered when it measures.
+    """
+    page.mouse.move(0, 0)
+    page.click(selector)
+
+
 def shot(page, name, wait_ms=400, full_page=False):
     page.wait_for_timeout(wait_ms)
     page.screenshot(path=str(IMAGES / name), full_page=full_page)
@@ -40,9 +66,9 @@ def shot(page, name, wait_ms=400, full_page=False):
 
 def play_quiz(page, difficulty="Easy", category="All", answers_to_take=10):
     page.goto(BASE + "/start")
-    page.click(f"button[value='{difficulty}']")
+    click(page, f"button[value='{difficulty}']")
     page.wait_for_url("**/category")
-    page.click(f"button[value='{category}']")
+    click(page, f"button[value='{category}']")
     page.wait_for_url("**/quiz")
 
     for i in range(answers_to_take):
@@ -54,16 +80,16 @@ def play_quiz(page, difficulty="Easy", category="All", answers_to_take=10):
             shot(page, "screenshot-quiz.png")
 
         if answer:
-            page.click(f"button[value='{answer}']")
+            click(page, answer_selector(answer))
         else:
-            page.click(".answer-button")
+            click(page, ".answer-button")
 
         page.wait_for_selector(".feedback-box")
 
         if i == 0 and difficulty == "Easy":
             shot(page, "screenshot-feedback.png")
 
-        page.click("button[type='submit']")
+        click(page, "button[type='submit']")
         page.wait_for_timeout(200)
 
         if "/result" in page.url:
@@ -78,6 +104,7 @@ def main():
 
             # --- Desktop screenshots ---
             page = browser.new_page(viewport={"width": 900, "height": 700})
+            page.add_init_script(FREEZE_TIMER)
             wait_for_server(page)
 
             # Home — full page so the footer (source-code link) is visible
@@ -89,7 +116,7 @@ def main():
             shot(page, "screenshot-difficulty.png")
 
             # Category (need difficulty in session first)
-            page.click("button[value='Easy']")
+            click(page, "button[value='Easy']")
             page.wait_for_url("**/category")
             shot(page, "screenshot-category.png")
 
@@ -99,9 +126,9 @@ def main():
             # Streak (play hard enough to get 2 in a row)
             # Re-play and capture streak badge if visible
             page.goto(BASE + "/start")
-            page.click("button[value='Medium']")
+            click(page, "button[value='Medium']")
             page.wait_for_url("**/category")
-            page.click("button[value='All']")
+            click(page, "button[value='All']")
             page.wait_for_url("**/quiz")
 
             correct_count = 0
@@ -111,13 +138,13 @@ def main():
                 answer = answer_lookup.get(q_text.strip())
 
                 if answer:
-                    page.click(f"button[value='{answer}']")
+                    click(page, answer_selector(answer))
                     correct_count += 1
                 else:
-                    page.click(".answer-button")
+                    click(page, ".answer-button")
 
                 page.wait_for_selector(".feedback-box")
-                page.click("button[type='submit']")
+                click(page, "button[type='submit']")
                 page.wait_for_timeout(200)
 
                 if "/result" in page.url:
@@ -132,12 +159,12 @@ def main():
                 shot(page, "screenshot-results.png")
 
                 # Review answers page (new)
-                page.click("a[href*='review']")
+                click(page, "a[href*='review']")
                 page.wait_for_url("**/review")
                 shot(page, "screenshot-review.png")
 
                 # Back to results then leaderboard
-                page.click("a[href*='result']")
+                click(page, "a[href*='result']")
                 page.wait_for_url("**/result")
 
             # Leaderboard (with filters)
@@ -145,12 +172,13 @@ def main():
             shot(page, "screenshot-leaderboard.png")
 
             # Leaderboard filtered view
-            page.click("a.filter-button[href*='difficulty=Hard']")
+            click(page, "a.filter-button[href*='difficulty=Hard']")
             page.wait_for_timeout(300)
             shot(page, "screenshot-leaderboard-filtered.png")
 
             # --- Mobile screenshot ---
             mobile = browser.new_page(viewport={"width": 390, "height": 844})
+            mobile.add_init_script(FREEZE_TIMER)
             mobile.goto(BASE)
             shot(mobile, "screenshot-mobile.png")
 
